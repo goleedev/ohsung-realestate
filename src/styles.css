@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+  
+input {
+    all: unset;
+    box-sizing: border-box;
+    appearance: none;
+}
+  
+body {
+    background-color: #f7f7f7;
+    font-family: -apple-system, BlinkMacSystemFont, 'Nanum Gothic', sans-serif;
+    font-size: 14px;
+    color: #292b2c;
+}
