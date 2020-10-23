@@ -1,10 +1,20 @@
-.footer-links {
+.logo-slider {
   margin: 0 auto !important;
-  text-align: center;
+  margin-bottom: 4% !important;
+  text-align: center !important;
 }
 
-.footer-link {
-  position: relative;
+.logo-slider img {
+  margin: 0 auto !important;
   width: 120px;
   height: 60px;
+  box-shadow:  3px 3px 6px #d5d5d1, 
+  -3px -3px 6px #ffffff;
+}
+
+@media (max-width: 768px) {
+  .logo-slider img {
+    width: 100px;
+    height: 50px;
+  }
 }

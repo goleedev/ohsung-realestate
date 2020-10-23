@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { authService } from 'fbase';
 import './Navigation.css';
 
 const Navigation = ({isLoggedIn}) => {
@@ -20,8 +19,6 @@ const Navigation = ({isLoggedIn}) => {
                     <Link className="nav-link" to="/youtube">오성TV</Link>
                     <Link className="nav-link" to="/search">매물검색</Link>
                     <Link className="nav-link" to="/contact">문의하기</Link>
-                    {authService.currentUser ? (<Link className="nav-link" to="/login">ADMIN</Link>)
-                    : (<Link className="nav-link" to="/login">LOGIN</Link>)}
                 </div>
             </div>
         </nav>

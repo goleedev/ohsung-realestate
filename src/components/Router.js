@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from '../routes/Home';
+import Home from 'routes/Home';
 import About from 'routes/About';
 import Contact from 'routes/Contact';
 import Youtube from 'routes/Youtube';
@@ -9,8 +9,8 @@ import Manage from 'routes/Manage';
 import Upload from 'routes/Upload';
 import Auth from 'routes/Auth';
 import NotFound from 'routes/NotFound';
-import Footer from './Footer';
 import Admin from 'routes/Admin';
+import Footer from './Footer';
 
 const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
     return (
@@ -39,7 +39,6 @@ const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
                 )}
                 <Route component={NotFound} />
             </Switch>
-            <Footer />
         </Router>
         </>
     )

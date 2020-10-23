@@ -1,7 +1,13 @@
-.home {
+div.home {
+    display: block;
     height: 85vh !important;
     background: rgb(251,236,236);
     background: linear-gradient(320deg, rgba(251,236,236,1) 14%, rgba(171,196,213,1) 94%);
+}
+
+.header-top {
+    overflow: hidden !important;
+    height: 85vh !important;    
 }
 
 .header {
@@ -21,7 +27,7 @@ h2 {
 
 .home-building {
     position: absolute;
-    top: 32%;
+    top: 52%;
 }
 
 .home-search {
@@ -44,7 +50,7 @@ h2 {
 .home-circle img {
     width: 100px;
     padding-bottom: 10%;
-    filter: drop-shadow(2px 2px 1px #636363);
+    filter: drop-shadow(3px 3px 6px #8e8e8b);
 }
 
 .search-btn {
@@ -57,25 +63,32 @@ h2 {
         z-index: 99999;
     }
     .home-building {
-        left: 30% !important;
+        top: -100px;
+        left: 20%;
         width: 80%;
-        top: -200px;
-        z-index: -99999;
     }    
 }
 @media (max-width: 768px) {
+    .home {
+        height: 80vh !important;
+    }
+    .home-circle {
+        visibility: hidden;
+    }
     .home-search {
-        width: 80% !important;
-        z-index: 1;
+        width: 100% !important;
+        z-index: 999;
+    }
+    .home-search .form-control,
+    .home-search .btn {
+        font-size: 15px !important;
     }
     .home-circle {
         z-index: 9999;
     }
     .home-building {
-        top: -130px;
-        padding-left: 10%;
         left: 0 !important;
-        top: -50px;
-        width: 100%;
+        top: -100px;
+        width: 120%;
     }    
 }

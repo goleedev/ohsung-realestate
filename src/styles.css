@@ -36,9 +36,15 @@ h1 {
 
 h3 {
     font-family: GmarketSansMedium;
+    color: #3b4961 !important;
 }
 
 a,
 button {
     cursor: pointer;
+}
+
+::selection {
+    background-color: #ddb19e;
+    color: #3b4961;
 }

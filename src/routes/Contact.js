@@ -4,6 +4,8 @@ import circle1 from '../images/home-circle1.png';
 import circle2 from '../images/home-circle2.png';
 import circle3 from '../images/home-circle3.png';
 import './Contact.css';
+import FooterLink from 'components/FooterLink';
+import Footer from 'components/Footer';
 
 const Contact = () => {
     const onSubmit = () => {
@@ -74,6 +76,8 @@ const Contact = () => {
                 </div>
             </form>
         </div>
+        <FooterLink/>
+        <Footer/>    
         </>
     )
 }

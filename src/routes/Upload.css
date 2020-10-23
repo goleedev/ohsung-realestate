@@ -2,6 +2,13 @@
     margin: 10% auto !important;
 }
 
+.upload .title {
+    text-align: center;
+    font-size: 4rem;
+    color: #3b4961;
+    margin-bottom: 3%;
+}
+
 .factoryForm {
     display: flex;
     align-items: center;

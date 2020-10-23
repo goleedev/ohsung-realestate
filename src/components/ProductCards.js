@@ -1,64 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { dbService } from "fbase";
+import React from 'react';
 import './ProductCards.css';
+import pro1 from 'images/product1.png';
+import pro2 from 'images/product2.png';
+import pro3 from 'images/product3.png';
+import pro4 from 'images/product4.png';
+import pro5 from 'images/product5.png';
+import pro6 from 'images/product6.png';
 
 const ProductCards = () => {
-    const [products, setProducts] = useState([]);
-    let items = dbService.collection('products');
-    useEffect(() => {
-        items
-        .orderBy("createdAt", "desc")
-        .onSnapshot((snapshot) => {
-            let productArray = snapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-            }));
-            setProducts(productArray);
-        });
-    }, []);
-    const onClick = async(event) => {
-        const {
-            target: { id }
-        } = event;
-        if (id) {
-            await items
-            .where("group", "==", id)
-            .orderBy("createdAt", "desc")
-            .onSnapshot((snapshot) => {
-                let productArray = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-                }));
-                setProducts(productArray);
-            });
-        }
-    }
-    const onReloadClick = async() => {
-        await window.location.reload();
-    }
-
     return (
-        <>
-           <div className="store-list container row">
-                <h3 onClick={onReloadClick} className="col-lg-12">스토어</h3>
-                <nav className="store-nav col-lg-12">
-                    <span id="주택" onClick={onClick}>다가구/상가주택</span>
-                    <span id="상가" onClick={onClick}>상가건물</span>
-                    <span id="토지" onClick={onClick}>토지</span>
-                    <span id="공장" onClick={onClick}>공장/창고</span>
-                    <span id="전원" onClick={onClick}>전원주택</span>
-                    <span id="아파트" onClick={onClick}>아파트</span>
-                </nav>
-                <div className="container row product-item">
-                    {products.map((product) => 
-                        <div key={product.id} className="col-lg-3 col-md-6">
-                            <img src={product.attachmentUrl} className="store-product" />
-                            <h4>{product.productTitle}</h4>
-                        </div>
-                    )}    
-                </div>
-            </div> 
-        </>
+        <div data-aos="fade-right" className="product-list container row">
+            <h3 className="product-title col-lg-12">매물 둘러보기</h3>
+            <figure className="product-item top-row col-md-4 col-sm-6">
+                <img src={pro1}/>
+                <span>다가구/상가</span>
+                <figcaption>주택</figcaption>
+            </figure>
+            <figure className="product-item top-row col-md-4 col-sm-6">
+                <img src={pro2}/>
+                <figcaption>상가건물</figcaption>
+            </figure>
+            <figure className="product-item top-row col-md-4 col-sm-6">
+                <img src={pro3}/>
+                <figcaption>토지</figcaption>
+            </figure>
+            <figure className="product-item col-md-4 col-sm-6">
+                <img src={pro4}/>
+                <figcaption>공장/창고</figcaption>
+            </figure>
+            <figure className="product-item col-md-4 col-sm-6">
+                <img src={pro5}/>
+                <figcaption>전원주택</figcaption>
+            </figure>
+            <figure className="product-item col-lg-4 col-sm-6">
+                <img src={pro6}/>
+                <figcaption>아파트</figcaption>
+            </figure>
+        </div>
     )
 }
 

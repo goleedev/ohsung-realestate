@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { authService } from 'fbase';
 import './Footer.css';
 
 const Footer = () => {
@@ -17,6 +18,8 @@ const Footer = () => {
             <Link to="/">
                 <h2 className="footer-logo logo">오성 부동산</h2>
             </Link>
+            {authService.currentUser ? (<Link className="admin-link col-lg-12" to="/login">ADMIN</Link>)
+                : (<Link className="admin-link col-lg-12" to="/login">LOGIN</Link>)}
             <p id="copy">
                 &copy; Copyright {new Date().getFullYear()} 오성공인중개사 사무소 / e-오성공인중개사 사무소. All rights reserved.
             </p>

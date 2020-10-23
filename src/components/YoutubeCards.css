@@ -1,0 +1,17 @@
+.youtube-cards {
+    margin: 10% auto !important;
+    margin-bottom: 0% !important;
+    text-align: center !important;
+    background-color: #fafafa !important;
+}
+
+.youtube-cards-title {
+    font-size: 50px;
+    margin-bottom: 5%;
+}
+
+@media (max-width: 768px) {
+    .youtube-cards-title {
+        font-size: 40px !important;
+    }
+}

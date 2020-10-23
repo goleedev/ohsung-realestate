@@ -98,6 +98,7 @@ const Upload = ({ userObj }) => {
         <>
           <Navigation />
           <div className="upload container">
+            <h3 className="title col-lg-12">매물 업로드</h3>
             <form onSubmit={onSubmit} className="factoryForm">
               <div className="col-md-6">
                 <label htmlFor="attach-file" className="factoryInput__label">
