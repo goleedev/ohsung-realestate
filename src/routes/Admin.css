@@ -1,0 +1,30 @@
+.admin {
+    text-align: center;
+    margin: 15% auto !important;
+}
+
+.admin h3 {
+    font-family: GmarketSansMedium;
+    font-size: 4rem;
+    color: #3b4961;
+}
+
+.admin-box h4 {
+    background-color: #2e5fd2;
+    color: #fafafa;
+    cursor: pointer;
+    padding: 8%;
+    font-size: 2rem;
+    border-radius: 10px;
+}
+
+.admin-box h4:hover{
+    background-color: #3b4961;
+}
+
+.logout {
+    margin: 2% auto;
+    margin-bottom: 10%;
+    font-size: 24px;
+    cursor: pointer;
+}

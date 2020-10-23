@@ -1,0 +1,10 @@
+.footer-links {
+  margin: 0 auto !important;
+  text-align: center;
+}
+
+.footer-link {
+  position: relative;
+  width: 120px;
+  height: 60px;
+}

@@ -1,0 +1,24 @@
+.login {
+    text-align: center;
+    margin: 15% auto !important;
+}
+
+.login h3 {
+    font-family: GmarketSansMedium;
+    font-size: 4rem;
+    color: #3b4961;
+    margin-bottom: 10%;
+}
+
+.login .btn {
+    background-color: #2e5fd2;
+    color: #fafafa;
+    padding: 2% 8%;
+    font-size: 2rem;
+    border-radius: 10px;
+}
+
+.login .btn:hover {
+    background-color: #3b4961;
+    color: #fafafa;
+}

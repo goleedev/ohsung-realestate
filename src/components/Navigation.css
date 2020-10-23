@@ -1,0 +1,13 @@
+h1 {
+    color: #3b4961;
+}
+
+.nav-link {
+    font-size: 18px !important;
+    color: #3b4961;
+}
+
+.nav-link:hover {
+    color: #3b4961;
+    font-weight: bold;
+}

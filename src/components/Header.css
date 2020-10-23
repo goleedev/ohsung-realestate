@@ -1,0 +1,81 @@
+.home {
+    height: 85vh !important;
+    background: rgb(251,236,236);
+    background: linear-gradient(320deg, rgba(251,236,236,1) 14%, rgba(171,196,213,1) 94%);
+}
+
+.header {
+    margin: 10% auto !important;
+}
+
+h2 {
+    font-family: GmarketSansMedium !important;
+    font-size: 4rem !important;
+    z-index: 10000;
+    color: #3b4961 !important;
+}
+
+.home-type {
+    color: #2e5fd2 !important;
+}
+
+.home-building {
+    position: absolute;
+    top: 32%;
+}
+
+.home-search {
+    width: 80% !important;
+    margin: 20% 0;
+    background-color: #2e5fd2;
+}
+
+.home-circle {
+    position: fixed;
+    float: right;
+    right: 10px;
+    transition: all .2s ease-in-out;
+}
+
+.home-circle img:hover {
+    transform: scale(1.05);
+}
+
+.home-circle img {
+    width: 100px;
+    padding-bottom: 10%;
+    filter: drop-shadow(2px 2px 1px #636363);
+}
+
+.search-btn {
+    color: #fafafa !important;
+}
+
+@media (max-width: 992px) {
+    .home-search {
+        width: 120% !important;
+        z-index: 99999;
+    }
+    .home-building {
+        left: 30% !important;
+        width: 80%;
+        top: -200px;
+        z-index: -99999;
+    }    
+}
+@media (max-width: 768px) {
+    .home-search {
+        width: 80% !important;
+        z-index: 1;
+    }
+    .home-circle {
+        z-index: 9999;
+    }
+    .home-building {
+        top: -130px;
+        padding-left: 10%;
+        left: 0 !important;
+        top: -50px;
+        width: 100%;
+    }    
+}
