@@ -9,8 +9,45 @@
     font-size: 50px;
     margin-bottom: 5%;
 }
+.youtube-cards .youtube-item .btn {
+    visibility: hidden;
+    box-shadow:  3px 3px 6px #d5d5d1, 
+    -3px -3px 6px #ffffff;
+    color: #2e5fd2;
+    transition: all .2s ease-in-out;    
+}
+.youtube-cards .youtube-item:hover .btn {
+    visibility: visible;
+    transform: translateX(-10%, 10%);
+}
+
+.youtube-cards .youtube-item {
+    margin: 0 auto !important;
+    margin-bottom: 3% !important;
+}
+
+.youtube-cards .btn {
+    margin: 0 auto;
+    margin-bottom: 5%;
+    font-size: 20px !important;
+    width: 300px;
+    color: #2e5fd2 !important;
+    box-shadow:  3px 3px 6px #d5d5d1, 
+    -3px -3px 6px #ffffff;
+}
+
+.youtube-cards .btn:hover {
+    background: linear-gradient(145deg, #e1e1dd, #ffffff);
+	box-shadow:  3px 3px 6px #d5d5d1, 
+             	-3px -3px 6px #ffffff;
+}
 
 @media (max-width: 768px) {
+    .youtube-cards {
+        margin-top: 30% !important;
+        display: block;
+    }
+    
     .youtube-cards-title {
         font-size: 40px !important;
     }

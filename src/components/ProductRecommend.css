@@ -10,9 +10,17 @@
     margin-bottom: 5%;
 }
 
+.product-recom-nav span {
+    padding: 0 10px !important;
+}
+
 @media (max-width: 992px) { 
 
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
+    .product-recom {
+        margin-top: 30% !important;
+        display: block;
+    }
 }

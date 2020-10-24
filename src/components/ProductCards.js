@@ -9,7 +9,7 @@ import pro6 from 'images/product6.png';
 
 const ProductCards = () => {
     return (
-        <div data-aos="fade-right" className="product-list container row">
+        <div data-aos="fade-up" className="product-list container row">
             <h3 className="product-title col-lg-12">매물 둘러보기</h3>
             <figure className="product-item top-row col-md-4 col-sm-6">
                 <img src={pro1}/>

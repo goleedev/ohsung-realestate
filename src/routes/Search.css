@@ -1,0 +1,18 @@
+.search-page {
+    margin: 0 auto !important;
+    margin: 10% auto !important;
+    margin-bottom: 0% !important;
+    text-align: center !important;
+    background-color: #fafafa !important;
+}
+
+.search-title {
+    font-size: 50px !important;
+    color: #3b4961;
+    margin: 0 auto !important;
+    margin-bottom: 5% !important;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+}

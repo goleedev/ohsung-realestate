@@ -76,3 +76,14 @@
     margin-right: 10px;
     font-size: 16px;
 }
+
+.link-youtube {
+    background: #2e5fd2 !important;
+    color: #fafafa !important;
+    border-radius: 20px !important;
+}
+
+.factory__back {
+    margin: 5% auto;
+    text-align: center;
+}

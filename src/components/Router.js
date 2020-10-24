@@ -2,15 +2,15 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from 'routes/Home';
 import About from 'routes/About';
-import Contact from 'routes/Contact';
-import Youtube from 'routes/Youtube';
-import Search from 'routes/Search';
+import Auth from 'routes/Auth';
+import Admin from 'routes/Admin';
 import Manage from 'routes/Manage';
 import Upload from 'routes/Upload';
-import Auth from 'routes/Auth';
+import YoutubeUpload from 'routes/YoutubeUpload';
+import Search from 'routes/Search';
+import Youtube from 'routes/Youtube';
+import Contact from 'routes/Contact';
 import NotFound from 'routes/NotFound';
-import Admin from 'routes/Admin';
-import Footer from './Footer';
 
 const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
     return (
@@ -20,7 +20,9 @@ const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/youtube" component={Youtube}/>
-                <Route exact path="/search" component={Search}/>
+                <Route exact path="/search">
+                    <Search userObj={userObj}/>    
+                </Route>
                 <Route exact path="/contact" component={Contact}/>
                 {isLoggedIn ? (
                     <>
@@ -32,6 +34,9 @@ const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
                         </Route>
                         <Route exact path="/login/upload">
                             <Upload userObj={userObj}/>
+                        </Route>  
+                        <Route exact path="/login/youtube">
+                            <YoutubeUpload />
                         </Route>     
                     </>        
                 ) : (  

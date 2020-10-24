@@ -11,6 +11,59 @@
     color: #3b4961;
     margin: 0 auto !important;
     margin-bottom: 5% !important;
+    cursor: pointer;
+}
+
+.youtube-item,
+.youtube-list {
+    margin: 0 auto !important;
+    margin-bottom: 5% !important;
+}
+
+.youtube-vid {
+    border: 5px solid #2e5fd2;
+    margin-bottom: 0 !important;
+    margin-right: 0;
+    margin-left: 0;
+    margin: 0 auto;
+}
+
+.youtube-item h4 {
+    font-family: GmarketSansMedium !important;
+    margin: 0 auto;
+    width: 300px;
+    height: 130px !important;
+    font-size: 20px;
+    color: #fafafa;
+    background-color: #2e5fd2;
+    padding: 3%;
+    display: flex;
+    align-items: center;
+}
+
+.youtube-sub {
+    text-decoration: none !important;
+    font-size: 20px;
+    color: #2e5fd2 !important;
+    box-shadow:  3px 3px 6px #d5d5d1, 
+    -3px -3px 6px #ffffff;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    height: 50px;
+    text-align: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.youtube-sub svg {
+    margin-left: 10px;
+}
+
+.youtube-sub:hover {
+    background: linear-gradient(145deg, #e1e1dd, #ffffff);
+	box-shadow:  3px 3px 6px #d5d5d1, 
+             	-3px -3px 6px #ffffff;
 }
 
 @media (max-width: 768px) {

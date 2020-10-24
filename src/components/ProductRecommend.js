@@ -41,7 +41,7 @@ const ProductRecommend = () => {
         <>
            <div className="product-recom container">
                 <h3 onClick={onReloadClick} className="product-recom-title col-lg-12">추천물건</h3>
-                <nav className="store-nav col-lg-12">
+                <nav className="product-recom-nav col-lg-12">
                     <span id="주택" onClick={onClick}>다가구/상가주택</span>
                     <span id="상가" onClick={onClick}>상가건물</span>
                     <span id="토지" onClick={onClick}>토지</span>

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { storageService, dbService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTimes, faUndo } from "@fortawesome/free-solid-svg-icons";
 import Navigation from 'components/Navigation';
+import { Link } from "react-router-dom/cjs/react-router-dom";
 import './Upload.css';
 
 const Upload = ({ userObj }) => {
@@ -16,7 +17,6 @@ const Upload = ({ userObj }) => {
     const [structure, setStructure] = useState("");
     const [attachment, setAttachment] = useState("");
     const [sold, setSold] = useState(false);  
-  
     const onSubmit = async (event) => {
       event.preventDefault();
       if (product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "" ) {
@@ -38,7 +38,6 @@ const Upload = ({ userObj }) => {
         type: type,
         size: size,
         structure: structure,
-        sold: sold,
         createdAt: Date.now(),
         creatorId: userObj.uid,
         attachmentUrl,
@@ -190,6 +189,8 @@ const Upload = ({ userObj }) => {
                   type="text"
                   name="structure"
                   placeholder="구조"
+                  autoComplete="off"
+                  required 
                   />
                   <div className="checkbox">
                     <label htmlFor="sold">
@@ -200,6 +201,8 @@ const Upload = ({ userObj }) => {
                       onChange={onChange}
                       type="checkbox"
                       name="sold"
+                      autoComplete="off"
+                      required    
                       />
                       계약완료
                     </label>
@@ -208,7 +211,15 @@ const Upload = ({ userObj }) => {
                 <input type="submit" value="&rarr;" className="factoryInput__arrow" value="업로드"/>
               </div>
             </form>
-          </div>
+        </div>
+        <div className="factory__back">
+          <Link to="/login/youtube" className="link-youtube btn btn-md">
+            <span>오성TV 매물 업로드?</span>
+          </Link>    
+          <Link to="/" className="btn btn-md">
+            <FontAwesomeIcon icon={faUndo} color={"#0275d8"} size="1x" /> 돌아가기
+          </Link>
+        </div>
         </>
     )
 }
