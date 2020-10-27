@@ -1,10 +1,14 @@
 .manage {
     text-align: center;
     margin: 10% auto !important;
+    margin-bottom: 0% !important;
+    text-align: center !important;
+    background-color: #fafafa !important;
+    cursor: pointer;
 }
 
 .title {
-    font-size: 4rem;
+    font-size: 50px;
     color: #3b4961;
     margin-bottom: 3%;
 }

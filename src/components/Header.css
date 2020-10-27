@@ -40,7 +40,7 @@ h2 {
     position: fixed;
     float: right;
     right: 10px;
-    transition: all .2s ease-in-out;
+    z-index: 9999999;
 }
 
 .home-circle img:hover {
@@ -49,8 +49,17 @@ h2 {
 
 .home-circle img {
     width: 100px;
+    transition: all .3s ease-in-out;
     padding-bottom: 10%;
     filter: drop-shadow(3px 3px 6px #8e8e8b);
+}
+
+input.form-control {
+    border-radius: 20px 0 0 20px !important;
+}
+
+.home-search {
+    border-radius: 20px !important;
 }
 
 .search-btn {

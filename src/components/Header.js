@@ -25,7 +25,6 @@ const Header = () => {
                 return true;
             }
     }
-        
     return (
         <>
         <div className="header container row">

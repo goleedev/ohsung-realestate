@@ -87,3 +87,7 @@
     margin: 5% auto;
     text-align: center;
 }
+
+.factoryInput__radio {
+    color: #3b4961 !important;
+}

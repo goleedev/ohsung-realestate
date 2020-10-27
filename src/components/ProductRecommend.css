@@ -3,6 +3,7 @@
     margin-bottom: 0% !important;
     text-align: center !important;
     background-color: #fafafa !important;
+    cursor: pointer;
 }
 
 .product-recom-title {
@@ -14,8 +15,13 @@
     padding: 0 10px !important;
 }
 
-@media (max-width: 992px) { 
+.product-recom-item {
+    width: 100%;
+    margin-top: 5%;
+}
 
+.product-recom-item h4 {
+    color: #2e5fd2;
 }
 
 @media (max-width: 768px) {

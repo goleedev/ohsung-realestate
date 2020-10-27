@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from 'routes/Home';
 import About from 'routes/About';
@@ -10,12 +10,14 @@ import YoutubeUpload from 'routes/YoutubeUpload';
 import Search from 'routes/Search';
 import Youtube from 'routes/Youtube';
 import Contact from 'routes/Contact';
+import Loading from 'components/Loading';
 import NotFound from 'routes/NotFound';
 
 const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
     return (
         <>
         <Router>
+        <Suspense fallback={<Loading />}>
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/about" component={About}/>
@@ -44,6 +46,7 @@ const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
                 )}
                 <Route component={NotFound} />
             </Switch>
+        </Suspense>
         </Router>
         </>
     )

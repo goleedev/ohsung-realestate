@@ -1,0 +1,42 @@
+.search-card-item {
+    margin-top: 5%;
+}
+
+.search-card-item h4 {
+    color: #2e5fd2;
+}
+
+.search-card-item img {
+    width: 100%;
+}
+
+.formBtn {
+    cursor: pointer;
+    width: 55%;
+    height: 35px;
+    padding: 7px 20px;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background-color: #04aaff;
+    cursor: pointer;
+}
+  
+.cancelBtn {
+    cursor: pointer;
+    background-color: tomato;
+}
+
+.formInput {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .search-card-item  {
+        margin-top: 30% !important;
+        display: block;
+    }
+}

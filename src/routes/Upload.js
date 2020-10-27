@@ -53,7 +53,6 @@ const Upload = ({ userObj }) => {
       setSold(false);
       setAttachment("");
     };
-  
     const onChange = (event) => {
       const {
         target: { name, value },
@@ -150,7 +149,7 @@ const Upload = ({ userObj }) => {
                   className="factoryInput__input col-sm-6"
                   value={price}
                   onChange={onChange}
-                  type="number"
+                  type="text"
                   name="price"
                   placeholder="금액"
                   />
@@ -164,19 +163,20 @@ const Upload = ({ userObj }) => {
                   />
                 </div>
                 <div className="factoryInput__input-middle row">
-                  <input
-                  className="factoryInput__input col-sm-6"
-                  value={type}
-                  onChange={onChange}
-                  type="text"
-                  name="type"
-                  placeholder="종류"
-                  />
+                  <label className="label" htmlFor="type">매물 종류</label>
+                  <select onChange={onChange} name="type" id="type" className="factoryInput__input col-sm-6">
+                    <option value="주택">주택</option>
+                    <option value="상가건물">상가건물</option>
+                    <option value="토지">토지</option>
+                    <option value="공장/창고">공장/창고</option>
+                    <option value="전원주택">전원주택</option>     
+                    <option value="아파트">아파트</option>     
+                  </select>
                   <input
                   className="factoryInput__input col-sm-6"
                   value={size}
                   onChange={onChange}
-                  type="number"
+                  type="text"
                   name="size"
                   placeholder="면적"
                   />
@@ -196,7 +196,7 @@ const Upload = ({ userObj }) => {
                     <label htmlFor="sold">
                       <input
                       className="factoryInput__radio col-sm-3"
-                      value={sold}
+                      checked={sold}
                       id="sold"
                       onChange={onChange}
                       type="checkbox"
