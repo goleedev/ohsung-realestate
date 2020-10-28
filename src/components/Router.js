@@ -13,7 +13,7 @@ import Contact from 'routes/Contact';
 import Loading from 'components/Loading';
 import NotFound from 'routes/NotFound';
 
-const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
     return (
         <>
         <Router>
@@ -22,7 +22,7 @@ const AppRouter = ({isLoggedIn, userObj, refreshUser}) => {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/youtube" component={Youtube}/>
-                <Route exact path="/search">
+                <Route exact path="/search/:id">
                     <Search userObj={userObj}/>    
                 </Route>
                 <Route exact path="/contact" component={Contact}/>

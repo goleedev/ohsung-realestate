@@ -1,80 +1,71 @@
 import React from 'react';
+import emailjs from 'emailjs-com';
 import Navigation from 'components/Navigation';
-import circle1 from '../images/home-circle1.png';
-import circle2 from '../images/home-circle2.png';
-import circle3 from '../images/home-circle3.png';
-import './Contact.css';
+import contact from '../images/contact.gif';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
+import './Contact.css';
 
 const Contact = () => {
-    const onSubmit = () => {
-        document.getElementById('contact-form').reset();
-    }
-    const onFavoriteClick = () => {
-        var title = document.title; 
-        var url = window.location.href; 
-        if (window.sidebar && window.sidebar.addPanel) { 
-            window.sidebar.addPanel(title, url, "");
-        } else if (window.opera && window.print) { 
-            var elem = document.createElement('a');
-            elem.setAttribute('href', url);
-            elem.setAttribute('title', title);
-            elem.setAttribute('rel', 'sidebar');
-            elem.click();
-        } else if (document.all) {
-            window.external.AddFavorite(url, title);
-        } else {
-            alert("해당 브라우저는 Cmd(Ctrl) + D로 즐겨찾기 추가 가능합니다.");
-            return true;
-        }
-    }
+    const onSubmit = (e) => {
+        e.preventDefault();
+        emailjs.sendForm('service_r7g54mq', 'template_uoh0zdn', e.target, 'user_gU0Rwh0uJ4RbQHs2agu2n')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+        });
+        setTimeout(function() {
+            document.getElementById("alert").innerHTML = '';
+        }, 3000);
+        document.getElementById("alert").innerHTML = '정상적으로 접수되었습니다👋';
+        e.target.reset();
+    };
+    const onReloadClick = async () => {
+        await window.location.reload();
+    };
     return (
         <>
         <Navigation />
-        <div className="get-in-touch container">
-            <h3 className="title">문의하기</h3>
-            <div className="contact-circle">
-                <a href="">
-                    <img src={circle1} />                
-                </a>
-                <a href="tel:07040428642">
-                    <img src={circle2} />                
-                </a>
-                <span onClick={onFavoriteClick}>
-                    <img src={circle3} />                
-                </span>    
-            </div>    
-            <form className="contact-form row">
-                <div className="form-field col-lg-6">
-                    <input name="name" id="name" className="input-text js-input" type="text" required />
-                    <label className="label" htmlFor="name">성함</label>
-                </div>
-                <div className="form-field col-lg-6">
-                    <select name="options" id="options" className="input-text js-input">
-                        <option value=""></option>
-                        <option value="shipping">매물 구하기</option>
-                        <option value="refund">매물 팔기</option>
-                        <option value="class">매물 투어하기</option>
-                        <option value="etc">기타 문의</option>     
-                    </select>
-                    <label className="label" htmlFor="option">문의 사항</label>
-                </div>    
-                <div className="form-field col-lg-7">
-                    <input name="email" id="email" className="input-text js-input" type="email" required />
-                    <label className="label" htmlFor="email">이메일</label>
-                </div>   
-                <div className="form-field col-lg-5">
-                    <input name="file" id="file" type="file" />
-                </div>
-                <div className="form-field col-lg-12">
-                    <input name="message" id="message" className="input-text js-input" type="text" required />
-                    <label className="label" htmlFor="message">문의 내용</label>
-                </div>
-                <div className="form-field submit-container col-lg-12">
-                    <input onSubmit={onSubmit} className="submit-btn" type="submit" value="보내기" />
-                </div>
-            </form>
+        <div className="get-in-touch container row">
+            <h3 onClick={onReloadClick} className="title col-lg-12">문의하기</h3>
+            <span id="alert">정상적으로 접수되었습니다👋</span>
+            <div className="get-in-touch-content row">
+                <div className="col-lg-6">
+                    <img src={contact}/>
+                </div> 
+                <form encType="multipart/form-data" method="post" onSubmit={onSubmit} className="contact-form row col-lg-6">
+                    <div className="form-field col-lg-6">
+                        <input name="name" id="name" className="input-text js-input" type="text" required />
+                        <label className="label" htmlFor="name">성함</label>
+                    </div>
+                    <div className="form-field col-lg-6">
+                        <select name="options" id="options" className="input-text js-input">
+                            <option value=""></option>
+                            <option value="매물 구하기">매물 구하기</option>
+                            <option value="매물 팔기">매물 팔기</option>
+                            <option value="매물 투어하기">매물 투어하기</option>
+                            <option value="기타 문의">기타 문의</option>     
+                        </select>
+                        <label className="label file-label" htmlFor="options">문의 종류</label>
+                    </div>    
+                    <div className="form-field col-lg-12">
+                        <input name="email" id="email" className="input-text js-input" type="email" required />
+                        <label className="label" htmlFor="email">이메일</label>
+                    </div>  
+                    <div className="form-field col-lg-12">
+                        <input name="phone" id="phone" className="input-text js-input" type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required />
+                        <label className="label" htmlFor="phone">전화번호</label>
+                    </div>
+                    <div className="form-field col-lg-12">
+                        <input name="message" id="message" className="input-text js-input" type="text" required />
+                        <label className="label" htmlFor="message">문의 내용</label>
+                    </div>
+                    <div className="form-field submit-container col-lg-12">
+                        <input onSubmit={onSubmit} className="submit-btn" type="submit" value="보내기" />
+                    </div>
+                </form>
+            </div>
         </div>
         <FooterLink/>
         <Footer/>    

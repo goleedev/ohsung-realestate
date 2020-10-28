@@ -46,19 +46,19 @@
 
 .contact-form .input-text:focus + .label,
 .contact-form .input-text.not-empty + .label {
-    -webkit-transform: translateY(-24px);
-            transform: translateY(-24px);
+    -webkit-transform: translateY(-16px);
+            transform: translateY(-16px);
 }
 
 .contact-form .input-text:valid + .label {
-    -webkit-transform: translateY(-24px);
-            transform: translateY(-24px);
+    -webkit-transform: translateY(-16px);
+            transform: translateY(-16px);
 }
 
 .contact-form .label {
     position: absolute;
     left: 20px;
-    bottom: 11px;
+    bottom: 24px;
     font-size: 24px;
     line-height: 30px;
     font-weight: 600;
@@ -74,7 +74,7 @@
     font-size: 12px !important;
 }
 
-.submit-container {
+.contact-form .submit-container {
     text-align: center !important;
 }
 
@@ -82,29 +82,59 @@
     display: inline-block;
     background-color: #3b4961;
     color: #fafafa;
-    text-align: center;
     letter-spacing: 2px;
-    font-size: 16px;
+    font-size: 20px;
     padding: 8px 16px;
     border: none;
     width:200px;
+    border-radius: 20px;
     cursor: pointer;
 }
   
 .contact-form .submit-btn:hover {
-    background-color: #b7c9bd;
+    background-color: #3b4961;
 }
 
-.alert {
+#alert {
+    position: absolute;
     text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 24px;
     padding:10px;
-    background:#79c879;
-    color:#fff;
-    margin-bottom: 10%;
-    display: none;
+    color:#79c879;
+    top: 33%;
+    z-index: 99999;
 }
 
-#file {
-    margin: 0 auto !important;
+.get-in-touch-content {
+    margin-top: 10%;
     width: 100%;
+}
+
+.contact-form {
+    padding: 0 !important;
+    margin: 0 auto !important;
+}
+
+.file-label {
+    bottom: 16px !important;
+}
+
+@media (max-width: 768px) { 
+    .get-in-touch-content img {
+        width: 100%;
+        margin: 0 auto !important;
+        margin-bottom: 10% !important;
+    }
+
+    .get-in-touch-content {
+        margin: 0 auto !important;
+        margin-bottom: 10% !important;
+    }
+
+    .contact-circle {
+        width: 100px !important;
+        padding: 10%;
+    }
 }

@@ -1,5 +1,15 @@
 .upload {
     margin: 10% auto !important;
+    color: #2e5fd2;
+}
+
+select {
+    display: block;
+} 
+
+.upload-form {
+    width: 100%;
+    margin: 0 !important;
 }
 
 .upload .title {
@@ -9,70 +19,77 @@
     margin-bottom: 3%;
 }
 
-.factoryForm {
-    display: flex;
-    align-items: center;
-}
-  
-.factoryInput__container {        
-    display: flex;
-    flex-direction: column;
+.upload-form .upload-attach {
     width: 100%;
-}
-  
-.factoryInput__input {
-    flex-grow: 1;
-    height: 40px;
-    padding: 20px;
-    color: #3b4961;
-    border: 2px solid #3b4961;
-    margin-bottom: 5px;
-    font-size: 17px;
+    height: 350px !important;
+    text-align: center;
 }
 
-.factoryInput__input-middle {
-    margin-bottom: 5px;
-    padding: 0 15px;
+.upload-form img,
+.upload-clear {
+    text-align: center;
 }
-  
-.factoryInput__arrow {
-    background-color: #2e5fd2;
+
+.upload-form input {
+    border-bottom: 1px solid #2e5fd2;
+    margin-bottom: 10px;
+}
+
+.upload-form select {
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    color: #3b4961 !important;
+}
+
+.upload-arrow {
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #2e5fd2;
+    color: #2e5fd2;
     padding: 10px 0px;
     text-align: center;
-    color: #fafafa;
     box-sizing: border-box;
     border-radius: 20px;
 }
+
+.upload-arrow:hover {
+    background-color: #3b4961;
+    border: 2px solid #3b4961;
+    color: #fafafa;
+}
   
-.factoryInput__label {
+.upload-label {
     color: #2e5fd2;
     cursor: pointer;
 }
   
-.factoryInput__label span {
+.upload-label span {
     margin-right: 10px;
     font-size: 17px !important;
 }
-  
-.factoryForm__attachment {
+ 
+.upload-attachment {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-  
-.factoryForm__attachment img {
+
+
+.upload-attachment img {
+    width: 300px;
     height: 200px;
-    width: 200px;
 }
   
-.factoryForm__clear {
+.upload-clear {
     color: #2e5fd2;
     cursor: pointer;
+    width: 300px;
     margin-top: 5px;
-    text-align: left;
 }
   
-.factoryForm__clear span {
+.upload-clear span {
     margin-right: 10px;
     font-size: 16px;
 }
@@ -83,11 +100,7 @@
     border-radius: 20px !important;
 }
 
-.factory__back {
+.upload-back {
     margin: 5% auto;
     text-align: center;
-}
-
-.factoryInput__radio {
-    color: #3b4961 !important;
 }

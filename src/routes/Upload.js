@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { storageService, dbService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ const Upload = ({ userObj }) => {
     const [size, setSize] = useState("");
     const [structure, setStructure] = useState("");
     const [attachment, setAttachment] = useState("");
-    const [sold, setSold] = useState(false);  
+    const [sold, setSold] = useState("");  
     const onSubmit = async (event) => {
       event.preventDefault();
       if (product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "" ) {
@@ -92,16 +92,29 @@ const Upload = ({ userObj }) => {
       }
     };
     const onClearAttachment = () => setAttachment("");
+    const onReloadClick = async () => {
+      await window.location.reload();
+    };
+    const [didMount, setDidMount] = useState(false); 
+
+    useEffect(() => {
+       setDidMount(true);
+       return () => setDidMount(false);
+    }, [])
+    
+    if(!didMount) {
+      return null;
+    }
     return (
         <>
           <Navigation />
           <div className="upload container">
-            <h3 className="title col-lg-12">매물 업로드</h3>
-            <form onSubmit={onSubmit} className="factoryForm">
-              <div className="col-md-6">
-                <label htmlFor="attach-file" className="factoryInput__label">
-                    <span>사진 추가</span>
-                    <FontAwesomeIcon icon={faPlus} />
+            <h3 onClick={onReloadClick} className="title col-lg-12">매물 업로드</h3>
+            <form onSubmit={onSubmit} className="upload-form row">
+              <div className="upload-attach col-md-6">
+                <label htmlFor="attach-file" className="upload-label">
+                  <span>사진 추가</span>
+                  <FontAwesomeIcon icon={faPlus} />
                 </label>
                 <input
                   id="attach-file"
@@ -113,106 +126,95 @@ const Upload = ({ userObj }) => {
                   }}
                 />
                 {attachment && (
-                  <div className="factoryForm__attachment">
+                  <div className="upload-attachment col-md-6">
                     <img
                         src={attachment}
                         style={{
                         backgroundImage: attachment,
                         }}
                     />
-                    <div className="factoryForm__clear" onClick={onClearAttachment}>
+                    <div className="upload-clear" onClick={onClearAttachment}>
                         <span>Remove</span>
                         <FontAwesomeIcon icon={faTimes} />
                     </div>
                   </div>
                 )}
-            </div>
-            <div className="factoryInput__container col-md-6">
+              </div>
+              <div className="upload-container row col-md-6">
                 <input
-                className="factoryInput__input col-sm-12"
+                className="upload-input col-md-12"
                 value={product}
                 onChange={onChange}
                 type="text"
                 name="title"
                 placeholder="매물 이름"
+                required
                 />
                 <input
-                className="factoryInput__input col-sm-12"
+                className="upload-input col-md-12"
                 value={content}
                 onChange={onChange}
                 type="text"
                 name="content"
+                required
                 placeholder="매물 설명"
                 />
-                <div className="factoryInput__input-middle row">
-                  <input
-                  className="factoryInput__input col-sm-6"
-                  value={price}
-                  onChange={onChange}
-                  type="text"
-                  name="price"
-                  placeholder="금액"
-                  />
-                  <input
-                  className="factoryInput__input col-sm-6"
-                  value={region}
-                  onChange={onChange}
-                  type="text"
-                  name="region"
-                  placeholder="지역"
-                  />
-                </div>
-                <div className="factoryInput__input-middle row">
-                  <label className="label" htmlFor="type">매물 종류</label>
-                  <select onChange={onChange} name="type" id="type" className="factoryInput__input col-sm-6">
-                    <option value="주택">주택</option>
-                    <option value="상가건물">상가건물</option>
-                    <option value="토지">토지</option>
-                    <option value="공장/창고">공장/창고</option>
-                    <option value="전원주택">전원주택</option>     
-                    <option value="아파트">아파트</option>     
-                  </select>
-                  <input
-                  className="factoryInput__input col-sm-6"
-                  value={size}
-                  onChange={onChange}
-                  type="text"
-                  name="size"
-                  placeholder="면적"
-                  />
-                </div>
-                <div className="factoryInput__input-middle row">
-                  <input
-                  className="factoryInput__input col-sm-9"
-                  value={structure}
-                  onChange={onChange}
-                  type="text"
-                  name="structure"
-                  placeholder="구조"
-                  autoComplete="off"
-                  required 
-                  />
-                  <div className="checkbox">
-                    <label htmlFor="sold">
-                      <input
-                      className="factoryInput__radio col-sm-3"
-                      checked={sold}
-                      id="sold"
-                      onChange={onChange}
-                      type="checkbox"
-                      name="sold"
-                      autoComplete="off"
-                      required    
-                      />
-                      계약완료
-                    </label>
-                  </div>
-                </div>                
-                <input type="submit" value="&rarr;" className="factoryInput__arrow" value="업로드"/>
+                <input
+                className="upload-input col-md-12"
+                value={price}
+                onChange={onChange}
+                type="text"
+                name="price"
+                required
+                placeholder="금액"
+                />
+                <input
+                className="upload-input col-md-12"
+                value={region}
+                onChange={onChange}
+                type="text"
+                name="region"
+                required
+                placeholder="지역"
+                />  
+                <select onChange={onChange} name="type" id="type" className="col-md-12">
+                  <option value="">매물 종류</option>
+                  <option value="주택">주택</option>
+                  <option value="상가건물">상가건물</option>
+                  <option value="토지">토지</option>
+                  <option value="공장/창고">공장/창고</option>
+                  <option value="전원주택">전원주택</option>     
+                  <option value="아파트">아파트</option>     
+                </select>
+                <input
+                className="upload-input col-md-12"
+                value={size}
+                onChange={onChange}
+                type="text"
+                name="size"
+                required
+                placeholder="면적"
+                />
+                <input
+                className="upload-input col-md-12"
+                value={structure}
+                onChange={onChange}
+                type="text"
+                name="structure"
+                placeholder="구조"
+                autoComplete="off"
+                required 
+                />
+                <select value={sold} onChange={onChange} name="sold" id="sold" className="col-md-12">
+                  <option value="">계약 여부</option>
+                  <option value="false">미완료</option>
+                  <option value="true">완료</option>
+                </select>        
               </div>
+              <input type="submit" value="&rarr;" className="upload-arrow col-lg-12" value="업로드"/>
             </form>
         </div>
-        <div className="factory__back">
+        <div className="upload-back">
           <Link to="/login/youtube" className="link-youtube btn btn-md">
             <span>오성TV 매물 업로드?</span>
           </Link>    

@@ -8,11 +8,12 @@ import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
 import 'routes/Youtube.css';
+import Loading from 'components/Loading';
 
 const Youtube = () => {
     const [youtubes, setYotubes] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
     let items = dbService.collection('youtubes');
-
     useEffect(() => {
         items
         .orderBy("createdAt", "desc")
@@ -24,6 +25,7 @@ const Youtube = () => {
             let newYoutubeVids = youtubeArray.slice(undefined, 12);
             setYotubes(newYoutubeVids);
         });
+        setIsLoaded(true);
     }, []);
     const onReloadClick = async() => {
         await window.location.reload();
@@ -38,12 +40,14 @@ const Youtube = () => {
                         더 많은 물건은 오성TV로 <FontAwesomeIcon icon={faExternalLinkAlt}/>
                     </a>
                 </div>
-                {youtubes.map((youtube) => 
-                    <div data-aos="fade-up" key={youtube.id} className="youtube-item col-lg-4 col-md-6">
-                        <ReactPlayer url={youtube.url} className="youtube-vid" width="300px" height="200px" config={{ youtube: { playerVars: { showinfo: 1, controls: 1 } },}}/>
-                        <h4>{youtube.title}</h4>
-                    </div>
-                )}    
+                {isLoaded ? <>
+                    {youtubes.map((youtube) =>
+                        <div data-aos="fade-up" key={youtube.id} className="youtube-item col-lg-4 col-md-6">
+                            <ReactPlayer url={youtube.url} className="youtube-vid" width="300px" height="200px" config={{ youtube: { playerVars: { showinfo: 1, controls: 1 } }, }} />
+                            <h4>{youtube.title}</h4>
+                        </div>
+                    )}
+                </> : <Loading />}
             </div>
             <FooterLink/> 
             <Footer />  

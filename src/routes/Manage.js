@@ -42,7 +42,7 @@ const Manage = ({userObj}) => {
         <>
             <Navigation />  
             <div className="container manage row">
-                <h3 className="title col-lg-12">매물 관리</h3>
+                <h3 onClick={onReloadClick} className="title col-lg-12">매물 관리</h3>
                     {products.map((product) => (
                         <SearchCard
                         key={product.id}

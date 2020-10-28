@@ -11,23 +11,23 @@ import './ProductCards.css';
 const ProductCards = () => {
     const [products, setProducts] = useState([]);
     let items = dbService.collection("products");
-    onclick = async(event) => {
+    const onClick = async (event) => {
         const {
             target: { id }
         } = event;
         if (id) {
             await items
-            .where("type", "==", id)
-            .orderBy("createdAt", "desc")
-            .onSnapshot((snapshot) => {
-                let productArray = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-                }));
-                setProducts(productArray);
-            });
+                .where("type", "==", id)
+                .orderBy("createdAt", "desc")
+                .onSnapshot((snapshot) => {
+                    let productArray = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data(),
+                    }));
+                    setProducts(productArray);
+                });
         }
-    }
+    };
     return (
         <div data-aos="fade-up" className="product-list container row">
             <h3 className="product-title col-lg-12">매물 둘러보기</h3>
