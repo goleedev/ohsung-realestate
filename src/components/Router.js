@@ -8,6 +8,7 @@ import Manage from 'routes/Manage';
 import Upload from 'routes/Upload';
 import YoutubeUpload from 'routes/YoutubeUpload';
 import Search from 'routes/Search';
+import SearchDetail from 'components/SearchDetail';
 import Youtube from 'routes/Youtube';
 import Contact from 'routes/Contact';
 import Loading from 'components/Loading';
@@ -22,8 +23,9 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/youtube" component={Youtube}/>
+                <Route exact path="/search" component={Search}/>
                 <Route exact path="/search/:id">
-                    <Search userObj={userObj}/>    
+                    <SearchDetail userObj={userObj}/>    
                 </Route>
                 <Route exact path="/contact" component={Contact}/>
                 {isLoggedIn ? (

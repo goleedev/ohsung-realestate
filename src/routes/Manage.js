@@ -18,23 +18,6 @@ const Manage = ({userObj}) => {
             setProducts(productArray);
         });
     }, []);
-    const onClick = async (event) => {
-        const {
-            target: { id }
-        } = event;
-        if (id) {
-            await items
-                .where("type", "==", id)
-                .orderBy("createdAt", "desc")
-                .onSnapshot((snapshot) => {
-                    let productArray = snapshot.docs.map((doc) => ({
-                        id: doc.id,
-                        ...doc.data(),
-                    }));
-                    setProducts(productArray);
-                });
-        }
-    };
     const onReloadClick = async () => {
         await window.location.reload();
     };

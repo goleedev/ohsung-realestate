@@ -1,30 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Typewriter from 'typewriter-effect';
 import building from 'images/home-building.png';
-import circle1 from '../images/home-circle1.png';
 import circle2 from '../images/home-circle2.png';
 import circle3 from '../images/home-circle3.png';
 import './Header.css';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Header = () => {
+    const history = useHistory();
+    const [searchInput, setSearchInput] = useState("");
+    const onChange = (e) => {
+        const {
+            target: { value },
+        } = e;
+        setSearchInput(value);
+    };
     const onClick = () => {
-            var title = document.title; 
-            var url = window.location.href; 
-            if (window.sidebar && window.sidebar.addPanel) { 
-                window.sidebar.addPanel(title, url, "");
-            } else if (window.opera && window.print) { 
-                var elem = document.createElement('a');
-                elem.setAttribute('href', url);
-                elem.setAttribute('title', title);
-                elem.setAttribute('rel', 'sidebar');
-                elem.click();
-            } else if (document.all) {
-                window.external.AddFavorite(url, title);
-            } else {
-                alert("해당 브라우저는 Cmd(Ctrl) + D로 즐겨찾기 추가 가능합니다.");
-                return true;
-            }
-    }
+        let title = document.title;
+        let url = window.location.href;
+        if (window.sidebar && window.sidebar.addPanel) {
+            window.sidebar.addPanel(title, url, "");
+        } else if (window.opera && window.print) {
+            var elem = document.createElement('a');
+            elem.setAttribute('href', url);
+            elem.setAttribute('title', title);
+            elem.setAttribute('rel', 'sidebar');
+            elem.click();
+        } else if (document.all) {
+            window.external.AddFavorite(url, title);
+        } else {
+            alert("해당 브라우저는 Cmd(Ctrl) + D로 즐겨찾기 추가 가능합니다.");
+            return true;
+        }
+    };
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const {
+            target: { value }
+        } = e;
+        history.push({
+            pathname: '/search',
+            search: `/query?${value}`,
+            state: {value}
+        });
+        e.target.reset();
+        setSearchInput("");
+    };
     return (
         <>
         <div className="header container row">
@@ -40,29 +61,26 @@ const Header = () => {
                         />         
                     </span>
                 </h2>
-                <div className="input-group input-group-lg home-search">
+                <form onSubmit={onSubmit} className="input-group input-group-lg home-search">
                     <input
+                        onChange={onChange}    
                         type="text"
                         className="form-control"
                         placeholder="지역명/지하철역을 입력해주세요."
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2" 
+                        name="search"
+                        value={searchInput}    
                     />
-                    <div className="input-group-append">
-                        <button
-                            className="btn search-btn"
-                            type="button"> 검색
-                        </button>
-                    </div>
-                </div>
+                    <input
+                    type="submit"
+                    value="검색"
+                    className="btn search-btn" 
+                    />
+                </form>
             </div> 
             <div className="col-lg-6">
                 <img data-aos="fade-up" data-aos-duration="1000" src={building} className="home-building"/>
             </div>    
             <div className="home-circle flex-column d-flex">
-                <a href="">
-                    <img src={circle1} />                
-                </a>
                 <a href="tel:07040428642">
                     <img src={circle2} />                
                 </a>

@@ -14,13 +14,13 @@ const YoutubeCards = () => {
     useEffect(() => {
         items
         .orderBy("createdAt", "desc")
+        .limit(3)    
         .onSnapshot((snapshot) => {
             let youtubeArray = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
             }));
-            let newYoutubes = youtubeArray.slice(undefined, 3);
-            setYotubes(newYoutubes);
+            setYotubes(youtubeArray);
         });
         setIsLoaded(true);
     }, []);

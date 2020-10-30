@@ -29,7 +29,7 @@ const Contact = () => {
         <Navigation />
         <div className="get-in-touch container row">
             <h3 onClick={onReloadClick} className="title col-lg-12">문의하기</h3>
-            <span id="alert">정상적으로 접수되었습니다👋</span>
+            <p id="alert" className="col-lg-12"> </p>
             <div className="get-in-touch-content row">
                 <div className="col-lg-6">
                     <img src={contact}/>

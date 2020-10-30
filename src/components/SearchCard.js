@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPencilAlt, faWonSign, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import soldPic from '../images/sold.png';
 import './SearchCard.css';
 
 const SearchCard = ({ productObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
     const [newProduct, setNewProduct] = useState(productObj.title);
-    const [newContent, setNewContent] = useState(productObj.title);
-    const [newPrice, setNewPrice] = useState(productObj.title);
-    const [newRegion, setNewRegion] = useState(productObj.title);
-    const [newType, setNewType] = useState(productObj.title);
-    const [newSize, setNewSize] = useState(productObj.title);
-    const [newStructure, setNewStructure] = useState(productObj.title);
+    const [newContent, setNewContent] = useState(productObj.content);
+    const [newPrice, setNewPrice] = useState(productObj.price);
+    const [newRegion, setNewRegion] = useState(productObj.region);
+    const [newType, setNewType] = useState(productObj.type);
+    const [newSize, setNewSize] = useState(productObj.size);
+    const [newStructure, setNewStructure] = useState(productObj.structure);
+    const [newSold, setNewSold] = useState(productObj.sold);
     const onDeleteClick = async () => {
         const ok = window.confirm("삭제 하시겠습니까?");
         if (ok) {
@@ -28,8 +30,9 @@ const SearchCard = ({ productObj, isOwner }) => {
         setNewType(newType);
         setNewSize(newSize);
         setNewStructure(newStructure);
+        setNewSold(newSold)
         setEditing((prev) => !prev);
-    }
+    };
     const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.doc(`products/${productObj.id}`).update({
@@ -40,6 +43,7 @@ const SearchCard = ({ productObj, isOwner }) => {
             type: newType,
             size: newSize,
             structure: newStructure,
+            sold: newSold,
         });
         setEditing(false);
     };
@@ -61,14 +65,29 @@ const SearchCard = ({ productObj, isOwner }) => {
             setNewSize(value);
         } else if (name == "structure") {
             setNewStructure(value);
+        } else if (name == "sold") {
+            setNewSold(value);
         }
     };
-        
+    const limitTitle = (title, limit = 20) => {
+        const newTitle = [];
+        if (title.length > limit) {
+            title.split(' ').reduce((acc, cur) => {
+                if (acc + cur.length <= limit) {
+                    newTitle.push(cur);
+                }
+                return acc + cur.length;
+            }, 0);
+    
+            return `${newTitle.join(' ')} ...`;
+        }
+        return title;
+    };
     return (
     <div className="search-card-item col-lg-4 col-md-6">
         {editing ? (
         <>
-            <form onSubmit={onSubmit} className="col-lg-12">
+            <form onSubmit={onSubmit} className="col-lg-12 product-recom-container manage-form">
                 <input
                 type="text"
                 placeholder="제목을 수정 하세요."
@@ -94,14 +113,15 @@ const SearchCard = ({ productObj, isOwner }) => {
                 onChange={onChange}
                 className="formInput"
                 />
-                <input
-                type="text"
-                name="type"            
-                placeholder="종류을 수정 하세요."
-                value={newType}
-                onChange={onChange}
-                className="formInput"
-                />
+                <select value={newType} onChange={onChange} name="type" id="type" className="formInput">
+                    <option value="">매물 종류 수정</option>
+                    <option value="주택">주택</option>
+                    <option value="상가건물">상가건물</option>
+                    <option value="토지">토지</option>
+                    <option value="공장/창고">공장/창고</option>
+                    <option value="전원주택">전원주택</option>     
+                    <option value="아파트">아파트</option>     
+                </select>
                 <input
                 type="text"
                 name="region"            
@@ -126,30 +146,49 @@ const SearchCard = ({ productObj, isOwner }) => {
                 onChange={onChange}
                 className="formInput"
                 />  
-                <div className="">
+                <select value={newSold} onChange={onChange} name="sold" id="sold" className="formInput">
+                  <option value="">계약 여부 수정</option>
+                  <option value="미완료">미완료</option>
+                  <option value="완료">완료</option>
+                </select>          
+                <div>
                     <input type="submit" value="수정 완료" className="formBtn" />
-                    <span onClick={toggleEditing} className="formBtn cancelBtn">
+                    <p onClick={toggleEditing} className="formBtn cancelBtn">
                         취소
-                    </span>         
+                    </p>         
                 </div>  
             </form>
         </>            
         ) : (
         <>
-        <div className="">          
-            <h4>{productObj.title}</h4>
-            {productObj.attachmentUrl && <img src={productObj.attachmentUrl} />}
-            {isOwner && (
-                <div className="product__actions">
-                    <span onClick={onDeleteClick}>
-                        <FontAwesomeIcon icon={faTrash} />
-                    </span>
-                    <span onClick={toggleEditing}>
-                        <FontAwesomeIcon icon={faPencilAlt} />
-                    </span>
+            <div className="product-recom-container container row">
+                <div data-aos="fade-up" key={productObj.id} className="product-recom-item">
+                    <h4>{limitTitle(productObj.title)}</h4>
+                    <span className="product-action">추천</span>
+                    {productObj.sold === "완료" && <img src={soldPic} className="product-sold" />}
+                    <img src={productObj.attachmentUrl} />
+                    <div className="product-recom-list">
+                        <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {productObj.price}</p>
+                        <p className="product-location"><FontAwesomeIcon icon={faMapMarkerAlt} />{productObj.region}</p>
+                        <p className="product-detail">
+                            <span className="col-lg-4">{productObj.type}</span>
+                            <span className="col-lg-4">{productObj.size}</span>
+                            <span className="col-lg-4">{productObj.structure}</span>
+                        </p>
+                    </div>
+                    {isOwner && (
+                        <div className="product__actions">
+                            <span onClick={onDeleteClick}>
+                                <FontAwesomeIcon icon={faTrash} />
+                            </span>
+                            <span onClick={toggleEditing}>
+                                <FontAwesomeIcon icon={faPencilAlt} />
+                            </span>
+                        </div>
+                    )}            
                 </div>
-            )}
-        </div>        
+            </div>    
+            
         </>
         )}
     </div>

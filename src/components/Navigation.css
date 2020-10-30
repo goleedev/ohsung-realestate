@@ -11,3 +11,28 @@ h1 {
     color: #3b4961;
     font-weight: bold;
 }
+
+@media (max-width: 992px) { 
+    .nav-items {
+        background-color: #3b4961;
+        border: #2e5fd2 2px solid;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .nav-link {
+        color: #fafafa !important;
+    }
+
+    .nav-top a {
+        padding-left: 0;
+        padding: 0 15px;
+        margin-top: 5px !important;
+    }
+
+    .nav-link span {
+        display: none;
+    }
+}

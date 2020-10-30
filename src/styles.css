@@ -48,3 +48,19 @@ button {
     background-color: #ddb19e;
     color: #3b4961;
 }
+
+input,
+select,
+textarea,
+button {
+    outline-width: 0 !important;
+    outline: none !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline-width: 0 !important;
+    outline: none !important;
+}

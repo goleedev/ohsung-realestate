@@ -1,9 +1,11 @@
 .search-page {
-    margin: 0 auto !important;
     margin: 10% auto !important;
-    margin-bottom: 0% !important;
     text-align: center !important;
     background-color: #fafafa !important;
+}
+
+.search-page .product-recom-item {
+    margin-top: 10%;
 }
 
 .search-title {
@@ -24,5 +26,26 @@
     width: 100%;
 }
 
+.product-sold {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.search-search {
+    margin: 3% auto !important;
+    margin-bottom: 0 !important;
+    width: 50% !important;
+}
+
+@media (max-width: 992px) {
+    .search-search {
+        width: 90% !important;
+    }
+}
+
 @media (max-width: 768px) {
+    .search-page {
+        margin: 30% auto !important;
+    }
 }

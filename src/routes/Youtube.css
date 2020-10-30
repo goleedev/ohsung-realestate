@@ -74,4 +74,8 @@
     .youtube-title {
         font-size: 40px !important;
     }
+
+    .youtube-page {
+        margin: 30% auto !important;
+    }
 }

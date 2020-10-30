@@ -96,14 +96,13 @@
 }
 
 #alert {
-    position: absolute;
     text-align: center;
     font-weight: bold;
     margin-bottom: 10px;
     font-size: 24px;
     padding:10px;
     color:#79c879;
-    top: 33%;
+    margin: 3% auto !important;
     z-index: 99999;
 }
 

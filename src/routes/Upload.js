@@ -38,6 +38,7 @@ const Upload = ({ userObj }) => {
         type: type,
         size: size,
         structure: structure,
+        sold: sold,
         createdAt: Date.now(),
         creatorId: userObj.uid,
         attachmentUrl,
@@ -50,7 +51,7 @@ const Upload = ({ userObj }) => {
       setType("");
       setSize("");
       setStructure("");
-      setSold(false);
+      setSold("");
       setAttachment("");
     };
     const onChange = (event) => {
@@ -72,7 +73,7 @@ const Upload = ({ userObj }) => {
       } else if (name === "structure") {
         setStructure(value);
       } else if (name === "sold") {
-        setSold(true);
+        setSold(value);
       }
     };
     const onFileChange = (event) => {
@@ -95,16 +96,6 @@ const Upload = ({ userObj }) => {
     const onReloadClick = async () => {
       await window.location.reload();
     };
-    const [didMount, setDidMount] = useState(false); 
-
-    useEffect(() => {
-       setDidMount(true);
-       return () => setDidMount(false);
-    }, [])
-    
-    if(!didMount) {
-      return null;
-    }
     return (
         <>
           <Navigation />
@@ -207,8 +198,8 @@ const Upload = ({ userObj }) => {
                 />
                 <select value={sold} onChange={onChange} name="sold" id="sold" className="col-md-12">
                   <option value="">계약 여부</option>
-                  <option value="false">미완료</option>
-                  <option value="true">완료</option>
+                  <option value="미완료">미완료</option>
+                  <option value="완료">완료</option>
                 </select>        
               </div>
               <input type="submit" value="&rarr;" className="upload-arrow col-lg-12" value="업로드"/>

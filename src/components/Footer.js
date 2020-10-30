@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="container">
+        <footer className="footer-container container">
             <div className="col-lg-12">
                 <span>
                     오성공인중개사 사무소 / e-오성공인중개사 사무소<br/>
@@ -14,13 +14,12 @@ const Footer = () => {
                     부동산 번호: 제 44131-2019-04928호 / 제 44131-2019-05108호<br/>
                     전화: 041-523-3303 | 팩스: 041-592-1992 | 이메일: 5sungbudongsan@gmail.com<br/>
                 </span>
+                <Link to="/">
+                    <h2 className="footer-logo logo">오성 부동산</h2>
+                </Link>
+                <Link className="admin-link col-lg-12" to="/login"> {authService.currentUser ? "ADMIN" : "LOGIN"} </Link>
             </div>
-            <Link to="/">
-                <h2 className="footer-logo logo">오성 부동산</h2>
-            </Link>
-            {authService.currentUser ? (<Link className="admin-link col-lg-12" to="/login">ADMIN</Link>)
-                : (<Link className="admin-link col-lg-12" to="/login">LOGIN</Link>)}
-            <p id="copy">
+            <p id="copy" className="col-lg-12">
                 &copy; Copyright {new Date().getFullYear()} 오성공인중개사 사무소 / e-오성공인중개사 사무소. All rights reserved.
             </p>
         </footer>

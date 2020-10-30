@@ -8,6 +8,11 @@ footer {
     height: 4rem;
 }
 
+.footer-container {
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
 .footer-logo {
     font-family: GmarketSansBold !important;
     position: absolute;
@@ -24,7 +29,6 @@ footer {
     font-size: 16px;
     text-decoration: none !important;
     padding: 0 !important;
-    margin-left: 15px !important;
 }
 
 .admin-link:hover {

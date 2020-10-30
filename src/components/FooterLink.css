@@ -8,6 +8,7 @@
   margin: 0 auto !important;
   width: 120px;
   height: 60px;
+  border-radius: 20px;
   box-shadow:  3px 3px 6px #d5d5d1, 
   -3px -3px 6px #ffffff;
 }
