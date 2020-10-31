@@ -1,8 +1,9 @@
+/* PRODUCT CARDS */
 .product-list {
-    margin: 10% auto !important;
-    margin-bottom: 0% !important;
     text-align: center !important;
     background-color: #fafafa !important;
+    margin: 10% auto !important;
+    margin-bottom: 0% !important;
 }
 
 .product-title {
@@ -31,8 +32,8 @@
 
 @media (max-width: 768px) { 
     .product-list {
-        margin-top: 30% !important;
         display: block;
+        margin-top: 30% !important;
     }
 
     .product-item {

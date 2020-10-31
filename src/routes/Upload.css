@@ -1,6 +1,7 @@
+/* UPLOAD */
 .upload {
-    margin: 10% auto !important;
     color: #2e5fd2;
+    margin: 10% auto !important;
 }
 
 select {
@@ -14,15 +15,15 @@ select {
 
 .upload .title {
     text-align: center;
-    font-size: 4rem;
     color: #3b4961;
+    font-size: 4rem;
     margin-bottom: 3%;
 }
 
 .upload-form .upload-attach {
+    text-align: center;
     width: 100%;
     height: 350px !important;
-    text-align: center;
 }
 
 .upload-form img,
@@ -44,25 +45,25 @@ select {
 }
 
 .upload-arrow {
-    width: 100%;
-    background-color: #fafafa;
-    border: 1px solid #2e5fd2;
-    color: #2e5fd2;
-    padding: 10px 0px;
     text-align: center;
     box-sizing: border-box;
+    background-color: #fafafa;
+    color: #2e5fd2;
+    width: 100%;
+    border: 1px solid #2e5fd2;
+    padding: 10px 0px;
     border-radius: 20px;
 }
 
 .upload-arrow:hover {
     background-color: #3b4961;
-    border: 2px solid #3b4961;
     color: #fafafa;
+    border: 2px solid #3b4961;
 }
   
 .upload-label {
-    color: #2e5fd2;
     cursor: pointer;
+    color: #2e5fd2;
 }
   
 .upload-label span {
@@ -83,8 +84,8 @@ select {
 }
   
 .upload-clear {
-    color: #2e5fd2;
     cursor: pointer;
+    color: #2e5fd2;
     width: 300px;
     margin-top: 5px;
 }
@@ -101,6 +102,6 @@ select {
 }
 
 .upload-back {
-    margin: 5% auto;
     text-align: center;
+    margin: 5% auto;
 }

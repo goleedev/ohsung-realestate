@@ -1,3 +1,4 @@
+/* AUTH */
 .login {
     text-align: center;
     margin: 15% auto !important;
@@ -5,8 +6,8 @@
 
 .login h3 {
     font-family: GmarketSansMedium;
-    font-size: 4rem;
     color: #3b4961;
+    font-size: 4rem;
     margin-bottom: 10%;
 }
 

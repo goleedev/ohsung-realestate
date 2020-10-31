@@ -17,11 +17,11 @@ function App() {
         });
       } else {
         setUserObj(null);
-      }
+      };
     });
     if (dbService) {
       setIsLoaded(true);
-    }
+    };
     AOS.init();
     AOS.refresh();
   }, []);
@@ -30,6 +30,6 @@ function App() {
       { isLoaded ? <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} /> : <Loading />}
     </>
   );
-}
+};
 
 export default App;

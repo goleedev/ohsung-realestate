@@ -1,51 +1,53 @@
+/* ABOUT */
 @font-face {
     font-family: 'RIDIBatang';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
 .about-container {
+    text-align: center;
     margin: 0 auto !important;
     padding: 0 !important;
-    text-align: center;
 }
 
 .about-header {
-    background-color: #3b4961;
-    height: 65vh;
     display: flex;
     align-items: center !important;
+    background-color: #3b4961;
+    height: 65vh;
 }
 
 .about-title {
     font-family: GmarketSansBold;
-    font-size: 70px;
     color: #2e5fd2;
+    font-size: 70px;
     padding-top: 5%;
 }
 
 .about-title span {
     font-family: RIDIBatang;
-    font-size: 80%;
     color: #fff;
+    font-size: 80%;
 }
 
 .about-content-bottom,
 .about-content-top {
+    text-align: center;
     font-size: 18px !important;
     letter-spacing: 2px;
     margin: 8% auto;
-    text-align: center;
     line-height: 2.5rem;
     width: 35%;
 }
 
 .about-content-wrapper {
+    display: block;
     background-color: #dddddd;
     padding: 10px 0;
-    display: block;
     margin: 8% auto;
     margin-bottom: 4%;
 }
@@ -59,20 +61,19 @@
 }
 
 .about-content-bottom span {
-    color: #2e5fd2;
     font-family: 'Sacramento', cursive;    
+    color: #2e5fd2;
     font-size: 50px;
 }
 
 .about-title-bottom {
+    font-family: 'Sacramento', cursive !important;
     position: absolute;
     top: 100px;
     font-size: 24px !important;
-    font-family: 'Sacramento', cursive !important;
 }
 
 @media (max-width: 992px) { 
-    /* About */
     .about-title-bottom {
         top: 0px;
     }
@@ -81,9 +82,8 @@
         width: 80%;
     }
 }
-/* Medium Devices */
+
 @media (max-width: 768px) { 
-    /* About */
     .about-content-top,
     .about-content-bottom {
         width: 65%;
@@ -94,8 +94,8 @@
     }
 
     .about-title span {
+        color: #fff;
         font-family: RIDIBatang;
         font-size: 60%;
-        color: #fff;
     }
 }

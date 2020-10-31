@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Typewriter from 'typewriter-effect';
 import building from 'images/home-building.png';
-import circle2 from '../images/home-circle2.png';
-import circle3 from '../images/home-circle3.png';
+import circle1 from '../images/home-circle2.png';
+import circle2 from '../images/home-circle3.png';
 import './Header.css';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Header = () => {
     const history = useHistory();
     const [searchInput, setSearchInput] = useState("");
-    const onChange = (e) => {
+    const onChange = (event) => {
         const {
             target: { value },
-        } = e;
+        } = event;
         setSearchInput(value);
     };
     const onClick = () => {
@@ -33,17 +33,17 @@ const Header = () => {
             return true;
         }
     };
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const onSubmit = (event) => {
+        event.preventDefault();
         const {
             target: { value }
-        } = e;
+        } = event;
         history.push({
             pathname: '/search',
             search: `/query?${value}`,
-            state: {value}
+            state: { value }
         });
-        e.target.reset();
+        event.target.reset();
         setSearchInput("");
     };
     return (
@@ -51,46 +51,46 @@ const Header = () => {
         <div className="header container row">
             <div className="col-md-6">
                 <h2>천안에서 찾는
-                    <span className="home-type"> 
-                        <Typewriter
-                            options={{
-                                strings: ['주택', '상가', '토지', '아파트'],
-                                autoStart: true,
-                                loop: true,
-                        }}      
-                        />         
-                    </span>
+                <span className="home-type">
+                    <Typewriter
+                    options={{
+                        strings: ['주택', '상가', '토지', '아파트'],
+                        autoStart: true,
+                        loop: true,
+                    }}
+                    />
+                </span>
                 </h2>
                 <form onSubmit={onSubmit} className="input-group input-group-lg home-search">
                     <input
-                        onChange={onChange}    
-                        type="text"
-                        className="form-control"
-                        placeholder="지역명/지하철역을 입력해주세요."
-                        name="search"
-                        value={searchInput}    
+                    onChange={onChange}
+                    type="text"
+                    className="form-control"
+                    placeholder="지역명/지하철역을 입력해주세요."
+                    name="search"
+                    value={searchInput}
                     />
                     <input
                     type="submit"
                     value="검색"
-                    className="btn search-btn" 
+                    className="btn search-btn"
                     />
                 </form>
-            </div> 
+            </div>
             <div className="col-lg-6">
-                <img data-aos="fade-up" data-aos-duration="1000" src={building} className="home-building"/>
-            </div>    
+                <img data-aos="fade-up" data-aos-duration="1000" src={building} className="home-building" alt="building" />
+            </div>
             <div className="home-circle flex-column d-flex">
                 <a href="tel:07040428642">
-                    <img src={circle2} />                
+                    <img src={circle1} alt="call"/>
                 </a>
                 <span onClick={onClick}>
-                    <img src={circle3} />                
-                </span>    
-            </div>   
+                    <img src={circle2} alt="favorite"/>
+                </span>
+            </div>
         </div>
         </>
-    )
-}
+    );
+};
 
 export default Header;

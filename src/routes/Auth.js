@@ -1,15 +1,16 @@
 import React from "react";
+import { authService, firebaseInstance } from 'fbase';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faUserCog } from "@fortawesome/free-solid-svg-icons";
-import { authService, firebaseInstance } from 'fbase';
 import Navigation from "components/Navigation";
 import './Auth.css';
 
 const Auth = ({ isLoggedIn }) => {
-
     const onSocialClick = async (event) => {
-        const { target: { name }, } = event;
+        const {
+            target: { name },
+        } = event;
         let provider;
         if (name === "google") {
             provider = new firebaseInstance.auth.GoogleAuthProvider();

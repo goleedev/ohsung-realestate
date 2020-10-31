@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { dbService } from "fbase";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo, faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import './YoutubeUpload.css';
 
 const YoutubeUpload = () => {
@@ -12,13 +12,15 @@ const YoutubeUpload = () => {
         event.preventDefault();
         if (title === "" || youtube === "") {
         return;
-        }
+        };
         const youtubeObj = {
             title: title,
             url: youtube,
             createdAt: Date.now(),
         };
-        await dbService.collection("youtubes").add(youtubeObj);
+        await dbService
+                .collection("youtubes")
+                .add(youtubeObj);
         setTitle("");
         setYoutube("");
     };
@@ -26,11 +28,11 @@ const YoutubeUpload = () => {
         const {
         target: { name, value },
         } = event;
-            if (name == "title") {
-                setTitle(value);
-            } else if (name == "youtube") {
-                setYoutube(value);
-            }
+        if (name === "title") {
+            setTitle(value);
+        } else if (name === "youtube") {
+            setYoutube(value);
+        }
     };
     return (
         <>
@@ -67,8 +69,8 @@ const YoutubeUpload = () => {
                 </Link>
             </div>
         </div>
-    </>
-    )
-}
+        </>
+    );
+};
 
 export default YoutubeUpload;

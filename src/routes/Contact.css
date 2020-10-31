@@ -1,18 +1,19 @@
+/* CONTACT */
 .get-in-touch {
     text-align: center;
     margin: 10% auto !important;
 }
 
 .title {
-    font-size: 50px !important;
     color: #3b4961;
+    font-size: 50px !important;
     margin-bottom: 3%;
 }
 
 .contact-circle img {
-    filter: drop-shadow(3px 3px 6px #8e8e8b);    
     width: 160px;
     padding: 0 30px;
+    filter: drop-shadow(3px 3px 6px #8e8e8b);    
 }
 
 .contact-circle {
@@ -26,8 +27,8 @@
 
 .contact-form .form-field {
     position: relative;
+    text-align: left;
     margin: 32px 0;
-    text-align-last: left;
 }
 
 .contact-form .input-text {
@@ -57,12 +58,12 @@
 
 .contact-form .label {
     position: absolute;
+    color: #3b4961;
     left: 20px;
     bottom: 24px;
     font-size: 24px;
     line-height: 30px;
     font-weight: 600;
-    color: #3b4961;
     cursor: text;
     transition: -webkit-transform .2s ease-in-out;
     transition: transform .2s ease-in-out;
@@ -80,6 +81,7 @@
 
 .contact-form .submit-btn {
     display: inline-block;
+    cursor: pointer;
     background-color: #3b4961;
     color: #fafafa;
     letter-spacing: 2px;
@@ -88,7 +90,6 @@
     border: none;
     width:200px;
     border-radius: 20px;
-    cursor: pointer;
 }
   
 .contact-form .submit-btn:hover {
@@ -98,10 +99,10 @@
 #alert {
     text-align: center;
     font-weight: bold;
+    color:#79c879;
     margin-bottom: 10px;
     font-size: 24px;
     padding:10px;
-    color:#79c879;
     margin: 3% auto !important;
     z-index: 99999;
 }

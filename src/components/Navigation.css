@@ -1,10 +1,11 @@
+/* NAVIGATION */
 h1 {
     color: #3b4961;
 }
 
 .nav-link {
-    font-size: 18px !important;
     color: #3b4961;
+    font-size: 18px !important;
 }
 
 .nav-link:hover {
@@ -14,10 +15,10 @@ h1 {
 
 @media (max-width: 992px) { 
     .nav-items {
-        background-color: #3b4961;
-        border: #2e5fd2 2px solid;
         flex-direction: column;
         text-align: center;
+        background-color: #3b4961;
+        border: #2e5fd2 2px solid;
         padding-top: 20px;
         padding-bottom: 20px;
     }

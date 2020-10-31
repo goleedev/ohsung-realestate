@@ -1,9 +1,10 @@
+/* PRODUCT RECOMMENDATION */
 .product-recom {
-    margin: 10% auto !important;
-    margin-bottom: 0% !important;
     text-align: center !important;
     background-color: #fafafa !important;
     cursor: pointer;
+    margin: 10% auto !important;
+    margin-bottom: 0% !important;
 }
 
 .product-recom-container {
@@ -36,10 +37,10 @@
 }
 
 .product-action {
+    position: absolute;
     background-color: #fafafa;
     color: #2e5fd2;
     border: 2px solid #2e5fd2;
-    position: absolute;
     padding: 0 2px;
     left: 30px;
     top: 100px;
@@ -62,12 +63,12 @@
 }
 
 .product-recom .load__btn {
+    color: #fafafa;
+    background-color: #2e5fd2;
     padding: 6px 12px !important;
     margin: 0 auto !important;
     margin-top: 5% !important;
     font-size: 20px !important;
-    color: #fafafa;
-    background-color: #2e5fd2;
     border-radius: 20px;
 }
 
@@ -103,8 +104,8 @@
 
 @media (max-width: 768px) {
     .product-recom {
-        margin-top: 30% !important;
         display: block;
+        margin-top: 30% !important;
     }
 
     .product-recom .load__btn {

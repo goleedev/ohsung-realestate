@@ -1,3 +1,4 @@
+/* ADMIN */
 .admin {
     text-align: center;
     margin: 15% auto !important;
@@ -5,8 +6,8 @@
 
 .admin h3 {
     font-family: GmarketSansMedium;
-    font-size: 4rem;
     color: #3b4961;
+    font-size: 4rem;
 }
 
 .admin-box h4 {
@@ -23,8 +24,8 @@
 }
 
 .logout {
+    cursor: pointer;
     margin: 2% auto;
     margin-bottom: 10%;
     font-size: 24px;
-    cursor: pointer;
 }

@@ -1,15 +1,16 @@
 import React from 'react';
 import emailjs from 'emailjs-com';
+import { onReloadClick } from "functions";
 import Navigation from 'components/Navigation';
-import contact from '../images/contact.gif';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
+import contact from '../images/contact.gif';
 import './Contact.css';
 
 const Contact = () => {
-    const onSubmit = (e) => {
-        e.preventDefault();
-        emailjs.sendForm('service_r7g54mq', 'template_uoh0zdn', e.target, 'user_gU0Rwh0uJ4RbQHs2agu2n')
+    const onSubmit = (event) => {
+        event.preventDefault();
+        emailjs.sendForm('service_r7g54mq', 'template_uoh0zdn', event.target, 'user_gU0Rwh0uJ4RbQHs2agu2n')
             .then((result) => {
                 console.log(result.text);
             }, (error) => {
@@ -19,10 +20,7 @@ const Contact = () => {
             document.getElementById("alert").innerHTML = '';
         }, 3000);
         document.getElementById("alert").innerHTML = '정상적으로 접수되었습니다👋';
-        e.target.reset();
-    };
-    const onReloadClick = async () => {
-        await window.location.reload();
+        event.target.reset();
     };
     return (
         <>
@@ -32,7 +30,7 @@ const Contact = () => {
             <p id="alert" className="col-lg-12"> </p>
             <div className="get-in-touch-content row">
                 <div className="col-lg-6">
-                    <img src={contact}/>
+                    <img src={contact} alt="contact"/>
                 </div> 
                 <form encType="multipart/form-data" method="post" onSubmit={onSubmit} className="contact-form row col-lg-6">
                     <div className="form-field col-lg-6">
@@ -70,7 +68,7 @@ const Contact = () => {
         <FooterLink/>
         <Footer/>    
         </>
-    )
-}
+    );
+};
 
 export default Contact;

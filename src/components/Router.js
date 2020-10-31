@@ -1,5 +1,6 @@
 import React, {Suspense} from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Loading from 'components/Loading';
 import Home from 'routes/Home';
 import About from 'routes/About';
 import Auth from 'routes/Auth';
@@ -8,10 +9,8 @@ import Manage from 'routes/Manage';
 import Upload from 'routes/Upload';
 import YoutubeUpload from 'routes/YoutubeUpload';
 import Search from 'routes/Search';
-import SearchDetail from 'components/SearchDetail';
 import Youtube from 'routes/Youtube';
 import Contact from 'routes/Contact';
-import Loading from 'components/Loading';
 import NotFound from 'routes/NotFound';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
@@ -24,24 +23,21 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/youtube" component={Youtube}/>
                 <Route exact path="/search" component={Search}/>
-                <Route exact path="/search/:id">
-                    <SearchDetail userObj={userObj}/>    
-                </Route>
                 <Route exact path="/contact" component={Contact}/>
                 {isLoggedIn ? (
                     <>
-                        <Route exact path="/login">
-                            <Admin userObj={userObj}/>
-                        </Route>    
-                        <Route exact path="/login/manage">
-                            <Manage userObj={userObj}/>        
-                        </Route>
-                        <Route exact path="/login/upload">
-                            <Upload userObj={userObj}/>
-                        </Route>  
-                        <Route exact path="/login/youtube">
-                            <YoutubeUpload />
-                        </Route>     
+                    <Route exact path="/login">
+                        <Admin userObj={userObj}/>
+                    </Route>    
+                    <Route exact path="/login/manage">
+                        <Manage userObj={userObj}/>        
+                    </Route>
+                    <Route exact path="/login/upload">
+                        <Upload userObj={userObj}/>
+                    </Route>  
+                    <Route exact path="/login/youtube">
+                        <YoutubeUpload />
+                    </Route>     
                     </>        
                 ) : (  
                     <Route exact path="/login" component={Auth} />
@@ -51,7 +47,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
         </Suspense>
         </Router>
         </>
-    )
-}
+    );
+};
 
 export default AppRouter;

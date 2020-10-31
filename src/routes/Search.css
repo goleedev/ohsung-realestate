@@ -1,7 +1,8 @@
+/* SEARCH */
 .search-page {
-    margin: 10% auto !important;
     text-align: center !important;
     background-color: #fafafa !important;
+    margin: 10% auto !important;
 }
 
 .search-page .product-recom-item {
@@ -9,11 +10,11 @@
 }
 
 .search-title {
-    font-size: 50px !important;
     color: #3b4961;
+    cursor: pointer;
+    font-size: 50px !important;
     margin: 0 auto !important;
     margin-bottom: 5% !important;
-    cursor: pointer;
 }
 
 .search-card {

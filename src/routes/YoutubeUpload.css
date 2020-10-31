@@ -1,3 +1,4 @@
+/* YOUTUBE UPLOAD */
 .youtube-upload form {
     margin: auto;
     width: 60%;
@@ -8,6 +9,6 @@
 }
 
 .factory__back {
-    margin: 5% auto;
     text-align: center;
+    margin: 5% auto;
 }

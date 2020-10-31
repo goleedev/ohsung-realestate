@@ -1,8 +1,9 @@
+/* HEADER */
 div.home {
     display: block;
-    height: 85vh !important;
     background: rgb(251,236,236);
     background: linear-gradient(320deg, rgba(251,236,236,1) 14%, rgba(171,196,213,1) 94%);
+    height: 85vh !important;
 }
 
 .header-top {
@@ -31,9 +32,9 @@ h2 {
 }
 
 .home-search {
+    background-color: #2e5fd2;
     width: 80% !important;
     margin: 20% 0;
-    background-color: #2e5fd2;
 }
 
 .home-circle {
@@ -78,6 +79,7 @@ input.form-control {
         width: 80%;
     }    
 }
+
 @media (max-width: 768px) {
     .home {
         height: 80vh !important;

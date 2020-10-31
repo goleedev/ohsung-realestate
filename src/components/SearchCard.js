@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
+import { limitTitle } from "functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt, faWonSign, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import soldPic from '../images/sold.png';
@@ -35,58 +36,46 @@ const SearchCard = ({ productObj, isOwner }) => {
     };
     const onSubmit = async (event) => {
         event.preventDefault();
-        await dbService.doc(`products/${productObj.id}`).update({
-            title: newProduct,
-            content: newContent,
-            price: newPrice,
-            region: newRegion,
-            type: newType,
-            size: newSize,
-            structure: newStructure,
-            sold: newSold,
-        });
+        await dbService
+                .doc(`products/${productObj.id}`)
+                .update({
+                    title: newProduct,
+                    content: newContent,
+                    price: newPrice,
+                    region: newRegion,
+                    type: newType,
+                    size: newSize,
+                    structure: newStructure,
+                    sold: newSold,
+                });
         setEditing(false);
     };
     const onChange = (event) => {
         const {
             target: { name, value },
         } = event;
-        if (name == "title") {
+        if (name === "title") {
             setNewProduct(value);
-        } else if (name == "content") {
+        } else if (name === "content") {
             setNewContent(value);
-        } else if (name == "price") {
+        } else if (name === "price") {
             setNewPrice(value);
-        } else if (name == "type") {
+        } else if (name === "type") {
             setNewType(value);
-        } else if (name == "region") {
+        } else if (name === "region") {
             setNewRegion(value);
-        } else if (name == "size") {
+        } else if (name === "size") {
             setNewSize(value);
-        } else if (name == "structure") {
+        } else if (name === "structure") {
             setNewStructure(value);
-        } else if (name == "sold") {
+        } else if (name === "sold") {
             setNewSold(value);
         }
-    };
-    const limitTitle = (title, limit = 20) => {
-        const newTitle = [];
-        if (title.length > limit) {
-            title.split(' ').reduce((acc, cur) => {
-                if (acc + cur.length <= limit) {
-                    newTitle.push(cur);
-                }
-                return acc + cur.length;
-            }, 0);
-    
-            return `${newTitle.join(' ')} ...`;
-        }
-        return title;
     };
     return (
     <div className="search-card-item col-lg-4 col-md-6">
         {editing ? (
-        <>
+            <>
             <form onSubmit={onSubmit} className="col-lg-12 product-recom-container manage-form">
                 <input
                 type="text"
@@ -147,9 +136,9 @@ const SearchCard = ({ productObj, isOwner }) => {
                 className="formInput"
                 />  
                 <select value={newSold} onChange={onChange} name="sold" id="sold" className="formInput">
-                  <option value="">계약 여부 수정</option>
-                  <option value="미완료">미완료</option>
-                  <option value="완료">완료</option>
+                    <option value="">계약 여부 수정</option>
+                    <option value="미완료">미완료</option>
+                    <option value="완료">완료</option>
                 </select>          
                 <div>
                     <input type="submit" value="수정 완료" className="formBtn" />
@@ -158,15 +147,15 @@ const SearchCard = ({ productObj, isOwner }) => {
                     </p>         
                 </div>  
             </form>
-        </>            
-        ) : (
-        <>
+            </>            
+            ) : (
+            <>
             <div className="product-recom-container container row">
                 <div data-aos="fade-up" key={productObj.id} className="product-recom-item">
                     <h4>{limitTitle(productObj.title)}</h4>
                     <span className="product-action">추천</span>
-                    {productObj.sold === "완료" && <img src={soldPic} className="product-sold" />}
-                    <img src={productObj.attachmentUrl} />
+                    {productObj.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
+                    <img src={productObj.attachmentUrl} alt="product-pic"/>
                     <div className="product-recom-list">
                         <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {productObj.price}</p>
                         <p className="product-location"><FontAwesomeIcon icon={faMapMarkerAlt} />{productObj.region}</p>
@@ -188,11 +177,10 @@ const SearchCard = ({ productObj, isOwner }) => {
                     )}            
                 </div>
             </div>    
-            
-        </>
-        )}
-    </div>
-    )
-}
+            </>
+            )}
+        </div>
+    );
+};
 
 export default SearchCard;

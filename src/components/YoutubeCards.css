@@ -1,8 +1,9 @@
+/* YOUTUBE CARDS */
 .youtube-cards {
-    margin: 10% auto !important;
-    margin-bottom: 0% !important;
     text-align: center !important;
     background-color: #fafafa !important;
+    margin: 10% auto !important;
+    margin-bottom: 0% !important;
 }
 
 .youtube-cards-title {
@@ -31,12 +32,12 @@
 }
 
 .youtube-cards .load__btn {
+    color: #fafafa;
+    background-color: #2e5fd2;
     margin: 0 auto;
     margin-bottom: 10%;
     font-size: 20px !important;
     width: 300px;
-    color: #fafafa;
-    background-color: #2e5fd2;
     border-radius: 20px;
 }
 
@@ -47,8 +48,8 @@
 
 @media (max-width: 768px) {
     .youtube-cards {
-        margin-top: 30% !important;
         display: block;
+        margin-top: 30% !important;
     }
     
     .youtube-cards-title {
