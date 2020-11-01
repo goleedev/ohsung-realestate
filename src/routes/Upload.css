@@ -53,6 +53,7 @@ select {
     border: 1px solid #2e5fd2;
     padding: 10px 0px;
     border-radius: 20px;
+    margin-top: 10%;
 }
 
 .upload-arrow:hover {
@@ -76,7 +77,6 @@ select {
     flex-direction: column;
     justify-content: center;
 }
-
 
 .upload-attachment img {
     width: 300px;

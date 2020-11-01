@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { dbService } from "fbase";
+import { limitNumber, limitTitle, onReloadClick } from 'functions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWonSign, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { limitNumber, limitTitle, onReloadClick } from 'functions';
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
 import Loading from 'components/Loading';
 import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
@@ -14,12 +12,8 @@ import 'routes/Search.css';
 
 const Search = () => {
     const [products, setProducts] = useState([]);
-    const [productObj, setProductObj] = useState({});
-    const [tags, setTags] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [modalShow, setModalShow] = React.useState(false);
     const [searchInput, setSearchInput] = useState("");
-    
     useEffect(() => {
         dbService
             .collection('products')
@@ -55,47 +49,22 @@ const Search = () => {
         } = event;
         setSearchInput(value);
     };
-    const onSubmit = async() => {
-        await dbService
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        if (searchInput !== "" && searchInput !== " ") {
+            await dbService
                 .collection('products')
-                .where("title", ">=", searchInput)
-                .orderBy("createdAt", "desc")
+                .where('tag', 'array-contains-any', [searchInput])
                 .onSnapshot((snapshot) => {
                     let productArray = snapshot.docs.map((doc) => ({
                         id: doc.id,
                         ...doc.data(),
                     }));
-                setProducts(productArray);
-            });
+                    setProducts(productArray);
+                });
+        }
         setSearchInput("");
-    };
-    function MyVerticallyCenteredModal(props) {
-        setProductObj({});
-        return (
-          <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
-                {productObj.title}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>{productObj.content}</h4>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
-          </Modal>
-        );
+        document.querySelector("#search").reset(); 
     };
     return (
         <>
@@ -110,14 +79,15 @@ const Search = () => {
                 <span id="전원주택" onClick={onClick}>전원주택</span>
                 <span id="아파트" onClick={onClick}>아파트</span>
             </nav>
-            <form onSubmit={onSubmit} className="input-group input-group-lg home-search search-search">
+            <form id="search" onSubmit={onSubmit} className="input-group input-group-lg home-search search-search">
                 <input
                 onChange={onChange}    
                 type="text"
                 className="form-control col-xs-8"
                 placeholder="지역명/지하철역을 입력해주세요."
                 name="search"
-                value={searchInput}    
+                value={searchInput}   
+                autoComplete="off"        
                 />
                 <input
                 type="submit"
@@ -129,8 +99,7 @@ const Search = () => {
                 <>
                 <div className="product-recom-container container row">
                     {products.map((product) =>
-                    <>
-                    <div onClick={() => setModalShow(true)} data-toggle="modal" data-target="#exampleModalCenter" data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">
+                    <div data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">
                         <h4><span className="product-id">매물번호-{limitNumber(product.createdAt)}</span>{limitTitle(product.title)}</h4>
                         <span className="product-action">추천</span>
                         {product.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
@@ -144,13 +113,7 @@ const Search = () => {
                                 <span className="col-lg-4">{product.structure}</span>
                             </p>
                         </div>
-                        <MyVerticallyCenteredModal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                        product={() => setProductObj(product)}            
-                        />     
                     </div>
-                    </>
                     )}   
                 </div>
             </>

@@ -16,11 +16,13 @@ const Upload = ({ userObj }) => {
     const [type, setType] = useState("");
     const [size, setSize] = useState("");
     const [structure, setStructure] = useState("");
+    const [tag, setTag] = useState("");
+    const [tags, setTags] = useState([]);
     const [attachment, setAttachment] = useState("");
     const [sold, setSold] = useState("");  
     const onSubmit = async (event) => {
       event.preventDefault();
-      if (product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "" ) {
+      if (product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "" || tags === []) {
         return;
       }
       let attachmentUrl = "";
@@ -41,6 +43,8 @@ const Upload = ({ userObj }) => {
         type: type,
         size: size,
         structure: structure,
+        tag: tag,
+        tags: tags,
         sold: sold,
         attachmentUrl,
       };
@@ -55,13 +59,15 @@ const Upload = ({ userObj }) => {
       setSize("");
       setStructure("");
       setSold("");
+      setTag("");
+      setTags([]);
       setAttachment("");
     };
     const onChange = (event) => {
       const {
         target: { name, value },
       } = event;
-      if(name === "title") {
+      if (name === "title") {
         setProduct(value);
       } else if (name === "content") {
         setContent(value);
@@ -75,10 +81,20 @@ const Upload = ({ userObj }) => {
         setSize(value);
       } else if (name === "structure") {
         setStructure(value);
+      } else if (name === "tag") {
+        setTags(value);
       } else if (name === "sold") {
         setSold(value);
       }
     };
+    const onTagClick = (event) => {
+      const {
+        target: { name },
+      } = event;
+      if (name === "tags") {
+        setTags([...tag, tag]);
+      }
+    }
     const onFileChange = (event) => {
       const {
         target: { files },
@@ -197,6 +213,22 @@ const Upload = ({ userObj }) => {
             autoComplete="off"
             required 
             />
+            <form name="tags" onSubmit={onTagClick} className="col-md-12 row tag-input">
+              <input
+              className="upload-input"
+              value={tag}
+              onChange={onChange}
+              type="text"
+              name="tag"
+              placeholder="태그"
+              autoComplete="off"
+              required 
+              />
+              <input
+              type="submit"  
+              value="추가"
+              />  
+            </form>  
             <select value={sold} onChange={onChange} name="sold" id="sold" className="col-md-12">
               <option value="">계약 여부</option>
               <option value="미완료">미완료</option>
