@@ -10,12 +10,38 @@ import Footer from 'components/Footer';
 import soldPic from '../images/sold.png';
 import 'routes/Search.css';
 
-const Search = () => {
+const Search = ( props ) => {
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [searchInput, setSearchInput] = useState("");
+    const data = props.history.location.state;
     useEffect(() => {
-        dbService
+        window.scrollTo(0, 0);
+        if (data && data.data) {
+            dbService
+                .collection('products')
+                .where('tag', 'array-contains-any', [data.data])
+                .onSnapshot((snapshot) => {
+                    let productArray = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                    }));
+                    setProducts(productArray);
+                })
+        } else if (data && data.group) {
+            dbService
+                .collection('products')
+                .where("type", "==", data.group)
+                .orderBy("createdAt", "desc")
+                .onSnapshot((snapshot) => {
+                    let productArray = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data(),
+                    }));
+                    setProducts(productArray);
+                })
+        } else {
+            dbService
             .collection('products')
             .orderBy("createdAt", "desc")
             .onSnapshot((snapshot) => {
@@ -25,21 +51,22 @@ const Search = () => {
                 }));
                 setProducts(productArray);
             })
+        }
         setIsLoaded(true);
     }, []);
-    const onClick = async(event) => {
+    const onClick = (event) => {
         const {
             target: { id },
         } = event;
-        await dbService
-                .collection('products')
-                .where("type", "==", id)
-                .orderBy("createdAt", "desc")
-                .onSnapshot((snapshot) => {
-                    let productArray = snapshot.docs.map((doc) => ({
-                        id: doc.id,
-                        ...doc.data(),
-                    }));
+        dbService
+            .collection('products')
+            .where("type", "==", id)
+            .orderBy("createdAt", "desc")
+            .onSnapshot((snapshot) => {
+                let productArray = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
                 setProducts(productArray);
             });
     };
@@ -124,5 +151,6 @@ const Search = () => {
         </>
     );
 };
+
 
 export default Search;

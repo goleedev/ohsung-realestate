@@ -14,8 +14,8 @@ const About = () => {
         <Navigation />
         <div className="about-container container-fluid col-lg-12 row">
             <div>
-                <div className="about-header">
-                    <h1 className="about-title col-lg-12">THE STORY OF
+                <div className="about-header col-lg-12">
+                    <h1 className="about-title">THE STORY OF
                     <Typewriter
                         options={{
                         strings: ['오성공인중개사 사무소', 'e-오성공인중개사 사무소'],

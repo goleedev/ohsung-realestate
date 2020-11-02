@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { dbService } from "fbase";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Typewriter from 'typewriter-effect';
 import building from 'images/home-building.png';
 import circle1 from '../images/home-circle2.png';
 import circle2 from '../images/home-circle3.png';
 import './Header.css';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom';
 
 const Header = () => {
     const history = useHistory();
     const [searchInput, setSearchInput] = useState("");
+    const [products, setProducts] = useState([]);
     const onChange = (event) => {
         const {
             target: { value },
@@ -35,14 +38,23 @@ const Header = () => {
     };
     const onSubmit = (event) => {
         event.preventDefault();
-        const {
-            target: { value }
-        } = event;
-        history.push({
-            pathname: '/search',
-            search: `/query?${value}`,
-            state: { value }
-        });
+        if (searchInput !== "" && searchInput !== " ") {
+            dbService
+                .collection('products')
+                .where('tag', 'array-contains-any', [searchInput])
+                .onSnapshot((snapshot) => {
+                    let productArray = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data(),
+                    }));
+                    setProducts(productArray);
+                    history.push({
+                        pathname: '/search',
+                        search: `/query?${searchInput}`,
+                        state: { data: searchInput }
+                    });
+                });
+        }
         event.target.reset();
         setSearchInput("");
     };
@@ -61,14 +73,15 @@ const Header = () => {
                     />
                 </span>
                 </h2>
-                <form onSubmit={onSubmit} className="input-group input-group-lg home-search">
+                <form id="home-search-tab" onSubmit={onSubmit} className="input-group input-group-lg home-search">
                     <input
-                    onChange={onChange}
+                    onChange={onChange}    
                     type="text"
-                    className="form-control"
+                    autoComplete="off"        
+                    className="form-control col-xs-8"
                     placeholder="지역명/지하철역을 입력해주세요."
                     name="search"
-                    value={searchInput}
+                    value={searchInput}   
                     />
                     <input
                     type="submit"
