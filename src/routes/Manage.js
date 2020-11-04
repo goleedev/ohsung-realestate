@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { dbService } from "fbase";
 import { onReloadClick } from "functions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import Navigation from 'components/Navigation';
 import SearchCard from 'components/SearchCard';
 import './Manage.css';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Manage = ({userObj}) => {
     const [products, setProducts] = useState([]);
@@ -31,6 +34,11 @@ const Manage = ({userObj}) => {
                     isOwner={product.creatorId === userObj.uid}
                     />
                 ))}
+        </div>
+        <div className="upload-back col-lg-12">
+            <Link to="/" className="btn btn-md">
+                <FontAwesomeIcon icon={faUndo} color={"#0275d8"} size="1x" /> 돌아가기
+            </Link>
         </div>
         </>
     );

@@ -2,7 +2,6 @@
 .youtube-page {
     text-align: center !important;
     background-color: #fafafa !important;
-    margin: 0 auto !important;
     margin: 10% auto !important;
     margin-bottom: 0% !important;
 }
@@ -13,6 +12,16 @@
     font-size: 50px !important;
     margin: 0 auto !important;
     margin-bottom: 5% !important;
+}
+
+.youtube-item .btn {
+    width: 300px;
+    visibility: hidden;
+}
+
+.youtube-item:hover .btn {
+    visibility: visible;
+    transform: translateX(-10%, 10%);
 }
 
 .youtube-item,
@@ -74,9 +83,5 @@
 @media (max-width: 768px) {
     .youtube-title {
         font-size: 40px !important;
-    }
-
-    .youtube-page {
-        margin: 30% auto !important;
     }
 }

@@ -5,6 +5,7 @@ import { onReloadClick } from "functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { limitTitle } from 'functions';
 import Loading from 'components/Loading';
 import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
@@ -42,8 +43,9 @@ const Youtube = () => {
                 <>
                 {youtubes.map((youtube) =>
                     <div data-aos="fade-up" key={youtube.id} className="youtube-item col-lg-4 col-md-6">
-                        <ReactPlayer url={youtube.url} className="youtube-vid" width="300px" height="200px" config={{ youtube: { playerVars: { showinfo: 1, controls: 1 } }, }} />
-                        <h4>{youtube.title}</h4>
+                        <a href={youtube.url}><span className="btn btn-danger">유튜브로 이동</span></a>
+                        <ReactPlayer url={youtube.url} className="youtube-vid" width="300px" height="250px" config={{ youtube: { playerVars: { showinfo: 1, controls: 1 } }, }} />
+                        <h4>{limitTitle(youtube.title, 35)}</h4>
                     </div>
                 )}
                 </>

@@ -6,9 +6,12 @@
     margin-bottom: 0% !important;
 }
 
+.youtube-cards .row {
+    margin: 0 auto;
+}
+
 .youtube-cards-title {
     font-size: 50px;
-    margin-bottom: 5%;
 }
 
 .youtube-cards .youtube-item .btn {
@@ -21,23 +24,26 @@
 }
 
 .youtube-cards .youtube-item {
-    margin: 0 auto !important;
-    transition: all .2s ease-in-out;    
     margin-bottom: 3% !important;
+    transition: all .2s ease-in-out;    
+}
+
+.youtube-cards .youtube-item h4 {
+    margin: 0 auto;
 }
 
 .youtube-cards .btn {
-    width: 300px;
+    text-align: center !important;
     font-size: 20px !important;
+    width: 300px !important;
 }
 
 .youtube-cards .load__btn {
     color: #fafafa;
     background-color: #2e5fd2;
     margin: 0 auto;
+    margin-top: 5% !important;
     margin-bottom: 10%;
-    font-size: 20px !important;
-    width: 300px;
     border-radius: 20px;
 }
 
@@ -57,6 +63,7 @@
     }
     
     .youtube-cards .load__btn {
+        margin-top: 10%;
         margin-bottom: 30%;
     }
 }

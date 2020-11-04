@@ -82,7 +82,7 @@ input.form-control {
 
 @media (max-width: 768px) {
     .home {
-        height: 80vh !important;
+        height: 100% !important;
     }
     .home-circle {
         visibility: hidden;

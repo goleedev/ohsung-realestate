@@ -1,6 +1,8 @@
 import React from 'react';
 import emailjs from 'emailjs-com';
 import { onReloadClick } from "functions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
@@ -27,11 +29,22 @@ const Contact = () => {
         <Navigation />
         <div className="get-in-touch container row">
             <h3 onClick={onReloadClick} className="title col-lg-12">문의하기</h3>
-            <p id="alert" className="col-lg-12"> </p>
-            <div className="get-in-touch-content row">
-                <div className="col-lg-6">
-                    <img src={contact} alt="contact"/>
-                </div> 
+            <div className="col-lg-12">
+                <img src={contact} alt="contact"/>
+            </div> 
+            <p id="alert" className="col-lg-12"></p>
+            <div className="get-in-touch-content col-lg-12 row">
+                <div className="get-in-touch-info col-lg-6 flex-column">
+                    <h3>let's get in touch</h3>
+                    <a href="tel:07040428642">
+                        <FontAwesomeIcon icon={faPhoneVolume} /> 전화 <br/>
+                        <span>041-523-3303</span>
+                    </a>   
+                    <a href="https://map.naver.com/v5/search/%EC%98%A4%EC%84%B1%EA%B3%B5%EC%9D%B8%EC%A4%91%EA%B0%9C%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C?c=14151521.9657581,4415887.5965258,15,0,0,0,dh">
+                        <FontAwesomeIcon icon={faMapMarkerAlt} /> 주소 <br/>
+                        <span>충청남도 천안시 서북구 두정동 545 삼보빌딩 1층</span>
+                    </a>   
+                </div>
                 <form encType="multipart/form-data" method="post" onSubmit={onSubmit} className="contact-form row col-lg-6">
                     <div className="form-field col-lg-6">
                         <input name="name" id="name" className="input-text js-input" type="text" required />

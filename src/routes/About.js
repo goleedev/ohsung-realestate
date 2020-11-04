@@ -11,7 +11,7 @@ import './About.css';
 const About = () => {
     return (
         <>
-        <Navigation />
+        <Navigation/>
         <div className="about-container container-fluid col-lg-12 row">
             <div>
                 <div className="about-header col-lg-12">
@@ -23,19 +23,19 @@ const About = () => {
                         loop: true,
                         }}      
                     />    
-                    <span className="about-title-bottom col-lg-12">@ohsung</span>
+                    <span className="about-title-bottom">@ohsung</span>
                     </h1>
                 </div>
                 <p className="about-content-top">
                     <span>
-                        <FontAwesomeIcon icon={faQuoteLeft} color={"#969696"} size="2x" /> 
+                    <FontAwesomeIcon icon={faQuoteLeft} color={"#969696"} size="2x" /> 
                     </span> 어렸을 때부터 만들기를 좋아했던 한 아이가 
                         흙의 촉감과 불의 신비한 매력에 빠져
                         도예가가 되었습니다.
                 </p>
                 <div className="about-content-wrapper">
                     <div className="about-content-bottom">
-                        <img src={me} className="about-pic" alt="profile-pic"/> 
+                        <img src={me} className="about-pic" alt="about-pic"/> 
                         <p>
                             도자기는 다양한 흙의 종류와 유약들의 만남으로
                             불 안에서 일어나는 일은 예측할 수 없기에
@@ -57,10 +57,10 @@ const About = () => {
                 </div>
             </div>
         </div>
-        <FooterLink/>
-        <Footer/>                
+        <FooterLink />
+        <Footer/>        
         </>
-    );
-};
+    )
+}
 
 export default About;

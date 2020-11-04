@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { dbService } from "fbase";
+import { onReloadClick } from "functions";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import Navigation from "components/Navigation";
 import './YoutubeUpload.css';
 
 const YoutubeUpload = () => {
@@ -36,12 +38,13 @@ const YoutubeUpload = () => {
     };
     return (
         <>
+        <Navigation/>        
         <div className="upload youtube-upload container">
-            <h3 className="title col-lg-12">매물 업로드</h3>
-            <form onSubmit={onSubmit} className="factoryForm">
+            <h3 onClick={onReloadClick} className="title col-lg-12">매물 업로드</h3>
+            <form onSubmit={onSubmit} className="factoryForm col-lg-12">
                 <div className="factoryInput__container">
                     <input
-                    className="factoryInput__input"
+                    className="upload-input"
                     name="title"
                     value={title}
                     onChange={onChange}
@@ -51,7 +54,7 @@ const YoutubeUpload = () => {
                     required    
                     />
                     <input
-                    className="factoryInput__input"
+                    className="upload-input"
                     name="youtube"
                     value={youtube}
                     onChange={onChange}
@@ -60,10 +63,10 @@ const YoutubeUpload = () => {
                     autoComplete="off"
                     required    
                     />
-                    <input type="submit" value="업로드" className="factoryInput__arrow" />
+                    <input type="submit" value="업로드" className="upload-arrow" />
                 </div>
             </form>
-            <div className="factory__back">
+            <div className="upload-back col-lg-12">
                 <Link to="/" className="btn btn-md">
                     <FontAwesomeIcon icon={faUndo} color={"#0275d8"} size="1x" /> 돌아가기
                 </Link>

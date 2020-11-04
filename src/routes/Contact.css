@@ -1,28 +1,16 @@
 /* CONTACT */
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
 .get-in-touch {
     text-align: center;
     margin: 10% auto !important;
 }
 
-.title {
+.get-in-touch .title {
     color: #3b4961;
     font-size: 50px !important;
-    margin-bottom: 3%;
-}
-
-.contact-circle img {
-    width: 160px;
-    padding: 0 30px;
-    filter: drop-shadow(3px 3px 6px #8e8e8b);    
-}
-
-.contact-circle {
-    margin-bottom: 3%;
-    transition: all .2s ease-in-out;
-}
-
-.contact-circle img:hover {
-    transform: scale(1.05);
+    margin-bottom: 0 !important;
+    cursor: pointer;
 }
 
 .contact-form .form-field {
@@ -93,22 +81,62 @@
 }
   
 .contact-form .submit-btn:hover {
-    background-color: #3b4961;
+    background-color: #2e5fd2;
+}
+
+.get-in-touch-info {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.get-in-touch-info h3 {
+    font-size: 36px;
+    font-family: 'Sacramento', cursive !important;
+    font-weight: bold;
+    position: relative;
+    top: -30px;
+}
+
+.get-in-touch-info a {
+    color: #3b4961 !important;
+    box-shadow:  3px 3px 6px #d5d5d1, 
+    -3px -3px 6px #ffffff;
+    padding: 20px 0;
+    border-radius: 20px;
+    width: 80%;
+    margin: 10px auto;
+    margin-bottom: 0;
+    text-decoration: none !important;
+    cursor: pointer;
+    position: relative;
+    top: -10px;
+}
+
+.get-in-touch-info a:hover {
+    background: linear-gradient(145deg, #e1e1dd, #ffffff);
+	box-shadow:  3px 3px 6px #d5d5d1, 
+             	-3px -3px 6px #ffffff;
+}
+
+.get-in-touch-info span {
+    font-size: 14px !important;
 }
 
 #alert {
     text-align: center;
     font-weight: bold;
     color:#79c879;
-    margin-bottom: 10px;
     font-size: 24px;
     padding:10px;
     margin: 3% auto !important;
+    margin-bottom: 0 !important;
     z-index: 99999;
 }
 
 .get-in-touch-content {
-    margin-top: 10%;
     width: 100%;
 }
 
@@ -121,20 +149,22 @@
     bottom: 16px !important;
 }
 
-@media (max-width: 768px) { 
-    .get-in-touch-content img {
+@media (max-width: 992px) {
+    .get-in-touch img {
         width: 100%;
         margin: 0 auto !important;
-        margin-bottom: 10% !important;
     }
+    .get-in-touch-info a {
+        margin: 20px auto;
+    }
+    .get-in-touch-info {
+        margin-bottom: 10%;
+    }
+}
 
+@media (max-width: 768px) { 
     .get-in-touch-content {
         margin: 0 auto !important;
         margin-bottom: 10% !important;
-    }
-
-    .contact-circle {
-        width: 100px !important;
-        padding: 10%;
     }
 }

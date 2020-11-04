@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="footer-container container">
+        <footer className="footer-container container row">
             <div className="col-lg-12">
                 <span>
                     오성공인중개사 사무소 / e-오성공인중개사 사무소<br />

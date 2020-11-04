@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { dbService } from "fbase";
-import { limitNumber, limitTitle, onReloadClick } from "functions";
+import { limitNumber, limitTitle } from "functions";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWonSign, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
@@ -12,10 +12,11 @@ const ProductRecommend = () => {
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
+    let mounted = true;
         dbService
             .collection('products')
             .orderBy("createdAt", "desc")
-            .limit(3)
+            .limit(6)
             .onSnapshot((snapshot) => {
                 let productArray = snapshot.docs.map((doc) => ({
                 id: doc.id,
@@ -24,11 +25,14 @@ const ProductRecommend = () => {
                 setProducts(productArray);
             });
         setIsLoaded(true);
+        return () => (mounted = false);
     }, []);
     return (
         <>
         <div data-aos="fade-up" className="product-recom container">
-            <h3 onClick={onReloadClick} className="product-recom-title col-lg-12">추천물건</h3>
+            <Link to="/search" className="col-lg-12">
+                <h3 className="product-recom-title">추천물건</h3>
+            </Link>
             {isLoaded ?
                 <>
                 <div className="product-recom-container container row">
@@ -50,7 +54,7 @@ const ProductRecommend = () => {
                     </div>
                 )}
                 <div className="col-lg-12">
-                    <Link data-aos="fade-up" to="/search" className="btn load__btn col-lg-4"> 더보기 </Link>
+                    <Link data-aos="fade-up" to="/search" className="btn load__btn"> 더보기 </Link>
                 </div>        
             </div>
             </>

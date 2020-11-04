@@ -73,9 +73,10 @@ const SearchCard = ({ productObj, isOwner }) => {
         }
     };
     return (
-    <div className="search-card-item col-lg-4 col-md-6">
-        {editing ? (
+        <div className="search-card-item col-lg-4 col-md-6">
+            {editing ? (
             <>
+            <div className="search-card">
             <form onSubmit={onSubmit} className="col-lg-12 product-recom-container manage-form">
                 <input
                 type="text"
@@ -147,39 +148,40 @@ const SearchCard = ({ productObj, isOwner }) => {
                     </p>         
                 </div>  
             </form>
-            </>            
-            ) : (
-            <>
-            <div className="product-recom-container container row">
-                <div data-aos="fade-up" key={productObj.id} className="product-recom-item">
-                    <h4>{limitTitle(productObj.title)}</h4>
-                    <span className="product-action">추천</span>
-                    {productObj.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
-                    <img src={productObj.attachmentUrl} alt="product-pic"/>
-                    <div className="product-recom-list">
-                        <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {productObj.price}</p>
-                        <p className="product-location"><FontAwesomeIcon icon={faMapMarkerAlt} />{productObj.region}</p>
-                        <p className="product-detail">
-                            <span className="col-lg-4">{productObj.type}</span>
-                            <span className="col-lg-4">{productObj.size}</span>
-                            <span className="col-lg-4">{productObj.structure}</span>
-                        </p>
-                    </div>
-                    {isOwner && (
-                        <div className="product__actions">
-                            <span onClick={onDeleteClick}>
-                                <FontAwesomeIcon icon={faTrash} />
-                            </span>
-                            <span onClick={toggleEditing}>
-                                <FontAwesomeIcon icon={faPencilAlt} />
-                            </span>
-                        </div>
-                    )}            
-                </div>
-            </div>    
-            </>
-            )}
         </div>
+        </>            
+        ) : (
+        <>
+        <div className="product-recom-container container row">
+            <div data-aos="fade-up" key={productObj.id} className="product-recom-item">
+                <h4>{limitTitle(productObj.title)}</h4>
+                <span className="product-action">추천</span>
+                {productObj.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
+                <img src={productObj.attachmentUrl} alt="product-pic"/>
+                <div className="product-recom-list">
+                    <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {productObj.price}</p>
+                    <p className="product-location"><FontAwesomeIcon icon={faMapMarkerAlt} />{productObj.region}</p>
+                    <p className="product-detail">
+                        <span className="col-lg-4">{productObj.type}</span>
+                        <span className="col-lg-4">{productObj.size}</span>
+                        <span className="col-lg-4">{productObj.structure}</span>
+                    </p>
+                </div>
+                {isOwner && (
+                    <div className="product__actions">
+                        <span onClick={onDeleteClick}>
+                            <FontAwesomeIcon icon={faTrash} />
+                        </span>
+                        <span onClick={toggleEditing}>
+                            <FontAwesomeIcon icon={faPencilAlt} />
+                        </span>
+                    </div>
+                )}            
+            </div>
+        </div>    
+        </>
+        )}
+    </div>
     );
 };
 

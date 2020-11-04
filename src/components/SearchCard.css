@@ -1,6 +1,12 @@
 /* SEARCH CARD */
+.search-card {
+    padding: 0 10px !important;
+    background-color: #fff;
+    filter: drop-shadow(3px 3px 6px #8e8e8b);
+}
+
 .search-card-item {
-    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .search-card-item img {
@@ -15,7 +21,7 @@
 
 .manage-form {
     text-align: left;
-    margin-top: 20% !important;
+    padding: 40px 0 !important;
 }
 
 .formBtn {
@@ -24,11 +30,11 @@
     color: white;
     cursor: pointer;
     background-color: #04aaff;
-    width: 100%;
-    height: 35px;
-    padding: 7px 20px;
-    margin: 2px auto;
+    width: 100% !important;
     border-radius: 20px;
+    padding: 7px 0;
+    margin-top: 5px;
+    font-size: 16px !important;
 }
   
 .cancelBtn {
@@ -39,6 +45,7 @@
 
 .formInput {
     width: 100%;
+    font-size: 16px !important;
 }
 
 .product__actions {

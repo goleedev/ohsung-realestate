@@ -6,11 +6,11 @@ import building from 'images/home-building.png';
 import circle1 from '../images/home-circle2.png';
 import circle2 from '../images/home-circle3.png';
 import './Header.css';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom';
 
 const Header = () => {
     const history = useHistory();
     const [searchInput, setSearchInput] = useState("");
+    // eslint-disable-next-line
     const [products, setProducts] = useState([]);
     const onChange = (event) => {
         const {
@@ -41,7 +41,7 @@ const Header = () => {
         if (searchInput !== "" && searchInput !== " ") {
             dbService
                 .collection('products')
-                .where('tag', 'array-contains-any', [searchInput])
+                .where('tags', 'array-contains-any', [searchInput])
                 .onSnapshot((snapshot) => {
                     let productArray = snapshot.docs.map((doc) => ({
                         id: doc.id,

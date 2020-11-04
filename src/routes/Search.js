@@ -3,6 +3,7 @@ import { dbService } from "fbase";
 import { limitNumber, limitTitle, onReloadClick } from 'functions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWonSign, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { Modal, Button } from "react-bootstrap";
 import Loading from 'components/Loading';
 import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
@@ -16,11 +17,10 @@ const Search = ( props ) => {
     const [searchInput, setSearchInput] = useState("");
     const data = props.history.location.state;
     useEffect(() => {
-        window.scrollTo(0, 0);
         if (data && data.data) {
             dbService
                 .collection('products')
-                .where('tag', 'array-contains-any', [data.data])
+                .where('tags', 'array-contains-any', [data.data])
                 .onSnapshot((snapshot) => {
                     let productArray = snapshot.docs.map((doc) => ({
                     id: doc.id,
@@ -53,7 +53,7 @@ const Search = ( props ) => {
             })
         }
         setIsLoaded(true);
-    }, []);
+    }, [data]);
     const onClick = (event) => {
         const {
             target: { id },
@@ -70,6 +70,9 @@ const Search = ( props ) => {
                 setProducts(productArray);
             });
     };
+    const onModalClick = () => {
+        
+    };
     const onChange = (event) => {
         const {
             target: { value },
@@ -81,7 +84,7 @@ const Search = ( props ) => {
         if (searchInput !== "" && searchInput !== " ") {
             await dbService
                 .collection('products')
-                .where('tag', 'array-contains-any', [searchInput])
+                .where('tags', 'array-contains-any', [searchInput])
                 .onSnapshot((snapshot) => {
                     let productArray = snapshot.docs.map((doc) => ({
                         id: doc.id,
@@ -95,7 +98,8 @@ const Search = ( props ) => {
     };
     return (
         <>
-        <Navigation/>
+        <Navigation />
+        
         <div data-aos="fade-up" className="product-recom search-page container">
             <h3 onClick={onReloadClick} className="product-recom-title col-lg-12">물건 검색</h3>
             <nav className="product-recom-nav col-lg-12">
@@ -123,8 +127,8 @@ const Search = ( props ) => {
                 />
             </form>
             {isLoaded ?
-                <>
-                <div className="product-recom-container container row">
+                    <>
+                <div className="search-container container row">
                     {products.map((product) =>
                     <div data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">
                         <h4><span className="product-id">매물번호-{limitNumber(product.createdAt)}</span>{limitTitle(product.title)}</h4>

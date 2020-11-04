@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { dbService } from 'fbase';
-import { limitTitle, onReloadClick } from "functions";
+import { limitTitle } from "functions";
 import Loading from './Loading';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
@@ -28,21 +28,23 @@ const YoutubeCards = () => {
     return (
         <>
         <div data-aos="fade-up" className="youtube-cards container row">
-            <h3 className="youtube-cards-title col-lg-12" onClick={onReloadClick}>오성TV <FontAwesomeIcon icon={faYoutube} color="red"/> 매물</h3>
+            <Link to="/youtube" className="col-lg-12">
+                <h3 className="youtube-cards-title">오성TV <FontAwesomeIcon icon={faYoutube} color="red"/> 매물</h3>
+            </Link>
             {isLoaded ?
             <>
             <div className="row">
                 {youtubes.map((youtube) =>
                     <div data-aos="fade-up" key={youtube.id} className="youtube-item col-lg-4 col-md-6">
                         <a href={youtube.url}><span className="btn btn-danger">유튜브로 이동</span></a>
-                        <ReactPlayer url={youtube.url} className="youtube-vid" width="300px" height="200px" config={{ youtube: { playerVars: { showinfo: 1, controls: 1 } }, }} />
+                        <ReactPlayer url={youtube.url} className="youtube-vid" width="300px" height="250px" config={{ youtube: { playerVars: { showinfo: 1, controls: 1 } }, }} />
                         <h4>{limitTitle(youtube.title)}</h4>
                     </div>
                 )} 
-                <Link data-aos="fade-up" to="/youtube" className="btn load__btn col-lg-3 col-md-12">
-                    <span>더보기</span>
-                </Link>
             </div>
+            <Link data-aos="fade-up" to="/youtube" className="btn load__btn">
+                <span>더보기</span>
+            </Link>
             </>        
             : <Loading />}
         </div>  

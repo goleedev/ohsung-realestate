@@ -1,6 +1,7 @@
 /* FOOTER LINK */
 .logo-slider {
   text-align: center !important;
+  display: block !important;
   margin: 0 auto !important;
   margin-bottom: 4% !important;
 }
@@ -16,8 +17,8 @@
 
 @media (max-width: 768px) {
   .logo-slider img {
-    width: 100px;
-    height: 50px;
+    width: 100px !important;
+    height: 50px !important;
   }
 
   .slick-arrow {
