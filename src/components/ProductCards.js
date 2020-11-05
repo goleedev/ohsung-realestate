@@ -18,7 +18,6 @@ const ProductCards = () => {
         const searchInput = id;
         history.push({
             pathname: '/search',
-            search: `/query?${searchInput}`,
             state: { group: searchInput }
         });
     };

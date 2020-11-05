@@ -8,6 +8,8 @@ import { faPlus, faTimes, faUndo } from "@fortawesome/free-solid-svg-icons";
 import Loading from "components/Loading";
 import Navigation from 'components/Navigation';
 import './Upload.css';
+import Footer from "components/Footer";
+import FooterLink from "components/FooterLink";
 
 const Upload = ({ userObj }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,7 +26,7 @@ const Upload = ({ userObj }) => {
   let tags = [];
   useEffect(() => {
     setIsLoaded(true);
-  }, [])
+  }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
     if (product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "" ) {
@@ -120,6 +122,14 @@ const Upload = ({ userObj }) => {
       { isLoaded ?
       <div className="upload container">
         <h3 onClick={onReloadClick} className="title col-lg-12">매물 업로드</h3>
+        <div className="upload-back">
+          <Link to="/login/upload/youtube" className="link-youtube btn btn-md">
+            <span>오성TV 매물 업로드?</span>
+          </Link>    
+          <Link to="/" className="btn btn-md">
+            <FontAwesomeIcon icon={faUndo} color={"#0275d8"} size="1x" /> 돌아가기
+          </Link>
+        </div>
         <form onSubmit={onSubmit} className="upload-form row">
           <div className="upload-attach col-md-6">
             <label htmlFor="attach-file" className="upload-label col-lg-12">
@@ -200,6 +210,7 @@ const Upload = ({ userObj }) => {
               <option value="공장/창고">공장/창고</option>
               <option value="전원주택">전원주택</option>
               <option value="아파트">아파트</option>
+              <option value="문의">문의</option>
             </select>
             <input
               className="upload-input col-md-12"
@@ -241,15 +252,9 @@ const Upload = ({ userObj }) => {
           <input type="submit" className="upload-arrow col-lg-12" value="업로드"/>
         </form>
       </div>
-    : <Loading/>}
-    <div className="upload-back">
-      <Link to="/login/youtube" className="link-youtube btn btn-md">
-        <span>오성TV 매물 업로드?</span>
-      </Link>    
-      <Link to="/" className="btn btn-md">
-        <FontAwesomeIcon icon={faUndo} color={"#0275d8"} size="1x" /> 돌아가기
-      </Link>
-    </div>
+      : <Loading />}
+      <FooterLink />
+      <Footer />
     </>
   );
 };

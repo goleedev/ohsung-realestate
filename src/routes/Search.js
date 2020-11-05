@@ -16,6 +16,9 @@ const Search = ( props ) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [searchInput, setSearchInput] = useState("");
     const data = props.history.location.state;
+    window.onload = () => {
+        setIsLoaded(true);
+    };
     useEffect(() => {
         if (data && data.data) {
             dbService
@@ -67,6 +70,11 @@ const Search = ( props ) => {
                     id: doc.id,
                     ...doc.data(),
                 }));
+
+                // let length = snapshot.size;
+                // if (length <= 0) {
+                //     return <div>검색 노</div>
+                // }
                 setProducts(productArray);
             });
     };
@@ -99,7 +107,6 @@ const Search = ( props ) => {
     return (
         <>
         <Navigation />
-        
         <div data-aos="fade-up" className="product-recom search-page container">
             <h3 onClick={onReloadClick} className="product-recom-title col-lg-12">물건 검색</h3>
             <nav className="product-recom-nav col-lg-12">
@@ -127,7 +134,7 @@ const Search = ( props ) => {
                 />
             </form>
             {isLoaded ?
-                    <>
+                <>
                 <div className="search-container container row">
                     {products.map((product) =>
                     <div data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">

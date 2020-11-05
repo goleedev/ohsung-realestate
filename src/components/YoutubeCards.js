@@ -2,15 +2,18 @@ import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { dbService } from 'fbase';
 import { limitTitle } from "functions";
-import Loading from './Loading';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import Loading from './Loading';
 import './YoutubeCards.css';
 
 const YoutubeCards = () => {
     const [youtubes, setYotubes] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    window.onload = () => {
+        setIsLoaded(true);
+    };
     useEffect(() => {
         dbService
             .collection('youtubes')

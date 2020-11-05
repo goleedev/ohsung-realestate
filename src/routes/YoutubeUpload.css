@@ -13,7 +13,7 @@
 
 .youtube-upload .upload-arrow {
     padding: 0;
-    margin: 10% auto;
+    margin: 10% auto !important;
 }
 
 @media (max-width: 768px) { 

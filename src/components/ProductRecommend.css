@@ -85,8 +85,16 @@
     font-weight: bold;
 }
 
+.product-location {
+    font-size: 18px;
+}
+
 .product-location svg {
     margin-right: 5px;
+}
+
+.product-sold {
+    background-color: transparent !important;
 }
 
 .product-detail {
@@ -94,6 +102,12 @@
     padding-top: 20px;
     width: 90%;
     margin: 0 auto;
+    font-size: 18px;
+}
+
+.product-detail p {
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 .product-detail span {

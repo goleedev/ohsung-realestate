@@ -7,6 +7,8 @@ import Navigation from 'components/Navigation';
 import SearchCard from 'components/SearchCard';
 import './Manage.css';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import Footer from 'components/Footer';
+import FooterLink from 'components/FooterLink';
 
 const Manage = ({userObj}) => {
     const [products, setProducts] = useState([]);
@@ -27,6 +29,14 @@ const Manage = ({userObj}) => {
         <Navigation />  
         <div className="container manage row">
             <h3 onClick={onReloadClick} className="title col-lg-12">매물 관리</h3>
+            <div className="upload-back col-lg-12">
+                <Link to="/login/manage/youtube" className="link-youtube btn btn-md">
+                    <span>오성TV 매물 관리?</span>
+                </Link> 
+                <Link to="/" className="btn btn-md">
+                    <FontAwesomeIcon icon={faUndo} color={"#0275d8"} size="1x" /> 돌아가기
+                </Link>
+            </div>
                 {products.map((product) => (
                     <SearchCard
                     key={product.id}
@@ -35,11 +45,8 @@ const Manage = ({userObj}) => {
                     />
                 ))}
         </div>
-        <div className="upload-back col-lg-12">
-            <Link to="/" className="btn btn-md">
-                <FontAwesomeIcon icon={faUndo} color={"#0275d8"} size="1x" /> 돌아가기
-            </Link>
-        </div>
+        <FooterLink />
+        <Footer />    
         </>
     );
 };

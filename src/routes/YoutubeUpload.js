@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import Navigation from "components/Navigation";
 import './YoutubeUpload.css';
+import FooterLink from "components/FooterLink";
+import Footer from "components/Footer";
 
 const YoutubeUpload = () => {
     const [youtube, setYoutube] = useState("");
@@ -72,6 +74,8 @@ const YoutubeUpload = () => {
                 </Link>
             </div>
         </div>
+        <FooterLink />
+        <Footer />
         </>
     );
 };

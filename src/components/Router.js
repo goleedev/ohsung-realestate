@@ -12,6 +12,7 @@ import Search from 'routes/Search';
 import Youtube from 'routes/Youtube';
 import Contact from 'routes/Contact';
 import NotFound from 'routes/NotFound';
+import YoutubeManage from 'routes/YoutubeManage';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
     return (
@@ -31,11 +32,14 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                     </Route>    
                     <Route exact path="/login/manage">
                         <Manage userObj={userObj}/>        
+                    </Route>  
+                    <Route exact path="/login/manage/youtube">
+                        <YoutubeManage />
                     </Route>
                     <Route exact path="/login/upload">
                         <Upload userObj={userObj}/>
                     </Route>  
-                    <Route exact path="/login/youtube">
+                    <Route exact path="/login/upload/youtube">
                         <YoutubeUpload />
                     </Route>     
                     </>        

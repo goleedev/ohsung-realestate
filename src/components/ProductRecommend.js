@@ -3,16 +3,18 @@ import { dbService } from "fbase";
 import { limitNumber, limitTitle } from "functions";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWonSign, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import soldPic from '../images/sold.png';
+import { faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
 import Loading from './Loading';
+import soldPic from '../images/sold.png';
 import './ProductRecommend.css';
 
 const ProductRecommend = () => {
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    window.onload = () => {
+        setIsLoaded(true);
+    };
     useEffect(() => {
-    let mounted = true;
         dbService
             .collection('products')
             .orderBy("createdAt", "desc")
@@ -25,7 +27,6 @@ const ProductRecommend = () => {
                 setProducts(productArray);
             });
         setIsLoaded(true);
-        return () => (mounted = false);
     }, []);
     return (
         <>
@@ -46,9 +47,31 @@ const ProductRecommend = () => {
                             <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {product.price}</p>
                             <p className="product-location"><FontAwesomeIcon icon={faMapMarkerAlt} />{product.region}</p>
                             <p className="product-detail">
-                                <span className="col-lg-4">{product.type}</span>
-                                <span className="col-lg-4">{product.size}</span>
-                                <span className="col-lg-4">{product.structure}</span>
+                                <span className="col-lg-6">
+                                    {product.type === "주택"
+                                    ? <FontAwesomeIcon icon={faHome} /> 
+                                    : product.type === "상가건물"
+                                    ? <FontAwesomeIcon icon={faStore} /> 
+                                    : product.type === "토지"
+                                    ? <FontAwesomeIcon icon={faSnowplow} />    
+                                    : product.type === "공장/창고"
+                                    ? <FontAwesomeIcon icon={faIndustry} />    
+                                    : product.type === "전원주택"
+                                    ? <FontAwesomeIcon icon={faHouseUser} />    
+                                    : product.type === "아파트"
+                                    ? <FontAwesomeIcon icon={faBuilding} /> 
+                                    : product.type === "문의"
+                                    ? <FontAwesomeIcon icon={faPhoneSquareAlt} /> 
+                                    : "Error"                                                                                
+                                 } {product.type}
+                                </span>
+                                <span className="col-lg-6">
+                                    <FontAwesomeIcon icon={faObjectGroup} /> {product.structure}
+                                </span>
+                                <p className="col-lg-12">
+                                    <FontAwesomeIcon icon={faLayerGroup} />
+                                    <span> {product.size}</span>
+                                </p>
                             </p>
                         </div>
                     </div>
