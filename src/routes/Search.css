@@ -10,17 +10,12 @@
     margin: 0 auto !important;
 }
 
-.search-container .product-recom-item {
-    margin-top: 5%;
-}
-
 .product-recom-nav span {
     font-size: 20px;
 }
 
 .product-recom-nav span:active,
-.product-recom-nav span:hover
-{    font-weight: bold;
+.product-recom-nav span:hover {    font-weight: bold;
 }
 
 .search-title {
@@ -47,6 +42,10 @@
     left: 0;
 }
 
+.search-container {
+    margin-top: 5% !important;
+}
+
 .search-search {
     margin: 3% auto !important;
     margin-bottom: 0 !important;
@@ -56,5 +55,9 @@
 @media (max-width: 992px) {
     .search-search {
         width: 90% !important;
+    }
+
+    .search-card-item {
+        margin-top: 5% !important;
     }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import { onReloadClick } from "functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,9 +12,9 @@ import './Contact.css';
 
 const Contact = () => {
     const [isLoaded, setIsLoaded] = useState(false);
-    window.onload = () => {
+    useEffect(() => {
         setIsLoaded(true);
-    };
+    }, []);
     const onSubmit = (event) => {
         event.preventDefault();
         emailjs.sendForm('service_r7g54mq', 'template_uoh0zdn', event.target, 'user_gU0Rwh0uJ4RbQHs2agu2n')
@@ -68,11 +68,11 @@ const Contact = () => {
                         <label className="label file-label" htmlFor="options">문의 종류</label>
                     </div>    
                     <div className="form-field col-lg-12">
-                        <input name="email" id="email" className="input-text js-input" type="email" required />
+                        <input name="email" id="email" className="input-text js-input" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
                         <label className="label" htmlFor="email">이메일</label>
                     </div>  
                     <div className="form-field col-lg-12">
-                        <input name="phone" id="phone" className="input-text js-input" type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required />
+                        <input name="phone" id="phone" className="input-text js-input" type="tel" pattern="[0-9]{3}[-]{0,1}[0-9]{4}[-]{0,1}[0-9]{4}" required />
                         <label className="label" htmlFor="phone">전화번호</label>
                     </div>
                     <div className="form-field col-lg-12">

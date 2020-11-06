@@ -16,6 +16,7 @@ const ProductCards = () => {
             target: { id }
         } = event;
         const searchInput = id;
+        window.scrollTo(0, 0);
         history.push({
             pathname: '/search',
             state: { group: searchInput }

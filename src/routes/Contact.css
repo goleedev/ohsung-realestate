@@ -132,7 +132,7 @@
     font-size: 24px;
     padding:10px;
     margin: 3% auto !important;
-    margin-bottom: 0 !important;
+    margin-top: 0 !important;
     z-index: 99999;
 }
 
@@ -166,5 +166,9 @@
     .get-in-touch-content {
         margin: 0 auto !important;
         margin-bottom: 10% !important;
+    }
+    #alert {
+        margin: 5% auto !important;
+        margin-bottom: 15% !important;
     }
 }

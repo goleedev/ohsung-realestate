@@ -54,6 +54,7 @@ const Header = () => {
                         state: { data: searchInput }
                     });
                 });
+            window.scrollTo(0, 0);
         }
         event.target.reset();
         setSearchInput("");

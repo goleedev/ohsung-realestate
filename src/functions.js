@@ -13,11 +13,6 @@ export const limitTitle = (title, limit = 20) => {
     return title;
 };
 
-// Limit Number
-export const limitNumber = (title) => {
-    return title.toString().slice(-5);
-};
-
 // Reload onClick
 export const onReloadClick = async () => {
     await window.location.reload();

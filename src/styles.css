@@ -45,6 +45,13 @@ button {
     cursor: pointer;
 }
 
+a:active, 
+a:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+}
+
 ::selection {
     background-color: #ddb19e;
     color: #3b4961;

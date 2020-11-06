@@ -7,12 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes, faUndo } from "@fortawesome/free-solid-svg-icons";
 import Loading from "components/Loading";
 import Navigation from 'components/Navigation';
-import './Upload.css';
-import Footer from "components/Footer";
 import FooterLink from "components/FooterLink";
+import Footer from "components/Footer";
+import './Upload.css';
 
 const Upload = ({ userObj }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [number, setNumber] = useState("");
   const [product, setProduct] = useState("");
   const [content, setContent] = useState(""); 
   const [price, setPrice] = useState("");
@@ -29,7 +30,7 @@ const Upload = ({ userObj }) => {
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "" ) {
+    if (number === "" || product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "" ) {
       return;
     }
     let attachmentUrl = "";
@@ -44,6 +45,7 @@ const Upload = ({ userObj }) => {
       createdAt: Date.now(),
       creatorId: userObj.uid,
       title: product,
+      number,
       content,
       price,
       region,
@@ -57,6 +59,7 @@ const Upload = ({ userObj }) => {
     await dbService
       .collection("products")
       .add(productObj);
+    setNumber("");
     setProduct("");
     setContent("");
     setPrice("");
@@ -66,12 +69,15 @@ const Upload = ({ userObj }) => {
     setStructure("");
     setSold("");
     setAttachment("");
+    await alert("정상적으로 업로드 되었습니다.");
   };
   const onChange = (event) => {
     const {
       target: { name, value },
     } = event;
-    if (name === "title") {
+    if (name === "number") {
+      setNumber(value);
+    } else if (name === "title") {
       setProduct(value);
     } else if (name === "content") {
       setContent(value);
@@ -137,22 +143,23 @@ const Upload = ({ userObj }) => {
               <FontAwesomeIcon icon={faPlus} />
             </label>
             <input
-              id="attach-file"
-              type="file"
-              accept="image/*"
-              onChange={onFileChange}
-              style={{
-                opacity: 0,
-              }}
+            id="attach-file"
+            required
+            type="file"
+            accept="image/*"
+            onChange={onFileChange}
+            style={{
+              opacity: 0,
+            }}
             />
             {attachment && (
               <div className="upload-attachment col-lg-12">
                 <img
-                  src={attachment}
-                  style={{
-                    backgroundImage: attachment,
-                  }}
-                  alt="upload-img"
+                src={attachment}
+                style={{
+                  backgroundImage: attachment,
+                }}
+                alt="upload-img"
                 />
                 <div className="upload-clear" onClick={onClearAttachment}>
                   <span>Remove</span>
@@ -163,46 +170,56 @@ const Upload = ({ userObj }) => {
           </div>
           <div className="upload-container row col-md-6">
             <input
-              className="upload-input col-md-12"
-              value={product}
-              onChange={onChange}
-              type="text"
-              autoComplete="off"
-              name="title"
-              placeholder="매물 이름"
-              required
+            className="upload-input col-md-12"
+            value={number}
+            onChange={onChange}
+            type="text"
+            autoComplete="off"
+            name="number"
+            placeholder="매물 번호"
+            required
             />
             <input
-              className="upload-input col-md-12"
-              value={content}
-              onChange={onChange}
-              type="text"
-              autoComplete="off"
-              name="content"
-              required
-              placeholder="매물 설명"
+            className="upload-input col-md-12"
+            value={product}
+            onChange={onChange}
+            type="text"
+            autoComplete="off"
+            name="title"
+            placeholder="매물 이름"
+            required
             />
             <input
-              className="upload-input col-md-12"
-              value={price}
-              onChange={onChange}
-              type="text"
-              name="price"
-              autoComplete="off"
-              required
-              placeholder="금액"
+            className="upload-input col-md-12"
+            value={content}
+            onChange={onChange}
+            type="text"
+            autoComplete="off"
+            name="content"
+            placeholder="매물 설명"
+            required
             />
             <input
-              className="upload-input col-md-12"
-              value={region}
-              onChange={onChange}
-              type="text"
-              name="region"
-              autoComplete="off"
-              required
-              placeholder="지역"
+            className="upload-input col-md-12"
+            value={price}
+            onChange={onChange}
+            type="text"
+            name="price"
+            autoComplete="off"
+            placeholder="금액"
+            required
             />
-            <select onChange={onChange} name="type" id="type" className="col-md-12">
+            <input
+            className="upload-input col-md-12"
+            value={region}
+            onChange={onChange}
+            type="text"
+            name="region"
+            autoComplete="off"
+            placeholder="지역"
+            required
+            />
+            <select onChange={onChange} name="type" id="type" className="col-md-12" required>
               <option value="">매물 종류</option>
               <option value="주택">주택</option>
               <option value="상가건물">상가건물</option>
@@ -210,29 +227,28 @@ const Upload = ({ userObj }) => {
               <option value="공장/창고">공장/창고</option>
               <option value="전원주택">전원주택</option>
               <option value="아파트">아파트</option>
-              <option value="문의">문의</option>
             </select>
             <input
-              className="upload-input col-md-12"
-              value={size}
-              onChange={onChange}
-              type="text"
-              name="size"
-              autoComplete="off"
-              required
-              placeholder="면적"
+            className="upload-input col-md-12"
+            value={size}
+            onChange={onChange}
+            type="text"
+            name="size"
+            autoComplete="off"
+            placeholder="면적"
+            required
             />
             <input
-              className="upload-input col-md-12"
-              value={structure}
-              onChange={onChange}
-              type="text"
-              name="structure"
-              placeholder="구조"
-              autoComplete="off"
-              required
+            className="upload-input col-md-12"
+            value={structure}
+            onChange={onChange}
+            type="text"
+            name="structure"
+            placeholder="구조"
+            autoComplete="off"
+            required
             />
-            <div  id="tags" className="upload-input col-md-12 row">
+            <div id="tags" className="upload-input col-md-12 row">
               <input
               value={tag}
               onChange={onChange}
@@ -243,7 +259,7 @@ const Upload = ({ userObj }) => {
               />
               <button onClick={onTagClick}>+</button> 
             </div>
-            <select value={sold} onChange={onChange} name="sold" id="sold" className="col-md-12">
+            <select value={sold} onChange={onChange} name="sold" id="sold" className="col-md-12" required>
               <option value="">계약 여부</option>
               <option value="미완료">미완료</option>
               <option value="완료">완료</option>

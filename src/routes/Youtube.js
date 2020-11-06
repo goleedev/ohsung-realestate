@@ -15,9 +15,6 @@ import 'routes/Youtube.css';
 const Youtube = () => {
     const [youtubes, setYotubes] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
-    window.onload = () => {
-        setIsLoaded(true);
-    };
     useEffect(() => {
         dbService
             .collection('youtubes')
@@ -30,6 +27,7 @@ const Youtube = () => {
                 let newYoutubeVids = youtubeArray.slice(undefined, 12);
                 setYotubes(newYoutubeVids);
             });
+        setIsLoaded(true);
     }, []);
     return (
         <>

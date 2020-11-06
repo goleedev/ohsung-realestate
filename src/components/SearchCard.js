@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
 import { limitTitle } from "functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt, faWonSign, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPencilAlt, faWonSign, faMapMarkerAlt, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faBuilding, faPhoneSquareAlt, faObjectGroup, faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import soldPic from '../images/sold.png';
 import './SearchCard.css';
 
-const SearchCard = ({ productObj, isOwner }) => {
+const SearchCard = ({ productObj }) => {
     const [editing, setEditing] = useState(false);
+    const [newNumber, setNewNumber] = useState(productObj.number);
     const [newProduct, setNewProduct] = useState(productObj.title);
     const [newContent, setNewContent] = useState(productObj.content);
     const [newPrice, setNewPrice] = useState(productObj.price);
@@ -24,6 +25,7 @@ const SearchCard = ({ productObj, isOwner }) => {
         }
     };
     const toggleEditing = () => {
+        setNewNumber(newNumber);
         setNewProduct(newProduct);
         setNewContent(newContent);
         setNewPrice(newPrice);
@@ -39,6 +41,7 @@ const SearchCard = ({ productObj, isOwner }) => {
         await dbService
                 .doc(`products/${productObj.id}`)
                 .update({
+                    number: newNumber,
                     title: newProduct,
                     content: newContent,
                     price: newPrice,
@@ -54,7 +57,9 @@ const SearchCard = ({ productObj, isOwner }) => {
         const {
             target: { name, value },
         } = event;
-        if (name === "title") {
+        if (name === "number") {
+            setNewNumber(value);
+        } else if (name === "title") {
             setNewProduct(value);
         } else if (name === "content") {
             setNewContent(value);
@@ -80,10 +85,18 @@ const SearchCard = ({ productObj, isOwner }) => {
             <form onSubmit={onSubmit} className="col-lg-12 product-recom-container manage-form">
                 <input
                 type="text"
+                placeholder="매물 번호를 수정 하세요."
+                value={newNumber}
+                name="number"            
+                autoFocus
+                onChange={onChange}
+                className="formInput"
+                />
+                <input
+                type="text"
                 placeholder="제목을 수정 하세요."
                 value={newProduct}
                 name="title"            
-                autoFocus
                 onChange={onChange}
                 className="formInput"
                 />
@@ -151,32 +164,51 @@ const SearchCard = ({ productObj, isOwner }) => {
         </div>
         </>            
         ) : (
-        <>
+        <> 
         <div className="product-recom-container container row">
             <div data-aos="fade-up" key={productObj.id} className="product-recom-item">
-                <h4>{limitTitle(productObj.title)}</h4>
+                <h4><span className="product-id">매물번호-{productObj.number}</span>{limitTitle(productObj.title)}</h4>
                 <span className="product-action">추천</span>
                 {productObj.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
                 <img src={productObj.attachmentUrl} alt="product-pic"/>
                 <div className="product-recom-list">
-                    <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {productObj.price}</p>
-                    <p className="product-location"><FontAwesomeIcon icon={faMapMarkerAlt} />{productObj.region}</p>
-                    <p className="product-detail">
-                        <span className="col-lg-4">{productObj.type}</span>
-                        <span className="col-lg-4">{productObj.size}</span>
-                        <span className="col-lg-4">{productObj.structure}</span>
-                    </p>
-                </div>
-                {isOwner && (
-                    <div className="product__actions">
-                        <span onClick={onDeleteClick}>
-                            <FontAwesomeIcon icon={faTrash} />
-                        </span>
-                        <span onClick={toggleEditing}>
-                            <FontAwesomeIcon icon={faPencilAlt} />
-                        </span>
+                    <div className="product-detail">
+                        <p className="col-xs-12 row">
+                            <span className="col-xs-6">
+                                {productObj.type === "주택"
+                                ? <FontAwesomeIcon icon={faHome} /> 
+                                : productObj.type === "상가건물"
+                                ? <FontAwesomeIcon icon={faStore} /> 
+                                : productObj.type === "토지"
+                                ? <FontAwesomeIcon icon={faSnowplow} />    
+                                : productObj.type === "공장/창고"
+                                ? <FontAwesomeIcon icon={faIndustry} />    
+                                : productObj.type === "전원주택"
+                                ? <FontAwesomeIcon icon={faHouseUser} />    
+                                : productObj.type === "아파트"
+                                ? <FontAwesomeIcon icon={faBuilding} /> 
+                                : "Error"                                                                                
+                            } {productObj.type}</span>
+                            <span className="col-xs-6">
+                                {productObj.structure === "문의"
+                                ? <FontAwesomeIcon icon={faPhoneSquareAlt} />
+                                : <FontAwesomeIcon icon={faObjectGroup} />} {productObj.structure}
+                            </span>
+                        </p>
+                        <p className="col-xs-12">
+                            <FontAwesomeIcon icon={faLayerGroup} />
+                            <span> {productObj.size}</span>
+                        </p>
                     </div>
-                )}            
+                </div>
+                <div className="product__actions">
+                    <span onClick={onDeleteClick}>
+                        <FontAwesomeIcon icon={faTrash} />
+                    </span>
+                    <span onClick={toggleEditing}>
+                        <FontAwesomeIcon icon={faPencilAlt} />
+                    </span>
+                </div>        
             </div>
         </div>    
         </>
