@@ -15,6 +15,7 @@ const ProductRecommend = () => {
         setIsLoaded(true);
     };
     useEffect(() => {
+        // eslint-disable-next-line
         let mounted = true;
         dbService
             .collection('products')

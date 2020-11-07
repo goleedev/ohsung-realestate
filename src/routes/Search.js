@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
 import { Modal, Button } from "react-bootstrap";
 import Loading from 'components/Loading';
+import NoResult from 'components/NoResult';
 import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
@@ -14,7 +15,9 @@ import 'routes/Search.css';
 const Search = ( props ) => {
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [noResult, setNoResult] = useState(false);
     const [searchInput, setSearchInput] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
     const data = props.history.location.state;
     window.onload = () => {
         setIsLoaded(true);
@@ -29,6 +32,12 @@ const Search = ( props ) => {
                     id: doc.id,
                     ...doc.data(),
                     }));
+                    let size = snapshot.size;
+                    if (size <= 0) {
+                        setNoResult(true);
+                    } else {
+                        setNoResult(false);
+                    }
                     setProducts(productArray);
                 })
         } else if (data && data.group) {
@@ -41,6 +50,12 @@ const Search = ( props ) => {
                         id: doc.id,
                         ...doc.data(),
                     }));
+                    let size = snapshot.size;
+                    if (size <= 0) {
+                        setNoResult(true);
+                    } else {
+                        setNoResult(false);
+                    }
                     setProducts(productArray);
                 })
         } else {
@@ -52,6 +67,12 @@ const Search = ( props ) => {
                 id: doc.id,
                 ...doc.data(),
                 }));
+                let size = snapshot.size;
+                if (size <= 0) {
+                    setNoResult(true);
+                } else {
+                    setNoResult(false);
+                }  
                 setProducts(productArray);
             })
         }
@@ -70,16 +91,19 @@ const Search = ( props ) => {
                     id: doc.id,
                     ...doc.data(),
                 }));
-
-                // let length = snapshot.size;
-                // if (length <= 0) {
-                //     return <div>검색 노</div>
-                // }
+                if (productArray.length <= 0) {
+                    setNoResult(true);
+                } else {
+                    setNoResult(false);
+                }
                 setProducts(productArray);
             });
     };
-    const onModalClick = () => {
-        
+    const openModal = () => {
+        setIsOpen(true);
+    };
+    const closeModal = () => {
+        setIsOpen(false);
     };
     const onChange = (event) => {
         const {
@@ -98,7 +122,13 @@ const Search = ( props ) => {
                         id: doc.id,
                         ...doc.data(),
                     }));
-                    setProducts(productArray);
+                    let size = snapshot.size;
+                    if (size <= 0) {
+                        setNoResult(true);
+                    } else {
+                        setNoResult(false);
+                        setProducts(productArray);
+                    }
                 });
         }
         setSearchInput("");
@@ -133,8 +163,11 @@ const Search = ( props ) => {
                 className="btn search-btn col-xs-4" 
                 />
             </form>
-            {isLoaded ?
-                <>
+            {!isLoaded
+                ? <Loading />
+                : noResult    
+                ? <NoResult />
+                : <>
                 <div className="search-container container row">
                     {products.map((product) =>
                     <div data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">
@@ -177,8 +210,7 @@ const Search = ( props ) => {
                     </div>
                     )}   
                 </div>
-            </>
-            : <Loading />}
+            </>}
         </div> 
         <FooterLink/>
         <Footer/>

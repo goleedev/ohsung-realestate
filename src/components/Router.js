@@ -25,7 +25,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                 <Route exact path="/youtube" component={Youtube}/>
                 <Route exact path="/search" component={Search}/>
                 <Route exact path="/contact" component={Contact}/>
-                {isLoggedIn ? (
+                {isLoggedIn && userObj.uid === "U00BnGBmKHeLslGeX6avZg5qX5o1" ? (
                     <>
                     <Route exact path="/login">
                         <Admin userObj={userObj}/>

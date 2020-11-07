@@ -24,13 +24,13 @@ const Upload = ({ userObj }) => {
   const [tag, setTag] = useState("");
   const [attachment, setAttachment] = useState("");
   const [sold, setSold] = useState(""); 
-  let tags = [];
+  const [tags, setTags] = useState([]);
   useEffect(() => {
     setIsLoaded(true);
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (number === "" || product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "" ) {
+    if (number === "" || product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "") {
       return;
     }
     let attachmentUrl = "";
@@ -52,9 +52,9 @@ const Upload = ({ userObj }) => {
       type,
       size,
       structure,
-      tags,
       sold,
       attachmentUrl,
+      tags,
     };
     await dbService
       .collection("products")
@@ -68,6 +68,7 @@ const Upload = ({ userObj }) => {
     setSize("");
     setStructure("");
     setSold("");
+    setTags([]);
     setAttachment("");
     await alert("정상적으로 업로드 되었습니다.");
   };
@@ -99,10 +100,7 @@ const Upload = ({ userObj }) => {
   };
   const onTagClick = (event) => {
     event.preventDefault();
-    const {
-      target: { value }
-    } = event;
-    tags.push(value);
+    setTags(tags => tags.concat(tag));
     setTag("");
   }
   const onFileChange = (event) => {
@@ -248,7 +246,7 @@ const Upload = ({ userObj }) => {
             autoComplete="off"
             required
             />
-            <div id="tags" className="upload-input col-md-12 row">
+            <div onClick={onTagClick} id="tags" className="upload-input col-md-12 row">
               <input
               value={tag}
               onChange={onChange}
@@ -257,7 +255,7 @@ const Upload = ({ userObj }) => {
               placeholder="태그"
               autoComplete="off"
               />
-              <button onClick={onTagClick}>+</button> 
+              <button >+</button> 
             </div>
             <select value={sold} onChange={onChange} name="sold" id="sold" className="col-md-12" required>
               <option value="">계약 여부</option>

@@ -172,6 +172,8 @@ const SearchCard = ({ productObj }) => {
                 {productObj.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
                 <img src={productObj.attachmentUrl} alt="product-pic"/>
                 <div className="product-recom-list">
+                    <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {productObj.price}</p>
+                    <p className="product-location"><FontAwesomeIcon icon={faMapMarkerAlt} />{productObj.region}</p>
                     <div className="product-detail">
                         <p className="col-xs-12 row">
                             <span className="col-xs-6">
