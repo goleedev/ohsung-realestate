@@ -80,8 +80,10 @@ const ProductRecommend = () => {
                         </div>
                     </div>
                 )}
-                <div className="col-lg-12">
-                    <Link data-aos="fade-up" to="/search" className="btn load__btn"> 더보기 </Link>
+                <div className="col-lg-12"> 
+                    <Link data-aos="fade-up" to="/search" className="btn load__btn">
+                        <span>더보기</span>
+                    </Link>
                 </div>        
             </div>
             </>

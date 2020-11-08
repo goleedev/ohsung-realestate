@@ -55,7 +55,6 @@
 @media (max-width: 768px) {
     .youtube-cards {
         display: block;
-        margin-top: 30% !important;
     }
     
     .youtube-cards-title {

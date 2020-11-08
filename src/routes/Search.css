@@ -52,6 +52,19 @@
     width: 50% !important;
 }
 
+#search {
+    font-size: 18px !important;
+}
+
+#search .form-control {
+    text-align: left;
+}
+
+.search-btn,
+#search .search-btn  {
+    width: 20% !important;
+}
+
 @media (max-width: 992px) {
     .search-search {
         width: 90% !important;

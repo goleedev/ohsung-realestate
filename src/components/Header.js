@@ -67,9 +67,9 @@ const Header = () => {
                 <span className="home-type">
                     <Typewriter
                     options={{
-                        strings: ['주택', '상가', '토지', '아파트'],
-                        autoStart: true,
-                        loop: true,
+                    strings: ['주택', '상가', '토지', '아파트'],
+                    autoStart: true,
+                    loop: true,
                     }}
                     />
                 </span>

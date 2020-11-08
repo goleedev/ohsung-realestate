@@ -19,20 +19,33 @@ const ProductCards = () => {
         window.scrollTo(0, 0);
         history.push({
             pathname: '/search',
+            search: `/query?${searchInput}`,            
             state: { group: searchInput }
         });
     };
     return (
-        <div data-aos="fade-up" className="product-list container row">
+        <div data-aos="fade-up" className="product-list container row col-lg-12">
             <Link to="/search" className="col-lg-12">
                 <h3 className="product-title">매물 둘러보기</h3>
             </Link>
-            <img src={pro1} alt="product-card"onClick={onClick} id="주택" className="product-item top-row col-md-4 col-sm-6" />
-            <img src={pro2} alt="product-card" onClick={onClick} id="상가건물" className="product-item top-row col-md-4 col-sm-6"/>
-            <img src={pro3} alt="product-card" onClick={onClick} id="토지" className="product-item top-row col-md-4 col-sm-6"/>
-            <img src={pro4} alt="product-card" onClick={onClick} id="공장/창고" className="product-item col-md-4 col-sm-6"/>
-            <img src={pro5} alt="product-card" onClick={onClick} id="전원주택" className="product-item col-md-4 col-sm-6"/>
-            <img src={pro6} alt="product-card"onClick={onClick} id="아파트" className="product-item col-md-4 col-sm-6"/>
+            <div className="product-item top-row col-md-4 col-sm-6">
+                <img onClick={onClick} id="주택" src={pro1} alt="product-card"/>
+            </div>
+            <div className="product-item top-row col-md-4 col-sm-6">
+                <img onClick={onClick} id="상가건물" src={pro2} alt="product-card"/>
+            </div>
+            <div className="product-item top-row col-md-4 col-sm-6">
+                <img onClick={onClick} id="토지" src={pro3} alt="product-card"/>
+            </div>
+            <div className="product-item col-md-4 col-sm-6">
+                <img onClick={onClick} id="공장/창고" src={pro4} alt="product-card"/>
+            </div>
+            <div className="product-item col-md-4 col-sm-6">
+                <img onClick={onClick} id="전원주택" src={pro5} alt="product-card"/>
+            </div>
+            <div className="product-item col-md-4 col-sm-6">
+                <img src={pro6} alt="product-card"/>
+            </div>
         </div>
     )
 }

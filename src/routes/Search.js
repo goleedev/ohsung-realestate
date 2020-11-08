@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { dbService } from "fbase";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { limitTitle, onReloadClick } from 'functions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
-import { Modal, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Loading from 'components/Loading';
 import NoResult from 'components/NoResult';
 import Navigation from 'components/Navigation';
@@ -17,7 +18,7 @@ const Search = ( props ) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [noResult, setNoResult] = useState(false);
     const [searchInput, setSearchInput] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
+    const history = useHistory();
     const data = props.history.location.state;
     window.onload = () => {
         setIsLoaded(true);
@@ -99,12 +100,6 @@ const Search = ( props ) => {
                 setProducts(productArray);
             });
     };
-    const openModal = () => {
-        setIsOpen(true);
-    };
-    const closeModal = () => {
-        setIsOpen(false);
-    };
     const onChange = (event) => {
         const {
             target: { value },
@@ -134,6 +129,12 @@ const Search = ( props ) => {
         setSearchInput("");
         document.querySelector("#search").reset(); 
     };
+    // const onDetaileClick = (product) => {
+    //     history.push({
+    //         pathname: `/search/${product.id}`,
+    //         state: { product: product }
+    //     })
+    // }
     return (
         <>
         <Navigation />
@@ -151,16 +152,16 @@ const Search = ( props ) => {
                 <input
                 onChange={onChange}    
                 type="text"
-                className="form-control col-xs-8"
+                autoComplete="off"        
+                className="form-control"
                 placeholder="지역명/지하철역을 입력해주세요."
                 name="search"
                 value={searchInput}   
-                autoComplete="off"        
                 />
                 <input
                 type="submit"
                 value="검색"
-                className="btn search-btn col-xs-4" 
+                className="btn search-btn"
                 />
             </form>
             {!isLoaded
@@ -170,6 +171,7 @@ const Search = ( props ) => {
                 : <>
                 <div className="search-container container row">
                     {products.map((product) =>
+                    <>
                     <div data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">
                         <h4><span className="product-id">매물번호-{product.number}</span>{limitTitle(product.title)}</h4>
                         <span className="product-action">추천</span>
@@ -204,11 +206,20 @@ const Search = ( props ) => {
                                 <p className="col-xs-12">
                                     <FontAwesomeIcon icon={faLayerGroup} />
                                     <span> {product.size}</span>
-                                </p>
-                            </div>
+                                </p> 
+                                <a onClick={() => {
+                                    history.push({
+                                    pathname: `/search/${product.id}`,
+                                    state: { product: {product} }
+                                    })
+                                }}>더보기</a>      
+                                {/* <Link to={`search/${product.id}`} product={product}
+                                >더보기</Link>        */}
+                            </div>     
                         </div>
                     </div>
-                    )}   
+                    </>
+                    )} 
                 </div>
             </>}
         </div> 
