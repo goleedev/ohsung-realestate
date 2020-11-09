@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
-import { limitTitle } from "functions";
+import { limitTitle } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt, faWonSign, faMapMarkerAlt, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faBuilding, faPhoneSquareAlt, faObjectGroup, faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import soldPic from '../images/sold.png';
@@ -75,11 +75,11 @@ const SearchCard = ({ productObj }) => {
             setNewStructure(value);
         } else if (name === "sold") {
             setNewSold(value);
-        }
+        };
     };
     return (
         <div className="search-card-item col-lg-4 col-md-6">
-            {editing ? (
+            { editing ? (
             <>
             <div className="search-card">
             <form onSubmit={onSubmit} className="col-lg-12 product-recom-container manage-form">
@@ -119,6 +119,8 @@ const SearchCard = ({ productObj }) => {
                 <select value={newType} onChange={onChange} name="type" id="type" className="formInput">
                     <option value="">매물 종류 수정</option>
                     <option value="주택">주택</option>
+                    <option value="다가구주택">다가구주택</option>
+                    <option value="상가주택">상가주택</option>
                     <option value="상가건물">상가건물</option>
                     <option value="토지">토지</option>
                     <option value="공장/창고">공장/창고</option>
@@ -167,9 +169,9 @@ const SearchCard = ({ productObj }) => {
         <> 
         <div className="product-recom-container container row">
             <div data-aos="fade-up" key={productObj.id} className="product-recom-item">
-                <h4><span className="product-id">매물번호-{productObj.number}</span>{limitTitle(productObj.title)}</h4>
+                <h4><span className="product-id">매물번호-[{productObj.number}]</span>{limitTitle(productObj.title)}</h4>
                 <span className="product-action">추천</span>
-                {productObj.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
+                { productObj.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold" />}
                 <img src={productObj.attachmentUrl} alt="product-pic"/>
                 <div className="product-recom-list">
                     <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {productObj.price}</p>
@@ -177,7 +179,7 @@ const SearchCard = ({ productObj }) => {
                     <div className="product-detail">
                         <p className="col-xs-12 row">
                             <span className="col-xs-6">
-                                {productObj.type === "주택"
+                                { productObj.type === "주택" || productObj.type === "다가구주택" || productObj.type === "상가주택"
                                 ? <FontAwesomeIcon icon={faHome} /> 
                                 : productObj.type === "상가건물"
                                 ? <FontAwesomeIcon icon={faStore} /> 
@@ -192,7 +194,7 @@ const SearchCard = ({ productObj }) => {
                                 : "Error"                                                                                
                             } {productObj.type}</span>
                             <span className="col-xs-6">
-                                {productObj.structure === "문의"
+                                { productObj.structure === "문의"
                                 ? <FontAwesomeIcon icon={faPhoneSquareAlt} />
                                 : <FontAwesomeIcon icon={faObjectGroup} />} {productObj.structure}
                             </span>

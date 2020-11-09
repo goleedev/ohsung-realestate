@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { dbService } from "fbase";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { limitTitle, onReloadClick } from 'functions';
+import { limitTitle, onReloadClick } from 'Functions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom/cjs/react-router-dom';
@@ -18,6 +18,7 @@ const Search = ( props ) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [noResult, setNoResult] = useState(false);
     const [searchInput, setSearchInput] = useState("");
+    // eslint-disable-next-line
     const history = useHistory();
     const data = props.history.location.state;
     window.onload = () => {
@@ -74,8 +75,8 @@ const Search = ( props ) => {
                 } else {
                     setNoResult(false);
                 }  
-                setProducts(productArray);
-            })
+                    setProducts(productArray);
+                })
         }
         setIsLoaded(true);
     }, [data]);
@@ -97,8 +98,8 @@ const Search = ( props ) => {
                 } else {
                     setNoResult(false);
                 }
-                setProducts(productArray);
-            });
+                    setProducts(productArray);
+                });
     };
     const onChange = (event) => {
         const {
@@ -129,12 +130,6 @@ const Search = ( props ) => {
         setSearchInput("");
         document.querySelector("#search").reset(); 
     };
-    // const onDetaileClick = (product) => {
-    //     history.push({
-    //         pathname: `/search/${product.id}`,
-    //         state: { product: product }
-    //     })
-    // }
     return (
         <>
         <Navigation />
@@ -170,12 +165,12 @@ const Search = ( props ) => {
                 ? <NoResult />
                 : <>
                 <div className="search-container container row">
-                    {products.map((product) =>
+                    { products.map((product) =>
                     <>
                     <div data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">
                         <h4><span className="product-id">매물번호-{product.number}</span>{limitTitle(product.title)}</h4>
                         <span className="product-action">추천</span>
-                        {product.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
+                        { product.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold" /> }
                         <img src={product.attachmentUrl} alt="product-pic"/>
                         <div className="product-recom-list">
                             <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {product.price}</p>
@@ -183,7 +178,7 @@ const Search = ( props ) => {
                             <div className="product-detail">
                                 <p className="col-xs-12 row">
                                     <span className="col-xs-6">
-                                        {product.type === "주택"
+                                        { product.type === "주택" || product.type === "다가구주택" ||product.type === "상가주택"
                                         ? <FontAwesomeIcon icon={faHome} /> 
                                         : product.type === "상가건물"
                                         ? <FontAwesomeIcon icon={faStore} /> 
@@ -207,14 +202,25 @@ const Search = ( props ) => {
                                     <FontAwesomeIcon icon={faLayerGroup} />
                                     <span> {product.size}</span>
                                 </p> 
-                                <a onClick={() => {
-                                    history.push({
-                                    pathname: `/search/${product.id}`,
-                                    state: { product: {product} }
-                                    })
-                                }}>더보기</a>      
-                                {/* <Link to={`search/${product.id}`} product={product}
-                                >더보기</Link>        */}
+                                <Link
+                                className="detail-more"        
+                                to={{
+                                pathname: `/search/${product.id}`,
+                                state: {
+                                    id: product.id,
+                                    number: product.number,
+                                    title: product.title,
+                                    content: product.content,
+                                    price: product.price,
+                                    region: product.region,
+                                    type: product.type,
+                                    size: product.size,
+                                    structure: product.structure,
+                                    sold: product.sold,
+                                    attachmentUrl: product.attachmentUrl,
+                                }
+                                }}>더보기
+                                </Link>    
                             </div>     
                         </div>
                     </div>

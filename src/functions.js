@@ -1,3 +1,6 @@
+// eslint-disable-next-line
+import React from 'react';
+
 // Limit Title
 export const limitTitle = (title, limit = 20) => {
     const newTitle = [];

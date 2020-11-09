@@ -21,30 +21,28 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
         <Router>
         <Suspense fallback={<Loading />}>
             <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/about" component={About}/>
-                <Route exact path="/youtube" component={Youtube}/>
-                <Route exact path="/search" component={Search}/>
-                <Route path='/search/:id' render={(props) => {
-                    return ( <SearchDetail {...props } /> )
-                }} />
-                <Route exact path="/contact" component={Contact}/>
-                {isLoggedIn && userObj.uid === "U00BnGBmKHeLslGeX6avZg5qX5o1" ? (
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/youtube" component={Youtube} />
+                <Route exact path="/search" component={Search} />
+                <Route exact path="/search/:id" component={SearchDetail} />
+                <Route exact path="/contact" component={Contact} />
+                { isLoggedIn && userObj.uid === "U00BnGBmKHeLslGeX6avZg5qX5o1" ? (
                     <>
                     <Route exact path="/login">
-                        <Admin userObj={userObj}/>
+                        <Admin userObj = {userObj} />
                     </Route>    
                     <Route exact path="/login/manage">
-                        <Manage userObj={userObj}/>        
+                        <Manage userObj = {userObj} />        
                     </Route>  
                     <Route exact path="/login/manage/youtube">
-                        <YoutubeManage />
+                        <YoutubeManage userObj = {userObj} />
                     </Route>
                     <Route exact path="/login/upload">
-                        <Upload userObj={userObj}/>
+                        <Upload userObj = {userObj} />
                     </Route>  
                     <Route exact path="/login/upload/youtube">
-                        <YoutubeUpload />
+                        <YoutubeUpload userObj = {userObj} />
                     </Route>     
                     </>        
                 ) : (  

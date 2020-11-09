@@ -1,8 +1,8 @@
 /* SEARCH CARD */
 .search-card {
-    padding: 0 10px !important;
     background-color: #fff;
     filter: drop-shadow(3px 3px 6px #8e8e8b);
+    padding: 0 10px !important;
 }
 
 .search-card-item {
@@ -15,8 +15,8 @@
 }
 
 .formInput {
-    width: 100%;
     border: 1px solid #333333;
+    width: 100%;
     margin: 5px auto;
 }
 

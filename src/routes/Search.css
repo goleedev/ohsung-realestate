@@ -15,12 +15,13 @@
 }
 
 .product-recom-nav span:active,
-.product-recom-nav span:hover {    font-weight: bold;
+.product-recom-nav span:hover {   
+    font-weight: bold;
 }
 
 .search-title {
-    color: #3b4961;
     cursor: pointer;
+    color: #3b4961;
     font-size: 50px !important;
     margin: 0 auto !important;
     margin-bottom: 5% !important;
@@ -69,7 +70,6 @@
     .search-search {
         width: 90% !important;
     }
-
     .search-card-item {
         margin-top: 5% !important;
     }

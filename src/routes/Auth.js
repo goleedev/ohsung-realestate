@@ -6,7 +6,7 @@ import { faUserCog } from "@fortawesome/free-solid-svg-icons";
 import Navigation from "components/Navigation";
 import './Auth.css';
 
-const Auth = ({ isLoggedIn }) => {
+const Auth = () => {
     const onSocialClick = async (event) => {
         const {
             target: { name },

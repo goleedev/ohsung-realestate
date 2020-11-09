@@ -11,9 +11,9 @@
 }
 
 .admin-box h4 {
+    cursor: pointer;
     background-color: #2e5fd2;
     color: #fafafa;
-    cursor: pointer;
     padding: 8%;
     font-size: 2rem;
     border-radius: 10px;

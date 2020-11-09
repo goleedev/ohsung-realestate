@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { dbService } from 'fbase';
-import { limitTitle } from "functions";
+import { limitTitle } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Link } from 'react-router-dom/cjs/react-router-dom';
@@ -34,9 +34,9 @@ const YoutubeCards = () => {
             <Link to="/youtube" className="col-lg-12">
                 <h3 className="youtube-cards-title">오성TV <FontAwesomeIcon icon={faYoutube} color="red"/> 매물</h3>
             </Link>
-            {isLoaded ?
+            { isLoaded ?
             <>
-            {youtubes.map((youtube) =>
+            { youtubes.map((youtube) =>
                 <div data-aos="fade-up" key={youtube.id} className="youtube-item col-lg-4 col-md-6">
                     <a href={youtube.url} target="_blank" rel="noopener noreferrer"><span className="btn btn-danger">유튜브로 이동</span></a>
                     <ReactPlayer url={youtube.url} className="youtube-vid" width="300px" height="250px" config={{ youtube: { playerVars: { showinfo: 1, controls: 1 } }, }} />

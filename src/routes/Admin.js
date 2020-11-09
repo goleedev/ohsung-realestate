@@ -5,9 +5,9 @@ import { authService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCog } from "@fortawesome/free-solid-svg-icons";
 import Navigation from 'components/Navigation';
-import './Admin.css';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
+import './Admin.css';
 
 const Admin = () => {
     const history = useHistory();

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
-import { onReloadClick } from "functions";
+import { onReloadClick } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import Loading from 'components/Loading';
@@ -34,15 +34,15 @@ const Contact = () => {
         <Navigation />
         <div className="get-in-touch container row">
             <h3 onClick={onReloadClick} className="title col-lg-12">문의하기</h3>
-            {isLoaded ?
-            <>
+            { isLoaded ?
             <div className="col-lg-12">
-                <img src={contact} alt="contact"/>
+                <img src={contact} alt="contact" />
             </div> 
+            : <Loading /> }        
             <p id="alert" className="col-lg-12"></p>
             <div className="get-in-touch-content col-lg-12 row">
                 <div className="get-in-touch-info col-lg-6 flex-column">
-                    <h3>let's get in touch</h3>
+                    <h3>let's get in touch</h3>/
                     <a href="tel:0415233303">
                         <FontAwesomeIcon icon={faPhoneVolume} /> 전화 <br/>
                         <span>041-523-3303</span>
@@ -84,8 +84,6 @@ const Contact = () => {
                     </div>
                 </form>
             </div>
-            </>
-            : <Loading />}        
         </div>
         <FooterLink/>
         <Footer/>    

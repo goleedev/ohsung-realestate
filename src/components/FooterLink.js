@@ -10,11 +10,11 @@ const FooterLink = () => {
     return (
         <div className="container logo-slider">
             <Slider
-                dots={false}
-                slidesToShow={3}
-                slidesToScroll={1}
-                autoplay={true}
-                autoplaySpeed={3000}
+            dots={false}
+            slidesToShow={3}
+            slidesToScroll={1}
+            autoplay={true}
+            autoplaySpeed={3000}
             >
                 <div className="slide">
                     <a href="https://www.gov.kr/portal" target="_blank" rel="noopener noreferrer">

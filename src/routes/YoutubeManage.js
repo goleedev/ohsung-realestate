@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { dbService } from "fbase";
-import { onReloadClick } from "functions";
+import { onReloadClick } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Navigation from 'components/Navigation';
 import YoutubeSearchCard from 'components/YoutubeSearchCard';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
-import './YoutubeManage.css';
-import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const YoutubeManage = () => {
     const [youtubes, setYoutubes] = useState([]);
@@ -46,7 +45,6 @@ const YoutubeManage = () => {
                 productObj={youtube}
                 />
             ))}
-                
         </div>
         <FooterLink />
         <Footer />    

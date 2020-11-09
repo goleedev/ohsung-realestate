@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { storageService, dbService } from "fbase";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom/cjs/react-router-dom";
-import { onReloadClick } from "functions";
+import { onReloadClick } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes, faUndo } from "@fortawesome/free-solid-svg-icons";
 import Loading from "components/Loading";
@@ -150,7 +150,7 @@ const Upload = ({ userObj }) => {
               opacity: 0,
             }}
             />
-            {attachment && (
+            { attachment && (
               <div className="upload-attachment col-lg-12">
                 <img
                 src={attachment}
@@ -220,6 +220,8 @@ const Upload = ({ userObj }) => {
             <select onChange={onChange} name="type" id="type" className="col-md-12" required>
               <option value="">매물 종류</option>
               <option value="주택">주택</option>
+              <option value="다가구주택">다가구주택</option>
+              <option value="상가주택">상가주택</option>
               <option value="상가건물">상가건물</option>
               <option value="토지">토지</option>
               <option value="공장/창고">공장/창고</option>

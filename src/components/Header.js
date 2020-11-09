@@ -49,13 +49,13 @@ const Header = () => {
                     }));
                     setProducts(productArray);
                     history.push({
-                        pathname: '/search',
-                        search: `/query?${searchInput}`,
-                        state: { data: searchInput }
+                    pathname: '/search',
+                    search: `/query?${searchInput}`,
+                    state: { data: searchInput }
                     });
                 });
             window.scrollTo(0, 0);
-        }
+        };
         event.target.reset();
         setSearchInput("");
     };

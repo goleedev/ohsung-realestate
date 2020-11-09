@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { dbService } from "fbase";
-import { limitTitle } from "functions";
+import { limitTitle } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import './YoutubeSearchCard.css';
@@ -43,7 +43,7 @@ const YoutubeSearchCard = ({ productObj }) => {
     };
     return (
         <div className="search-card-item col-lg-4 col-md-6">
-            {editing ? (
+            { editing ? (
             <>
             <div className="search-card youtube-search-card">
                 <form onSubmit={onSubmit} className="col-lg-12 product-recom-container manage-form">

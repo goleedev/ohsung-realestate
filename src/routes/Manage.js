@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { dbService } from "fbase";
-import { onReloadClick } from "functions";
+import { onReloadClick } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Navigation from 'components/Navigation';
 import SearchCard from 'components/SearchCard';
-import './Manage.css';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import Footer from 'components/Footer';
 import FooterLink from 'components/FooterLink';
+import Footer from 'components/Footer';
+import './Manage.css';
 
-const Manage = ({userObj}) => {
+const Manage = ({ userObj }) => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         dbService
@@ -37,11 +37,10 @@ const Manage = ({userObj}) => {
                     <FontAwesomeIcon icon={faUndo} color={"#0275d8"} size="1x" /> 돌아가기
                 </Link>
             </div>
-                {products.map((product) => (
+                { products.map((product) => (
                     <SearchCard
                     key={product.id}
                     productObj={product}
-                    isOwner={product.creatorId === userObj.uid}
                     />
                 ))}
         </div>

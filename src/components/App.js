@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { authService, dbService } from '../fbase';
+import AOS from "aos";
 import AppRouter from './Router';
 import Loading from './Loading';
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setUserObj({
-          displayName: user.displayName,
           uid: user.uid,
         });
       } else {

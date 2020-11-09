@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { dbService } from "fbase";
-import { onReloadClick } from "functions";
+import { onReloadClick } from "Functions";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";

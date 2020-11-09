@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { dbService } from 'fbase';
-import { onReloadClick } from "functions";
+import { onReloadClick } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { limitTitle } from 'functions';
+import { limitTitle } from 'Functions';
 import Loading from 'components/Loading';
 import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
@@ -39,9 +39,9 @@ const Youtube = () => {
                     더 많은 물건은 오성TV로 <FontAwesomeIcon icon={faExternalLinkAlt}/>
                 </a>
             </div>
-            {isLoaded ?
+            { isLoaded ?
                 <>
-                {youtubes.map((youtube) =>
+                { youtubes.map((youtube) =>
                     <div data-aos="fade-up" key={youtube.id} className="youtube-item col-lg-4 col-md-6">
                         <a href={youtube.url} target="_blank" rel="noopener noreferrer"><span className="btn btn-danger">유튜브로 이동</span></a>
                         <ReactPlayer url={youtube.url} className="youtube-vid" width="300px" height="250px" config={{ youtube: { playerVars: { showinfo: 1, controls: 1 } }, }} />

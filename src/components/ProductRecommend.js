@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { dbService } from "fbase";
-import { limitTitle } from "functions";
+import { limitTitle } from "Functions";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
@@ -52,7 +52,7 @@ const ProductRecommend = () => {
                             <div className="product-detail">
                                 <p className="col-xs-12 row">
                                     <span className="col-xs-6">
-                                        {product.type === "주택"
+                                        {product.type === "주택" | product.type === "다가구주택" | product.type === "상가주택"
                                         ? <FontAwesomeIcon icon={faHome} /> 
                                         : product.type === "상가건물"
                                         ? <FontAwesomeIcon icon={faStore} /> 
@@ -67,7 +67,7 @@ const ProductRecommend = () => {
                                         : "Error"                                                                                
                                     } {product.type}</span>
                                     <span className="col-xs-6">
-                                        {product.structure === "문의"
+                                    {product.structure === "문의"
                                         ? <FontAwesomeIcon icon={faPhoneSquareAlt} />
                                         : <FontAwesomeIcon icon={faObjectGroup} />} {product.structure}
                                     </span>
@@ -77,6 +77,25 @@ const ProductRecommend = () => {
                                     <span> {product.size}</span>
                                 </p>
                             </div>
+                            <Link
+                            className="detail-more"        
+                            to={{
+                                pathname: `/search/${product.id}`,
+                                state: {
+                                    id: product.id,
+                                    number: product.number,
+                                    title: product.title,
+                                    content: product.content,
+                                    price: product.price,
+                                    region: product.region,
+                                    type: product.type,
+                                    size: product.size,
+                                    structure: product.structure,
+                                    sold: product.sold,
+                                    attachmentUrl: product.attachmentUrl,
+                                }
+                            }}>더보기
+                            </Link>  
                         </div>
                     </div>
                 )}

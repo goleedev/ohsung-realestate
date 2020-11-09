@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import { Navbar, Nav } from "react-bootstrap";
 import './Navigation.css';
 
@@ -24,9 +26,15 @@ const Navigation = () => {
                     <Nav.Item>
                         <Link className="nav-link" to="/contact">문의하기</Link>
                     </Nav.Item>
+                    <Nav.Item>
+                        <a href="tel:0415233303" className="nav-link nav-phone">
+                            <FontAwesomeIcon icon={faPhoneVolume} />
+                            <span>041-523-3303</span>
+                        </a> 
+                    </Nav.Item>
                 </Nav>
             </Navbar.Collapse>
-            </Navbar>
+        </Navbar>
     );
 };
 

@@ -8,18 +8,18 @@ import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
 import './Home.css'
 
-const Home = ({isLoggedIn}) => {
+const Home = () => {
     return (
         <div className="home">
             <div className="header-top">
-                <Navigation isLoggedIn={isLoggedIn}/>
-                <Header/>
+                <Navigation />
+                <Header />
             </div>
-            <ProductCards/>
-            <ProductRecommend/>
-            <YoutubeCards/>
-            <FooterLink/>
-            <Footer/>
+            <ProductCards />
+            <ProductRecommend />
+            <YoutubeCards />
+            <FooterLink />
+            <Footer />
         </div>
     );
 };

@@ -12,6 +12,7 @@
     background-color: #0275d8;
     color: #f7f7f7;
     width: 25%;
+    padding: 5px;
     margin: 0 auto;
     margin-bottom: 15px;
 }
@@ -22,10 +23,10 @@
 }
 
 .not-found .btn {
-    margin: 3%;
-    border-radius: 10px;
     box-shadow:  3px 3px 6px #d5d5d1, 
     -3px -3px 6px #ffffff;
+    margin: 3%;
+    border-radius: 10px;
 }
 
 .not-found .btn:hover {

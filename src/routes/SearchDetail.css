@@ -1,3 +1,122 @@
-h2 {
-    color: #3b4961 !important;
+/* SEARCH DETAIL */
+.detail-goback {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.detail-goback:hover {
+    color: #2e5fd2 !important;
+}
+
+.detail-number {
+    text-align: center;
+    background-color: #3b4961;
+    color: #fafafa !important;
+    padding: 5px;
+    width: 45% !important;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+
+.detail-title {
+    text-align: center;
+    font-size: 68px;
+    margin: 5% auto;
+}
+
+.detail-sold {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    z-index: 9999;
+}
+
+.detail-img {
+    filter: drop-shadow(3px 3px 6px #8e8e8b);
+    width: 100%;
+}
+
+.detail-container {
+    width: 100%;
+    margin: 5% auto;
+    font-size: 24px;
+}
+
+.detail-list {
+    text-align: center;
+    margin: 5% auto !important;
+    margin-bottom: 0px !important;
+    width: 100%;
+}
+
+.detail-list span {
+    background-color: #3b4961;
+    color: #fafafa;
+    filter: drop-shadow(3px 3px 6px #8e8e8b);
+    border-right: 5px solid #fafafa;
+    padding: 5px;
+}
+
+.detail-type {
+    border-top-left-radius: 20px;
+}
+
+.detail-size {
+    border-top-right-radius: 20px;
+    border-right: none !important;
+}
+
+.detail-content-bottom p {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.detail-content {
+    text-align: left !important;
+    font-size: 32px;
+    margin: 15% auto !important;
+    margin-top: 0 !important;
+}
+
+.detail-item {
+    font-size: 32px;
+    color: #fafafa;
+    background-color: #3b4961;
+    width: 100% !important;
+    margin: 0 !important;
+    margin-top: 15% !important;
+    margin-bottom: 5% !important;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    .detail-number {
+        width: 60% !important;
+    }
+    .detail-title {
+        font-size: 48px;
+    }
+    .detail-list span {
+        border-radius: 0px;
+    }
+    .detail-won,
+    .detail-location {
+        text-align: left !important;
+        width: 100% !important;
+        font-size: 18px;
+    }
+    .detail-content-bottom {
+        margin-top: 10%;    
+    }
+    .detail-item {
+        font-size: 24px;
+        width: 80% !important;
+        margin: 10% auto !important;
+    }
+    .detail-content {
+        font-size: 24px;
+        margin: 10% auto !important;
+        margin-top: 0 !important;
+        width: 80% !important;
+    }
 }
