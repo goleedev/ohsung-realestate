@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ohsung-realestate/precache-manifest.535908099a311f33d45a69a72f3cc249.js"
+  "/ohsung-realestate/precache-manifest.b54bbb0353faac75c7e0affeac6cc84b.js"
 );
 
 self.addEventListener('message', (event) => {
