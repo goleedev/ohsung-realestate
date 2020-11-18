@@ -27,7 +27,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/goleedev/ohsung-realestate">
-    <h1>:house:</h1>
+    <img align="center" width="100px" src="./src/images/icon.png"/>
   </a>
 
   <h3 align="center">Ohsung Real Estate Agency</h3>
@@ -46,11 +46,10 @@
 
 
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+## :clipboard: Table of Contents
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
-* [Usage](#usage)
 * [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
@@ -58,15 +57,25 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## 💁🏻 About The Project
 
 [![Demo gif][product-screenshot]](https://5sungbds.com)
+
+### Features
+  - Admin User
+  - Authentication
+  - Contact form
+  - Content Management System
+  - Custom Domain
+  - In-site Search
+  - In-site Filter
+  - Mobile Friendly Browsing
 
 User can search for products with the search bar inside the website. In the mean time, they also can sort the products by type and price range. Each product has its own detail page containing location, price, and other relevant content. 
 When user sends a request or question on the contact page, admin will receive an email about it. At the same time, user will get an automatic submission confirmation email. 
 Admin can reach to the admin pages through Firebase authentication. On the admin pages, admin can upload and manage products to maintain the website.
 
-### Built With
+### 🏗️ Built With
 
 * [Bootstrap](https://getbootstrap.com)
 * [Firebase](https://firebase.google.com/)
@@ -78,14 +87,14 @@ Admin can reach to the admin pages through Firebase authentication. On the admin
 
 
 <!-- LICENSE -->
-## License
+## :lock: License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
 <!-- CONTACT -->
-## Contact
+## :mailbox_with_mail: Contact
 
 GO Lee - [@golee.dev](https://www.instagram.com/golee.dev/) - golee.dev@gmail.com
 
@@ -94,7 +103,7 @@ Project Link: [https://github.com/goleedev/ohsung-realestate](https://github.com
 
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
+## :package: Packages
 
 * [AOS](https://michalsnik.github.io/aos/)
 * [Concurrently](https://github.com/kimmobrunfeldt/concurrently#readme)
