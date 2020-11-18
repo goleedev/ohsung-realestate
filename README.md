@@ -46,18 +46,19 @@
 
 
 <!-- TABLE OF CONTENTS -->
-## :clipboard: Table of Contents
+## Table of Contents
 
 * [About the Project](#about-the-project)
+  * [Features](#features)
   * [Built With](#built-with)
 * [License](#license)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
+* [Packages](#packages)
 
 
 
 <!-- ABOUT THE PROJECT -->
-## 💁🏻 About The Project
+## About The Project
 
 [![Demo gif][product-screenshot]](https://5sungbds.com)
 
@@ -75,7 +76,7 @@ User can search for products with the search bar inside the website. In the mean
 When user sends a request or question on the contact page, admin will receive an email about it. At the same time, user will get an automatic submission confirmation email. 
 Admin can reach to the admin pages through Firebase authentication. On the admin pages, admin can upload and manage products to maintain the website.
 
-### 🏗️ Built With
+### Built With
 
 * [Bootstrap](https://getbootstrap.com)
 * [Firebase](https://firebase.google.com/)
@@ -87,14 +88,14 @@ Admin can reach to the admin pages through Firebase authentication. On the admin
 
 
 <!-- LICENSE -->
-## :lock: License
+## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
 <!-- CONTACT -->
-## :mailbox_with_mail: Contact
+## Contact
 
 GO Lee - [@golee.dev](https://www.instagram.com/golee.dev/) - golee.dev@gmail.com
 
@@ -102,8 +103,8 @@ Project Link: [https://github.com/goleedev/ohsung-realestate](https://github.com
 
 
 
-<!-- ACKNOWLEDGEMENTS -->
-## :package: Packages
+<!-- PACKAGES -->
+## Packages
 
 * [AOS](https://michalsnik.github.io/aos/)
 * [Concurrently](https://github.com/kimmobrunfeldt/concurrently#readme)
