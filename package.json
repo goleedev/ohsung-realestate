@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "concurrently \"react-scripts build\" \"npm run sitemap\"",
+    "build": "react-scripts build",
     "sitemap": "node ./src/sitemapGenerator.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
