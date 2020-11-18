@@ -53,7 +53,7 @@
   * [Built With](#built-with)
 * [License](#license)
 * [Contact](#contact)
-* [Packages](#packages)
+* [Acknowledgements](#acknowledgements)
 
 
 
@@ -103,8 +103,8 @@ Project Link: [https://github.com/goleedev/ohsung-realestate](https://github.com
 
 
 
-<!-- PACKAGES -->
-## Packages
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
 
 * [AOS](https://michalsnik.github.io/aos/)
 * [Concurrently](https://github.com/kimmobrunfeldt/concurrently#readme)
