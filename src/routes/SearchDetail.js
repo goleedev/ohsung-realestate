@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft,faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
+import Linkify from 'react-linkify';
 import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
@@ -33,8 +34,8 @@ const SearchDetail = (props) => {
             <div className="detail-container">
                 <div className="detail-full-img">
                     <div className="detail-list row">
-                        <span className="detail-type col-sm-4">
-                            { data.type === "주택" || data.type === "다가구주택" || data.type === "상가주택"
+                        <span className="detail-type col-md-4">
+                            { data.type === "주택"
                             ? <FontAwesomeIcon icon={faHome} /> 
                             : data.type === "상가건물"
                             ? <FontAwesomeIcon icon={faStore} /> 
@@ -48,12 +49,12 @@ const SearchDetail = (props) => {
                             ? <FontAwesomeIcon icon={faBuilding} /> 
                             : "Error"                                                                                
                         } {data.type}</span>
-                        <span className="detail-structure col-sm-4">
+                        <span className="detail-structure col-md-4">
                             { data.structure === "문의"
                             ? <FontAwesomeIcon icon={faPhoneSquareAlt} />
                             : <FontAwesomeIcon icon={faObjectGroup} />} {data.structure}
                         </span>
-                        <span className="detail-size col-sm-4">
+                        <span className="detail-size col-md-4">
                             <FontAwesomeIcon icon={faLayerGroup} /> {data.size}
                         </span>
                     </div>
@@ -69,7 +70,9 @@ const SearchDetail = (props) => {
                         <span className="col-lg-12">{data.region}</span>          
                     </p>
                     <p className="detail-item col-lg-12">추가설명</p>
-                    <p className="detail-content col-lg-12">{data.content}</p>
+                    <p className="detail-content col-lg-12">
+                        <Linkify>{data.content}</Linkify>                
+                    </p>
                 </div>
             </div>
         </div>

@@ -54,7 +54,7 @@ const SearchCard = ({ productObj }) => {
         setEditing(false);
     };
     const onChange = (event) => {
-        const {
+        let {
             target: { name, value },
         } = event;
         if (name === "number") {
@@ -100,13 +100,13 @@ const SearchCard = ({ productObj }) => {
                 onChange={onChange}
                 className="formInput"
                 />
-                <input
-                type="text"
+                <textarea
+                rows="5" cols="20"
                 name="content"            
                 placeholder="설명을 수정 하세요."
                 value={newContent}
                 onChange={onChange}
-                className="formInput"
+                className="formInput formContent"
                 />
                 <input
                 type="text"
@@ -119,8 +119,6 @@ const SearchCard = ({ productObj }) => {
                 <select value={newType} onChange={onChange} name="type" id="type" className="formInput">
                     <option value="">매물 종류 수정</option>
                     <option value="주택">주택</option>
-                    <option value="다가구주택">다가구주택</option>
-                    <option value="상가주택">상가주택</option>
                     <option value="상가건물">상가건물</option>
                     <option value="토지">토지</option>
                     <option value="공장/창고">공장/창고</option>
@@ -179,7 +177,7 @@ const SearchCard = ({ productObj }) => {
                     <div className="product-detail">
                         <p className="col-xs-12 row">
                             <span className="col-xs-6">
-                                { productObj.type === "주택" || productObj.type === "다가구주택" || productObj.type === "상가주택"
+                                { productObj.type === "주택"
                                 ? <FontAwesomeIcon icon={faHome} /> 
                                 : productObj.type === "상가건물"
                                 ? <FontAwesomeIcon icon={faStore} /> 

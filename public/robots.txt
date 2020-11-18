@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow: /login
+Disallow: /login/manage
+Disallow: /login/upload
+Disallow: /login/upload/youtube
+Disallow: /login/manage/youtube
+Allow: /
+Sitemap: http://5sungbds.com/sitemap.xml

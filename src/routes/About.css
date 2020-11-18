@@ -85,4 +85,11 @@
         color: #fff;
         font-size: 60%;
     }
+    .about-header {
+        display: flex;
+        align-items: center !important;
+        text-align: center;
+        background-color: #3b4961;
+        height: 80vh !important;
+    }
 }

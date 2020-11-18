@@ -6,6 +6,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import './Navigation.css';
 
 const Navigation = () => {
+
     return (
         <Navbar expand="lg" className="container">
             <Navbar.Brand href="/">
@@ -32,6 +33,9 @@ const Navigation = () => {
                             <span>041-523-3303</span>
                         </a> 
                     </Nav.Item>
+                    <Nav.Item>
+                        <a href="javascript:;"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fwww.5sungbds.com&count_bg=%23617AB4&title_bg=%233B4961&icon=&icon_color=%23C4C4C4&title=%EB%B0%A9%EB%AC%B8%EC%9E%90&edge_flat=false"/></a>
+                    </Nav.Item>  
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

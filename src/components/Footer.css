@@ -45,6 +45,19 @@ footer {
     font-size: 10px;
 }
 
+.footer-scroll {
+    text-align: center;
+    font-size: 28px;
+    width: 45px !important;
+    height: 45px !important;
+    padding: 0 !important;
+}
+
+.footer-scroll:hover {
+    background-color: #3b4961 !important;
+    color: #fafafa !important;
+}
+
 @media (max-width: 992px) {
     footer {
         font-size: 11px;
@@ -52,5 +65,8 @@ footer {
     }
     .footer-logo {
         display: none;
+    }
+    .footer-scroll svg {
+        display: none !important;
     }
 }

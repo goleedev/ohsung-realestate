@@ -178,7 +178,7 @@ const Search = ( props ) => {
                             <div className="product-detail">
                                 <p className="col-xs-12 row">
                                     <span className="col-xs-6">
-                                        { product.type === "주택" || product.type === "다가구주택" ||product.type === "상가주택"
+                                        { product.type === "주택"
                                         ? <FontAwesomeIcon icon={faHome} /> 
                                         : product.type === "상가건물"
                                         ? <FontAwesomeIcon icon={faStore} /> 

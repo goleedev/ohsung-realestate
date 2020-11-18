@@ -1,10 +1,12 @@
 import React from 'react';
+import ScrollTop from 'react-scrolltop-button';
 import { Link } from 'react-router-dom';
 import { authService } from 'fbase';
 import './Footer.css';
 
 const Footer = () => {
     return (
+        <>
         <footer className="footer-container container row">
             <div className="col-lg-12">
                 <span>
@@ -25,6 +27,13 @@ const Footer = () => {
                 &copy; Copyright {new Date().getFullYear()} 오성공인중개사 사무소 / e-오성공인중개사 사무소. All rights reserved.
             </p>
         </footer>
+        <ScrollTop 
+        speed={200}
+        text="∧"
+        style={{ color: "#3b4961", borderColor: "#3b4961" }}
+        className="footer-scroll"
+        /> 
+        </>
     );
 };
 

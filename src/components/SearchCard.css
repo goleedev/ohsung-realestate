@@ -58,6 +58,10 @@
     margin: 0 5px;
 }
 
+.formContent {
+    height: 100px;
+}
+
 @media (max-width: 768px) {
     .search-card-item  {
         display: block;

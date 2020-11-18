@@ -20,7 +20,13 @@
 .nav-phone {
     background-color: #3b4961;
     color: #fafafa !important;
-    border-radius: 20px;
+    border-radius: 5px;
+    padding: 0 10px !important;
+}
+
+a.nav-phone:hover {
+    background-color: #2e5fd2;
+    color: #fafafa !important;
 }
 
 .nav-link:hover {
@@ -28,7 +34,22 @@
     font-weight: bold !important;
 }
 
+.nav-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.nav-item img {
+    width: 125% !important;
+    margin-left: 10px;
+}
+
 @media (max-width: 992px) { 
+    .nav-item {
+        justify-content: center;    
+        width: 100% !important;
+    }    
     .nav-items {
         text-align: center;
         padding-top: 30px;
@@ -37,5 +58,11 @@
         font-weight: bold;
         padding: 5px !important;
         font-size: 12px !important;
+    }
+    .nav-item img {
+        width: 100% !important;
+        height: 25px !important;
+        margin-left: 0;
+        margin-top: 10px;
     }
 }

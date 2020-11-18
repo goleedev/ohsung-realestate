@@ -3,7 +3,7 @@ div.home {
     display: block;
     background: rgb(251,236,236);
     background: linear-gradient(320deg, rgba(251,236,236,1) 14%, rgba(171,196,213,1) 94%);
-    height: 85vh !important;
+    height: 100vh !important;
 }
 
 h2 {
@@ -15,7 +15,7 @@ h2 {
 
 .header-top {
     overflow: hidden !important;
-    height: 85vh !important;    
+    height: 100vh !important;    
 }
 
 .header {
@@ -28,7 +28,8 @@ h2 {
 
 .home-building {
     position: absolute;
-    top: 54%;
+    top: 50%;
+    width: 110%;
 }
 
 .home-search {
@@ -39,8 +40,8 @@ h2 {
 
 .home-circle {
     position: fixed;
-    float: right;
-    right: 30px;
+    float: left;
+    left: 30px;
     bottom: 30px;
     z-index: 9999999;
 }
@@ -68,15 +69,22 @@ input.form-control {
     color: #fafafa !important;
 }
 
+@media (max-width: 1200px) {
+    .home-building {
+        top: 75%;
+        width: 120%;
+    }    
+}
+
 @media (max-width: 992px) {
     .home-search {
         width: 120% !important;
         z-index: 99999;
     }
     .home-building {
-        top: -100px;
+        top: -100px !important;
         left: 20%;
-        width: 80%;
+        width: 90%;
     }    
 }
 
@@ -100,13 +108,27 @@ input.form-control {
     }
     .home-building {
         left: 0 !important;
-        top: -80px;
-        width: 110%;
+        top: -200px;
+        width: 130%;
     }    
 }
 
 @media (max-width: 576px) {
-    .home {
-        height: 100vh !important;
+    div.home {
+        height: 70vh;
     }
+    .header-top {
+        height: 70vh;
+    }
+    .home-building {
+        top: -300px;
+        width: 130%;
+    }    
+}
+
+@media (max-width: 380px) {
+    .home-building {
+        top: 80% !important;
+        width: 130%;
+    }    
 }

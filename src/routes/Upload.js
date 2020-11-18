@@ -73,7 +73,7 @@ const Upload = ({ userObj }) => {
     await alert("정상적으로 업로드 되었습니다.");
   };
   const onChange = (event) => {
-    const {
+    let {
       target: { name, value },
     } = event;
     if (name === "number") {
@@ -187,8 +187,8 @@ const Upload = ({ userObj }) => {
             placeholder="매물 이름"
             required
             />
-            <input
-            className="upload-input col-md-12"
+            <textarea
+            className="upload-input upload-content col-md-12"
             value={content}
             onChange={onChange}
             type="text"
@@ -220,8 +220,6 @@ const Upload = ({ userObj }) => {
             <select onChange={onChange} name="type" id="type" className="col-md-12" required>
               <option value="">매물 종류</option>
               <option value="주택">주택</option>
-              <option value="다가구주택">다가구주택</option>
-              <option value="상가주택">상가주택</option>
               <option value="상가건물">상가건물</option>
               <option value="토지">토지</option>
               <option value="공장/창고">공장/창고</option>

@@ -42,7 +42,7 @@ const Contact = () => {
             <p id="alert" className="col-lg-12"></p>
             <div className="get-in-touch-content col-lg-12 row">
                 <div className="get-in-touch-info col-lg-6 flex-column">
-                    <h3>let's get in touch</h3>/
+                    <h3>let's get in touch</h3>
                     <a href="tel:0415233303">
                         <FontAwesomeIcon icon={faPhoneVolume} /> 전화 <br/>
                         <span>041-523-3303</span>

@@ -1,6 +1,5 @@
-import React, {Suspense} from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Loading from 'components/Loading';
+import React, { useEffect } from 'react'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from 'routes/Home';
 import About from 'routes/About';
 import Auth from 'routes/Auth';
@@ -14,12 +13,14 @@ import SearchDetail from 'routes/SearchDetail';
 import Youtube from 'routes/Youtube';
 import Contact from 'routes/Contact';
 import NotFound from 'routes/NotFound';
+import {appAnalytics} from 'fbase';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
+    
     return (
         <>
         <Router>
-        <Suspense fallback={<Loading />}>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
@@ -50,7 +51,6 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                 )}
                 <Route component={NotFound} />
             </Switch>
-        </Suspense>
         </Router>
         </>
     );

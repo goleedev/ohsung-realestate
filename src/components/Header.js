@@ -10,6 +10,7 @@ import './Header.css';
 const Header = () => {
     const history = useHistory();
     const [searchInput, setSearchInput] = useState("");
+
     // eslint-disable-next-line
     const [products, setProducts] = useState([]);
     const onChange = (event) => {

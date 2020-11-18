@@ -53,6 +53,17 @@
     width: 50% !important;
 }
 
+
+.search-page .detail-more {
+    text-decoration: none !important;
+    color: #fafafa !important;
+    background-color: #2e5fd2;
+    position: relative;
+    top: 50px !important;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+
 #search {
     font-size: 18px !important;
 }

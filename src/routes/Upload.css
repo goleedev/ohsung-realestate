@@ -9,8 +9,17 @@ select {
     margin: 10% auto !important;
 }
 
+.upload-container {
+    height: 100%;
+}
+
+.upload-content {
+    white-space: pre-line;
+}
+
 .upload-form {
     width: 100%;
+    height: 100% !important;
     margin: 0 !important;
 }
 
@@ -132,6 +141,11 @@ select {
 .upload-back {
     text-align: center;
     margin: 5% auto;
+}
+
+.upload-input .editor div {
+    display: flex;
+    flex-direction: row !important;
 }
 
 @media (max-width: 768px) { 
