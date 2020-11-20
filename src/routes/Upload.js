@@ -17,6 +17,7 @@ const Upload = ({ userObj }) => {
   const [product, setProduct] = useState("");
   const [content, setContent] = useState(""); 
   const [price, setPrice] = useState("");
+  const [priceRange, setPriceRange] = useState(0);
   const [region, setRegion] = useState("");
   const [type, setType] = useState("");
   const [size, setSize] = useState("");
@@ -30,7 +31,7 @@ const Upload = ({ userObj }) => {
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (number === "" || product === "" || content === "" || price === "" || region === "" || type === "" || size === "" || structure === "") {
+    if (number === "" || product === "" || content === "" || price === "" || priceRange === "" || region === "" || type === "" || size === "" || structure === "") {
       return;
     }
     let attachmentUrl = "";
@@ -48,6 +49,7 @@ const Upload = ({ userObj }) => {
       number,
       content,
       price,
+      priceRange,
       region,
       type,
       size,
@@ -63,6 +65,7 @@ const Upload = ({ userObj }) => {
     setProduct("");
     setContent("");
     setPrice("");
+    setPriceRange(0);
     setRegion("");
     setType("");
     setSize("");
@@ -84,6 +87,8 @@ const Upload = ({ userObj }) => {
       setContent(value);
     } else if (name === "price") {
       setPrice(value);
+    } else if (name === "priceRange") {
+      setPriceRange(Number(value));
     } else if (name === "region") {
       setRegion(value);
     } else if (name === "type") {
@@ -209,6 +214,18 @@ const Upload = ({ userObj }) => {
             />
             <input
             className="upload-input col-md-12"
+            value={priceRange}
+            onChange={onChange}
+            type="number"
+            step="0.01"
+            min="0" 
+            name="priceRange"
+            autoComplete="off"
+            placeholder="예) 0.0"
+            required
+            />
+            <input
+            className="upload-input col-md-12"
             value={region}
             onChange={onChange}
             type="text"
@@ -222,12 +239,12 @@ const Upload = ({ userObj }) => {
               <option value="주택">주택</option>
               <option value="상가건물">상가건물</option>
               <option value="토지">토지</option>
-              <option value="공장/창고">공장/창고</option>
+              <option value="공장창고">공장 · 창고</option>
               <option value="전원주택">전원주택</option>
               <option value="아파트">아파트</option>
             </select>
-            <input
-            className="upload-input col-md-12"
+            <textarea
+            className="upload-input upload-size col-md-12"
             value={size}
             onChange={onChange}
             type="text"

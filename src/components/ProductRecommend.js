@@ -58,7 +58,7 @@ const ProductRecommend = () => {
                                         ? <FontAwesomeIcon icon={faStore} /> 
                                         : product.type === "토지"
                                         ? <FontAwesomeIcon icon={faSnowplow} />    
-                                        : product.type === "공장/창고"
+                                        : product.type === "공장창고"
                                         ? <FontAwesomeIcon icon={faIndustry} />    
                                         : product.type === "전원주택"
                                         ? <FontAwesomeIcon icon={faHouseUser} />    

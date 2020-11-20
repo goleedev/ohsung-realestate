@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from 'routes/Home';
 import About from 'routes/About';
@@ -13,8 +13,6 @@ import SearchDetail from 'routes/SearchDetail';
 import Youtube from 'routes/Youtube';
 import Contact from 'routes/Contact';
 import NotFound from 'routes/NotFound';
-import {appAnalytics} from 'fbase';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
     

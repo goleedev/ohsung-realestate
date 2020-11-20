@@ -82,7 +82,7 @@ Admin can reach to the admin pages through Firebase authentication. On the admin
 * [Bootstrap](https://getbootstrap.com)
 * [Firebase](https://firebase.google.com/)
 * [JavaScript](https://developer.mozilla.org/ko/docs/Web/JavaScript)
-* [React.js](https://firebase.google.com/)
+* [React.js](https://github.com/facebook/react)
 * [React Bootstrap](https://react-bootstrap.github.io/)
 
 

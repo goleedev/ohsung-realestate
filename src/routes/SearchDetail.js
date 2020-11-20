@@ -34,14 +34,14 @@ const SearchDetail = (props) => {
             <div className="detail-container">
                 <div className="detail-full-img">
                     <div className="detail-list row">
-                        <span className="detail-type col-md-4">
+                        <span className="detail-type col-lg-3">
                             { data.type === "주택"
                             ? <FontAwesomeIcon icon={faHome} /> 
                             : data.type === "상가건물"
                             ? <FontAwesomeIcon icon={faStore} /> 
                             : data.type === "토지"
                             ? <FontAwesomeIcon icon={faSnowplow} />    
-                            : data.type === "공장/창고"
+                            : data.type === "공장창고"
                             ? <FontAwesomeIcon icon={faIndustry} />    
                             : data.type === "전원주택"
                             ? <FontAwesomeIcon icon={faHouseUser} />    
@@ -49,13 +49,14 @@ const SearchDetail = (props) => {
                             ? <FontAwesomeIcon icon={faBuilding} /> 
                             : "Error"                                                                                
                         } {data.type}</span>
-                        <span className="detail-structure col-md-4">
+                        <span className="detail-structure col-lg-4">
                             { data.structure === "문의"
                             ? <FontAwesomeIcon icon={faPhoneSquareAlt} />
                             : <FontAwesomeIcon icon={faObjectGroup} />} {data.structure}
                         </span>
-                        <span className="detail-size col-md-4">
-                            <FontAwesomeIcon icon={faLayerGroup} /> {data.size}
+                        <span className="detail-size upload-size col-lg-5">
+                            <span className="size-icon"><FontAwesomeIcon icon={faLayerGroup} /></span>
+                            <span className="size-text">{data.size}</span>
                         </span>
                     </div>
                     <img className="detail-img" src={data.attachmentUrl} alt="product-pic"/>

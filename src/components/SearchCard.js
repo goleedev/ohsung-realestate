@@ -12,6 +12,7 @@ const SearchCard = ({ productObj }) => {
     const [newProduct, setNewProduct] = useState(productObj.title);
     const [newContent, setNewContent] = useState(productObj.content);
     const [newPrice, setNewPrice] = useState(productObj.price);
+    const [newPriceRange, setNewPriceRange] = useState(productObj.priceRange);
     const [newRegion, setNewRegion] = useState(productObj.region);
     const [newType, setNewType] = useState(productObj.type);
     const [newSize, setNewSize] = useState(productObj.size);
@@ -29,6 +30,7 @@ const SearchCard = ({ productObj }) => {
         setNewProduct(newProduct);
         setNewContent(newContent);
         setNewPrice(newPrice);
+        setNewPriceRange(newPriceRange);
         setNewRegion(newRegion);
         setNewType(newType);
         setNewSize(newSize);
@@ -45,6 +47,7 @@ const SearchCard = ({ productObj }) => {
                     title: newProduct,
                     content: newContent,
                     price: newPrice,
+                    priceRange: newPriceRange,
                     region: newRegion,
                     type: newType,
                     size: newSize,
@@ -65,6 +68,8 @@ const SearchCard = ({ productObj }) => {
             setNewContent(value);
         } else if (name === "price") {
             setNewPrice(value);
+        } else if (name === "priceRange") {
+            setNewPriceRange(Number(value));
         } else if (name === "type") {
             setNewType(value);
         } else if (name === "region") {
@@ -116,12 +121,22 @@ const SearchCard = ({ productObj }) => {
                 onChange={onChange}
                 className="formInput"
                 />
+                <input
+                type="number"
+                step="0.01"
+                min="0"
+                name="priceRange"            
+                placeholder="예) 0.0"
+                value={newPriceRange}
+                onChange={onChange}
+                className="formInput"
+                />
                 <select value={newType} onChange={onChange} name="type" id="type" className="formInput">
                     <option value="">매물 종류 수정</option>
                     <option value="주택">주택</option>
                     <option value="상가건물">상가건물</option>
                     <option value="토지">토지</option>
-                    <option value="공장/창고">공장/창고</option>
+                    <option value="공장창고">공장 · 창고</option>
                     <option value="전원주택">전원주택</option>     
                     <option value="아파트">아파트</option>     
                 </select>
@@ -133,7 +148,7 @@ const SearchCard = ({ productObj }) => {
                 onChange={onChange}
                 className="formInput"
                 />
-                <input
+                <textarea
                 type="text"
                 name="size"            
                 placeholder="면적을 수정 하세요."
@@ -183,7 +198,7 @@ const SearchCard = ({ productObj }) => {
                                 ? <FontAwesomeIcon icon={faStore} /> 
                                 : productObj.type === "토지"
                                 ? <FontAwesomeIcon icon={faSnowplow} />    
-                                : productObj.type === "공장/창고"
+                                : productObj.type === "공장창고"
                                 ? <FontAwesomeIcon icon={faIndustry} />    
                                 : productObj.type === "전원주택"
                                 ? <FontAwesomeIcon icon={faHouseUser} />    
@@ -195,12 +210,12 @@ const SearchCard = ({ productObj }) => {
                                 { productObj.structure === "문의"
                                 ? <FontAwesomeIcon icon={faPhoneSquareAlt} />
                                 : <FontAwesomeIcon icon={faObjectGroup} />} {productObj.structure}
-                            </span>
+                        </span>
                         </p>
-                        <p className="col-xs-12">
-                            <FontAwesomeIcon icon={faLayerGroup} />
-                            <span> {productObj.size}</span>
-                        </p>
+                        <p className="upload-size row">
+                            <span className="size-icon"><FontAwesomeIcon icon={faLayerGroup} /></span>
+                            <span className="size-text"> {productObj.size}</span>
+                        </p>              
                     </div>
                 </div>
                 <div className="product__actions">

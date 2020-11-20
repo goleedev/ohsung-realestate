@@ -38,13 +38,13 @@ const ProductCards = () => {
                 <img onClick={onClick} id="토지" src={pro3} alt="product-card" className="product-item" />
             </div>
             <div className="col-lg-4 col-md-6">
-                <img onClick={onClick} id="공장/창고" src={pro4} alt="product-card" className="product-item" />
+                <img onClick={onClick} id="공장창고" src={pro4} alt="product-card" className="product-item" />
             </div>
             <div className="col-lg-4 col-md-6">
                 <img onClick={onClick} id="전원주택" src={pro5} alt="product-card" className="product-item" />
             </div>
             <div className="col-lg-4 col-md-6">
-                <img src={pro6} alt="product-card" className="product-item" />
+                <img onClick={onClick} id="아파트" src={pro6} alt="product-card" className="product-item" />
             </div>
         </div>
     );

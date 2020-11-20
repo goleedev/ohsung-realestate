@@ -62,6 +62,15 @@
     height: 100px;
 }
 
+.size-icon {
+    width: 10% !important;
+}
+
+.size-text {
+    padding: 0 !important;
+    width: 90% !important;
+}
+
 @media (max-width: 768px) {
     .search-card-item  {
         display: block;
