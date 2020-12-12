@@ -130,6 +130,7 @@
 
 #price-option {
     text-align: left;
+    width: 80%;
     margin: 5% auto;
 }
 
@@ -140,7 +141,27 @@
     right: 0 !important;
 }
 
+.upload-size {
+    white-space: pre-line !important;
+}
+
+p.upload-size {
+    padding: 0 !important;
+}
+
+.size-icon {
+    width: 10% !important;
+}
+
+.size-text {
+    padding: 0 !important;
+    width: 90% !important;
+}
+
 @media (max-width: 992px) {
+    #price-option {
+        width: 100%;
+    }
     .search-search {
         width: 90% !important;
     }

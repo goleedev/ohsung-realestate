@@ -7,6 +7,7 @@ import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
 import Loading from 'components/Loading';
+import downPic from '../images/down.png';
 import soldPic from '../images/sold.png';
 import './SearchDetail.css';
 
@@ -30,6 +31,7 @@ const SearchDetail = (props) => {
             </p>
             <h3 className="detail-number col-lg-12">매물번호-{data.number}</h3>
             <h1 className="detail-title col-lg-12">{data.title}</h1>
+            { data.down && <img src={downPic} className="detail-down" />}
             { data.sold === "완료" && <img src={soldPic} className="detail-sold" alt="sold" /> }
             <div className="detail-container">
                 <div className="detail-full-img">
@@ -55,8 +57,7 @@ const SearchDetail = (props) => {
                             : <FontAwesomeIcon icon={faObjectGroup} />} {data.structure}
                         </span>
                         <span className="detail-size upload-size col-lg-5">
-                            <span className="size-icon"><FontAwesomeIcon icon={faLayerGroup} /></span>
-                            <span className="size-text">{data.size}</span>
+                            <FontAwesomeIcon icon={faLayerGroup} /> {data.size}
                         </span>
                     </div>
                     <img className="detail-img" src={data.attachmentUrl} alt="product-pic"/>

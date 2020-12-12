@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/lazy';
 import { dbService } from 'fbase';
 import { limitTitle } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

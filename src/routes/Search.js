@@ -3,16 +3,18 @@ import { dbService } from "fbase";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { limitTitle, onReloadClick } from 'Functions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup, faFunnelDollar } from "@fortawesome/free-solid-svg-icons";
+import { faWonSign, faArrowDown, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup, faFunnelDollar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Loading from 'components/Loading';
 import NoResult from 'components/NoResult';
 import Navigation from 'components/Navigation';
 import FooterLink from 'components/FooterLink';
 import Footer from 'components/Footer';
+import downPic from '../images/down.png';
 import soldPic from '../images/sold.png';
 import 'routes/Search.css';
 
+//Radio: https://codepen.io/manabox/pen/raQmpL
 const Search = ( props ) => {
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -273,8 +275,9 @@ const Search = ( props ) => {
                     <>
                     <div data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">
                         <h4><span className="product-id">매물번호-{product.number}</span>{limitTitle(product.title)}</h4>
-                        <span className="product-action">추천</span>
-                        { product.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold" /> }
+                        { product.recom && <span className="product-action">추천</span>}
+                        { product.down && <img src={downPic} className="product-down" />}
+                        { product.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold" />}
                         <img src={product.attachmentUrl} alt="product-pic"/>
                         <div className="product-recom-list">
                             <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {product.price}</p>
@@ -322,6 +325,8 @@ const Search = ( props ) => {
                                     size: product.size,
                                     structure: product.structure,
                                     sold: product.sold,
+                                    recom: product.recom,
+                                    down: product.down,
                                     attachmentUrl: product.attachmentUrl,
                                 }
                                 }}>더보기

@@ -26,7 +26,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                 <Route exact path="/search" component={Search} />
                 <Route exact path="/search/:id" component={SearchDetail} />
                 <Route exact path="/contact" component={Contact} />
-                { isLoggedIn && userObj.uid === "U00BnGBmKHeLslGeX6avZg5qX5o1" ? (
+                { isLoggedIn && userObj.uid === process.env.REACT_APP_UID ? (
                     <>
                     <Route exact path="/login">
                         <Admin userObj = {userObj} />
@@ -47,7 +47,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                 ) : (  
                     <Route exact path="/login" component={Auth} />
                 )}
-                <Route component={NotFound} />
+                <Route path='*' component={NotFound} />
             </Switch>
         </Router>
         </>

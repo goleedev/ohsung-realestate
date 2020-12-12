@@ -3,9 +3,10 @@ import { dbService } from "fbase";
 import { limitTitle } from "Functions";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
+import { faWonSign, faMapMarkerAlt, faBuilding, faLayerGroup, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faPhoneSquareAlt, faObjectGroup, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Loading from './Loading';
 import soldPic from '../images/sold.png';
+import downPic from '../images/down.png';
 import './ProductRecommend.css';
 
 const ProductRecommend = () => {
@@ -43,8 +44,9 @@ const ProductRecommend = () => {
                 {products.map((product) =>
                     <div data-aos="fade-up" key={product.id} className="product-recom-item col-lg-4 col-md-6">
                         <h4><span className="product-id">매물번호-{product.number}</span>{limitTitle(product.title)}</h4>
-                        <span className="product-action">추천</span>
-                        {product.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
+                        { product.recom && <span className="product-action">추천</span>}
+                        { product.down && <img src={downPic} className="product-down" />}
+                        { product.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold"/>}
                         <img src={product.attachmentUrl} alt="product-pic"/>
                         <div className="product-recom-list">
                             <p className="product-won"><FontAwesomeIcon icon={faWonSign} /> {product.price}</p>
@@ -72,9 +74,9 @@ const ProductRecommend = () => {
                                         : <FontAwesomeIcon icon={faObjectGroup} />} {product.structure}
                                     </span>
                                 </p>
-                                <p className="col-xs-12">
-                                    <FontAwesomeIcon icon={faLayerGroup} />
-                                    <span> {product.size}</span>
+                                <p className="upload-size row">
+                                    <span className="size-icon"><FontAwesomeIcon icon={faLayerGroup} /></span>
+                                    <span className="size-text"> {product.size}</span>
                                 </p>
                             </div>
                             <Link
@@ -92,6 +94,8 @@ const ProductRecommend = () => {
                                     size: product.size,
                                     structure: product.structure,
                                     sold: product.sold,
+                                    recom: product.recom,
+                                    down: product.down,
                                     attachmentUrl: product.attachmentUrl,
                                 }
                             }}>더보기

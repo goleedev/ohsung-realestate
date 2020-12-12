@@ -3,7 +3,7 @@
     text-align: center !important;
     background-color: #fafafa !important;
     margin: 10% auto !important;
-    margin-bottom: 0% !important;
+    margin-top: 0% !important;
 }
 
 .youtube-cards .row {
@@ -55,12 +55,12 @@
 @media (max-width: 768px) {
     .youtube-cards {
         display: block;
+        margin-bottom: 30% !important;
     }
     .youtube-cards-title {
         font-size: 40px !important;
     }
     .youtube-cards .load__btn {
         margin-top: 10%;
-        margin-bottom: 30%;
     }
 }

@@ -18,6 +18,14 @@
     border-radius: 20px;
 }
 
+.detail-down {
+    position: absolute;
+    top: 29%;
+    left: 10%;
+    width: 80%;
+    z-index: 99999 !important;
+}
+
 .detail-title {
     text-align: center;
     font-size: 68px;
@@ -26,8 +34,9 @@
 
 .detail-sold {
     position: absolute;
-    top: 30%;
-    width: 100%;
+    top: 20%;
+    left: 10%;
+    width: 80%;
     z-index: 9999;
 }
 
@@ -68,23 +77,17 @@
 }
 
 .detail-structure svg,
-.detail-type svg {
+.detail-type svg,
+.detail-size svg  {
     margin-right: 5px;
 }
 
 .detail-size {    
-    white-space: pre-line;
+    border-radius: 0;
     border-top-right-radius: 20px !important;
     border-right: none !important;
-}
-
-.detail-size .size-icon {
-    width: 20% !important;
-}
-
-.detail-size .size-text {
-    padding: 0 !important;
-    width: 80% !important;
+    margin-bottom: 0 !important;
+    height: 100% !important;
 }
 
 .detail-content-bottom p {
@@ -154,16 +157,5 @@
         margin: 10% auto !important;
         margin-top: 0 !important;
         width: 90% !important;
-    }
-    .detail-size {
-        white-space: pre-line !important;
-    }
-    .detail-size .size-icon {
-        position: absolute;
-        left: 35%;
-        width: 5% !important;
-    }
-    .detail-size .size-text {
-        padding-left: 35% !important;
     }
 }

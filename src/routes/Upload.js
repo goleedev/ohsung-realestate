@@ -26,6 +26,9 @@ const Upload = ({ userObj }) => {
   const [attachment, setAttachment] = useState("");
   const [sold, setSold] = useState(""); 
   const [tags, setTags] = useState([]);
+  const [recom, setRecom] = useState(false);
+  const [down, setDown] = useState(false);
+
   useEffect(() => {
     setIsLoaded(true);
   }, []);
@@ -57,6 +60,8 @@ const Upload = ({ userObj }) => {
       sold,
       attachmentUrl,
       tags,
+      recom,
+      down,
     };
     await dbService
       .collection("products")
@@ -73,6 +78,8 @@ const Upload = ({ userObj }) => {
     setSold("");
     setTags([]);
     setAttachment("");
+    setRecom(false);
+    setDown(false);
     await alert("정상적으로 업로드 되었습니다.");
   };
   const onChange = (event) => {
@@ -105,6 +112,9 @@ const Upload = ({ userObj }) => {
   };
   const onTagClick = (event) => {
     event.preventDefault();
+    if (tag === "") {
+      return;
+    }
     setTags(tags => tags.concat(tag));
     setTag("");
   }
@@ -279,6 +289,17 @@ const Upload = ({ userObj }) => {
               <option value="미완료">미완료</option>
               <option value="완료">완료</option>
             </select>
+            <h4 className="more-checks-title col-md-12">추가 선택</h4>  
+            <div id="more-checks" className="row col-md-12">
+                <p onClick={() => setRecom(!recom)}>
+                    <input type="checkbox" id="recom" name="checkbox-group" checked={recom} />
+                    <label htmlFor="down">추천 물건</label>
+                </p>
+                <p onClick={() => setDown(!down)}>
+                    <input type="checkbox" id="down" name="checkbox-group" checked={down} />
+                    <label htmlFor="down">금액인하 물건</label>
+                </p>
+            </div>
           </div>
           <input type="submit" className="upload-arrow col-lg-12" value="업로드"/>
         </form>

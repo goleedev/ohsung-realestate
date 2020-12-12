@@ -16,6 +16,29 @@ select {
 .upload-size,
 .upload-content {
     white-space: pre-line !important;
+    margin-bottom: 10px !important;
+    border-radius: 10px;
+    border-color: #2e5fd2;
+}
+
+.upload-size {
+    font-size: 24px;
+    padding: 0 5px !important;
+    height: 50px !important;
+}
+
+select {
+    padding: 0 5px !important;
+    border-radius: 10px;
+    border-color: #2e5fd2;
+    color: #757575;
+}
+
+.upload-content {
+    font-size: 24px;
+    padding: 0 5px !important;
+    padding: 0 5px !important;
+    height: 200px !important;
 }
 
 .upload-form {
@@ -57,8 +80,64 @@ select {
     width: 100%;
 }
 
-.checkbox {
-    color: #3b4961 !important;
+textarea::placeholder {
+    font-size: 24px;
+}
+
+.more-checks-title {
+    color: #757575 !important;
+    margin: 10px 0;
+    padding: 0 !important;
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="checkbox"]:checked + label,
+[type="checkbox"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 20px;
+    display: inline-block;
+    color: #757575;
+    margin-right: 10px;
+}
+[type="checkbox"]:checked + label:before,
+[type="checkbox"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+}
+[type="checkbox"]:checked + label:after,
+[type="checkbox"]:not(:checked) + label:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: #2e5fd2;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
 
 .upload-form button,

@@ -4,6 +4,7 @@ import { limitTitle } from "Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt, faWonSign, faMapMarkerAlt, faHome, faStore, faSnowplow, faIndustry, faHouseUser, faBuilding, faPhoneSquareAlt, faObjectGroup, faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import soldPic from '../images/sold.png';
+import downPic from '../images/down.png';
 import './SearchCard.css';
 
 const SearchCard = ({ productObj }) => {
@@ -18,6 +19,8 @@ const SearchCard = ({ productObj }) => {
     const [newSize, setNewSize] = useState(productObj.size);
     const [newStructure, setNewStructure] = useState(productObj.structure);
     const [newSold, setNewSold] = useState(productObj.sold);
+    const [newRecom, setNewRecom] = useState(productObj.recom);
+    const [newDown, setNewDown] = useState(productObj.down);
     const onDeleteClick = async () => {
         const ok = window.confirm("삭제 하시겠습니까?");
         if (ok) {
@@ -36,6 +39,8 @@ const SearchCard = ({ productObj }) => {
         setNewSize(newSize);
         setNewStructure(newStructure);
         setNewSold(newSold)
+        setNewRecom(newRecom)
+        setNewDown(newDown)
         setEditing((prev) => !prev);
     };
     const onSubmit = async (event) => {
@@ -53,6 +58,8 @@ const SearchCard = ({ productObj }) => {
                     size: newSize,
                     structure: newStructure,
                     sold: newSold,
+                    recom: newRecom,
+                    down: newDown,
                 });
         setEditing(false);
     };
@@ -168,7 +175,17 @@ const SearchCard = ({ productObj }) => {
                     <option value="">계약 여부 수정</option>
                     <option value="미완료">미완료</option>
                     <option value="완료">완료</option>
-                </select>          
+                </select>
+                <div id="more-checks" className="row col-md-12">
+                    <p>
+                        <input type="checkbox" id="recom" name="checkbox-group" checked={newRecom} />
+                        <label onClick={() => setNewRecom(!newRecom)} htmlFor="recom">추천 물건</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="down" name="checkbox-group" checked={newDown} />
+                        <label onClick={() => setNewDown(!newDown)} htmlFor="down">금액인하 물건</label>
+                    </p>
+                </div>            
                 <div>
                     <input type="submit" value="수정 완료" className="formBtn" />
                     <p onClick={toggleEditing} className="formBtn cancelBtn">
@@ -183,7 +200,8 @@ const SearchCard = ({ productObj }) => {
         <div className="product-recom-container container row">
             <div data-aos="fade-up" key={productObj.id} className="product-recom-item">
                 <h4><span className="product-id">매물번호-[{productObj.number}]</span>{limitTitle(productObj.title)}</h4>
-                <span className="product-action">추천</span>
+                { productObj.recom && <span className="product-action">추천</span>}
+                { productObj.down && <img src={downPic} className="product-down" />}
                 { productObj.sold === "완료" && <img src={soldPic} className="product-sold" alt="sold" />}
                 <img src={productObj.attachmentUrl} alt="product-pic"/>
                 <div className="product-recom-list">
