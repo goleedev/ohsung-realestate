@@ -18,6 +18,7 @@
     text-align: center;
     background-color: #3b4961;
     height: 65vh;
+    width: 100vw !important;
 }
 
 .about-title {
