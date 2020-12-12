@@ -91,6 +91,14 @@ const Search = ( props ) => {
         const {
             target: { id },
         } = event;
+        document.getElementById("주택").style.fontWeight = "300";
+        document.getElementById("상가건물").style.fontWeight = "300";
+        document.getElementById("토지").style.fontWeight = "300";
+        document.getElementById("공장창고").style.fontWeight = "300";
+        document.getElementById("전원주택").style.fontWeight = "300";
+        document.getElementById("아파트").style.fontWeight = "300";
+        document.getElementById("금액").style.fontWeight = "300";
+        setPriceOption(false);
         dbService
         .collection('products')
         .where("type", "==", id)
@@ -106,8 +114,25 @@ const Search = ( props ) => {
                 setNoResult(false);
             }
                 setProducts(productArray);
-            });
+        });
+        document.getElementById(id).style.fontWeight = "bold";
     };
+    const onPriceOptionClick = (event) => {
+        const {
+            target: { id },
+        } = event;
+        document.getElementById("주택").style.fontWeight = "300";
+        document.getElementById("상가건물").style.fontWeight = "300";
+        document.getElementById("토지").style.fontWeight = "300";
+        document.getElementById("공장창고").style.fontWeight = "300";
+        document.getElementById("전원주택").style.fontWeight = "300";
+        document.getElementById("아파트").style.fontWeight = "300";
+        document.getElementById("금액").style.fontWeight = "300";
+        if (id === "금액") {
+            document.getElementById(id).style.fontWeight = "bold";
+        }
+        setPriceOption(true);
+    }
     const onPriceRangeClick = (event) => {
         const {
             target: { id },
@@ -219,13 +244,13 @@ const Search = ( props ) => {
         <div data-aos="fade-up" className="product-recom search-page container">
             <h3 onClick={onReloadClick} className="product-recom-title col-lg-12">물건 검색</h3>
             <nav className="product-recom-nav col-lg-12">
-                <span id="주택" className="product-recom-nav col-md-3" onClick={onClick}>다가구/상가주택</span>
+                <span id="주택" className="product-recom-nav col-md-3" onClick={onClick}>다가구 · 상가주택</span>
                 <span id="상가건물" className="product-recom-nav col-md-3" onClick={onClick}>상가건물</span>
                 <span id="토지" className="product-recom-nav col-md-3" onClick={onClick}>토지</span>
                 <span id="공장창고" className="product-recom-nav col-md-3" onClick={onClick}>공장 · 창고</span>
                 <span id="전원주택" className="product-recom-nav col-md-4" onClick={onClick}>전원주택</span>
                 <span id="아파트" className="product-recom-nav col-md-4" onClick={onClick}>아파트</span>
-                <span id="금액" className="product-recom-nav col-md-4" onClick={() => setPriceOption(true)}>
+                <span id="금액" className="product-recom-nav col-md-4" onClick={onPriceOptionClick}>
                     <FontAwesomeIcon icon={faFunnelDollar} /> 금액별
                 </span>
                 {priceOption &&
