@@ -104,8 +104,8 @@ Project Link: [https://github.com/goleedev/ohsung-realestate](https://github.com
 
 
 
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
+<!-- See Also -->
+## See Also
 
 * [AOS](https://michalsnik.github.io/aos/)
 * [Concurrently](https://github.com/kimmobrunfeldt/concurrently#readme)
